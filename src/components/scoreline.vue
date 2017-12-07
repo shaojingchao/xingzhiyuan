@@ -3,9 +3,9 @@
 </template>
 
 <script>
-	export default {
-		name: "scoreline"
-	}
+export default {
+  name: 'scoreline'
+}
 </script>
 
 <style scoped>

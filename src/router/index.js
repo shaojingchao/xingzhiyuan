@@ -6,6 +6,7 @@ import CollegeLib from '@/components/collegelib.vue'
 import Evaluation from '@/components/evaluation.vue'
 import JobLib from '@/components/joblib.vue'
 import Major from '@/components/major.vue'
+import MajorInfo from '@/components/majorinfo.vue'
 import MajorLib from '@/components/majorlib.vue'
 import More from '@/components/more.vue'
 import PassRate from '@/components/passrate.vue'
@@ -17,6 +18,7 @@ import Volunteer from '@/components/volunteer.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'hash',
   routes: [
     {
       path: '/',
@@ -47,6 +49,11 @@ export default new Router({
       path: '/major',
       name: 'major',
       component: Major
+    },
+    {
+      path: '/major/:id',
+      name: 'majorinfo',
+      component: MajorInfo
     },
     {
       path: '/majorlib',

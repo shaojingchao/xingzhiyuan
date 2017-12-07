@@ -13,6 +13,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "echarts": "^3.8.5",
+    "jquery": "^2.1.4",
     "mint-ui": "^2.2.12",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"

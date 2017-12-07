@@ -3,9 +3,9 @@
 </template>
 
 <script>
-	export default {
-		name: "job_lib"
-	}
+export default {
+  name: 'job_lib'
+}
 </script>
 
 <style scoped>

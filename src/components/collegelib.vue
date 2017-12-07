@@ -3,9 +3,9 @@
 </template>
 
 <script>
-	export default {
-		name: "college_lib"
-	}
+export default {
+  name: 'college_lib'
+}
 </script>
 
 <style scoped>

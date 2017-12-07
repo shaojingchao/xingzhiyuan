@@ -3,9 +3,9 @@
 </template>
 
 <script>
-	export default {
-		name: "samescore"
-	}
+export default {
+  name: 'samescore'
+}
 </script>
 
 <style scoped>

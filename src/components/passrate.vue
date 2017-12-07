@@ -3,9 +3,9 @@
 </template>
 
 <script>
-	export default {
-		name: "passrate"
-	}
+export default {
+  name: 'passrate'
+}
 </script>
 
 <style scoped>

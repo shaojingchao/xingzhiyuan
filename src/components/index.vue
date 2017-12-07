@@ -1,8 +1,16 @@
 <template>
   <div>
-    <div>
+    <mt-header title="星志愿">
+      <!--<router-link to="/" slot="left">-->
+      <!--<mt-button icon="back">返回</mt-button>-->
+      <!--<mt-button @click="handleClose">关闭</mt-button>-->
+      <!--</router-link>-->
+      <mt-button icon="more" slot="right"></mt-button>
+    </mt-header>
+    <div class="J_echart">
       <img class="idx-chart" src="../assets/imgs/idx-chart_02.png" alt="">
     </div>
+    <!--<indexChart />-->
     <div class="md-list">
       <a href="/#/volunteer">
         <div class="md-icon">
@@ -77,16 +85,24 @@
         <p>更多</p>
       </a>
     </div>
+    <div class="update-tips"><span>神秘功能敬请期待</span></div>
   </div>
 </template>
 
 <script>
+  import indexChart from './chart/indexChart.vue'
   export default {
-    name: 'index'
+    name: 'index',
+    components: {
+      indexChart
+    }
   }
 </script>
 
 <style lang="less" scoped>
+  .J_echart{
+    /*height:400px;*/
+  }
   .idx-chart {
     display: block;
     width: 100%;
@@ -121,6 +137,32 @@
         margin:6px 0 0;
       }
     }
+  }
+
+  /*敬请期待*/
+  .update-tips{
+    margin:20px auto;
+    height:23px;
+    width:200px;
+    line-height: 23px;
+    font-size:12px;
+    color:#999;
+    text-align: center;
+    span{
+      &::before,&::after{
+        content:'';
+        float: left;
+        width:25%;
+        margin-top:11px;
+        height:1px;
+        transform: scale(0.5);
+        background-color: #ccc;
+      }
+      &:after{
+        float: right;
+      }
+    }
+
   }
 
 </style>

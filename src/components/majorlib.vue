@@ -3,9 +3,9 @@
 </template>
 
 <script>
-	export default {
-		name: "major_lib"
-	}
+export default {
+  name: 'major_lib'
+}
 </script>
 
 <style scoped>
