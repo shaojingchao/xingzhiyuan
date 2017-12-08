@@ -3,16 +3,20 @@
 import Vue from 'vue'
 import MintUI from 'mint-ui'
 import $ from 'jquery'
+import iScroll from 'iscroll'
 import ECharts from 'echarts'
-import App from './App'
-import router from './router'
 import 'normalize.css'
 import 'mint-ui/lib/style.css'
+import App from './App'
+import router from './router'
 
+window.iScroll = iScroll
 window.$ = $
 Vue.use(MintUI)
 Vue.config.productionTip = false
 Vue.prototype.$echarts = ECharts
+Vue.prototype.$Toast = MintUI.Toast
+Vue.prototype.$Indicator = MintUI.Indicator
 
 /* eslint-disable no-new */
 new Vue({

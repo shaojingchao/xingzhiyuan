@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "echarts": "^3.8.5",
+    "iscroll": "^5.2.0",
     "jquery": "^2.1.4",
     "mint-ui": "^2.2.12",
     "vue": "^2.5.2",

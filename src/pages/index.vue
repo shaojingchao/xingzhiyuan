@@ -90,7 +90,7 @@
 </template>
 
 <script>
-  import indexChart from './chart/indexChart.vue'
+  import indexChart from '../components/indexChart.vue'
   export default {
     name: 'index',
     components: {

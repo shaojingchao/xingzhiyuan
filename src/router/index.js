@@ -1,19 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/components/index.vue'
-import College from '@/components/college.vue'
-import CollegeLib from '@/components/collegelib.vue'
-import Evaluation from '@/components/evaluation.vue'
-import JobLib from '@/components/joblib.vue'
-import Major from '@/components/major.vue'
-import MajorInfo from '@/components/majorinfo.vue'
-import MajorLib from '@/components/majorlib.vue'
-import More from '@/components/more.vue'
-import PassRate from '@/components/passrate.vue'
-import Plan from '@/components/plan.vue'
-import SameScore from '@/components/samescore.vue'
-import ScoreLine from '@/components/scoreline.vue'
-import Volunteer from '@/components/volunteer.vue'
+import Index from '@/pages/index.vue'
+import College from '@/pages/college.vue'
+import CollegeLib from '@/pages/collegelib.vue'
+import CollegeSearch from '@/pages/collegesearch.vue'
+import Evaluation from '@/pages/evaluation.vue'
+import JobLib from '@/pages/joblib.vue'
+import Major from '@/pages/major.vue'
+import MajorInfo from '@/pages/majorinfo.vue'
+import MajorLib from '@/pages/majorlib.vue'
+import More from '@/pages/more.vue'
+import PassRate from '@/pages/passrate.vue'
+import Plan from '@/pages/plan.vue'
+import SameScore from '@/pages/samescore.vue'
+import ScoreLine from '@/pages/scoreline.vue'
+import Volunteer from '@/pages/volunteer.vue'
 
 Vue.use(Router)
 
@@ -31,9 +32,14 @@ export default new Router({
       component: College
     },
     {
-      path: '/',
+      path: '/collegelib',
       name: 'collegelib',
       component: CollegeLib
+    },
+    {
+      path: '/csearch',
+      name: 'collegesearch',
+      component: CollegeSearch
     },
     {
       path: '/evaluation',
