@@ -6,8 +6,8 @@
       </router-link>
     </mt-header>
 
-    <mt-search v-model="value" style="position:static;">
-      <div class="college-list" style="padding-top:0px;">
+    <mt-search v-model="value" placeholder="输入学校名称" autofocus style="position:static;">
+      <div class="college-list" style="padding-top:0;">
         <college-item :item="item" v-for="(item,i) in result" :key="i" ></college-item>
       </div>
     </mt-search>

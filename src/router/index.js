@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/pages/index.vue'
-import College from '@/pages/college.vue'
+import CollegeFirst from '@/pages/collegefirst.vue'
+import MajorFirst from '@/pages/majorfirst.vue'
 import CollegeLib from '@/pages/collegelib.vue'
 import CollegeSearch from '@/pages/collegesearch.vue'
 import Evaluation from '@/pages/evaluation.vue'
 import JobLib from '@/pages/joblib.vue'
 import Major from '@/pages/major.vue'
 import MajorInfo from '@/pages/majorinfo.vue'
-import MajorLib from '@/pages/majorlib.vue'
 import More from '@/pages/more.vue'
 import PassRate from '@/pages/passrate.vue'
+import PassRateInfo from '@/pages/passrateinfo.vue'
 import Plan from '@/pages/plan.vue'
 import SameScore from '@/pages/samescore.vue'
 import ScoreLine from '@/pages/scoreline.vue'
@@ -27,74 +28,79 @@ export default new Router({
       component: Index
     },
     {
-      path: '/college',
-      name: 'college',
-      component: College
+      path: '/volunteer', // 填报志愿
+      name: 'volunteer',
+      component: Volunteer
     },
     {
-      path: '/collegelib',
-      name: 'collegelib',
-      component: CollegeLib
+      path: '/majorfirst', // 专业优先
+      name: 'majorfirst',
+      component: MajorFirst
     },
     {
-      path: '/csearch',
-      name: 'collegesearch',
-      component: CollegeSearch
+      path: '/collegefirst', // 院校优先
+      name: 'collegefirst',
+      component: CollegeFirst
     },
     {
-      path: '/evaluation',
-      name: 'evaluation',
-      component: Evaluation
-    },
-    {
-      path: '/joblib',
-      name: 'joblib',
-      component: JobLib
-    },
-    {
-      path: '/major',
-      name: 'major',
-      component: Major
-    },
-    {
-      path: '/major/:id',
-      name: 'majorinfo',
-      component: MajorInfo
-    },
-    {
-      path: '/majorlib',
-      name: 'majorlib',
-      component: MajorLib
-    },
-    {
-      path: '/more',
-      name: 'more',
-      component: More
-    },
-    {
-      path: '/passrate',
+      path: '/passrate', // 录取率
       name: 'passrate',
       component: PassRate
     },
     {
-      path: '/plan',
-      name: 'plan',
-      component: Plan
+      path: '/passrateinfo/:id', // 录取率
+      name: 'passrateinfo',
+      component: PassRateInfo
     },
     {
-      path: '/samescore',
-      name: 'samescore',
-      component: SameScore
+      path: '/college', // 大学库
+      name: 'college',
+      component: CollegeLib
     },
     {
-      path: '/scoreline',
+      path: '/csearch', // 大学库搜索
+      name: 'collegesearch',
+      component: CollegeSearch
+    },
+    {
+      path: '/major', // 专业库
+      name: 'major',
+      component: Major
+    },
+    {
+      path: '/major/:id', // 专业对应学校
+      name: 'majorinfo',
+      component: MajorInfo
+    },
+    {
+      path: '/job', // 职业库
+      name: 'job',
+      component: JobLib
+    },
+    {
+      path: '/scoreline', // 分数线
       name: 'scoreline',
       component: ScoreLine
     },
     {
-      path: '/volunteer',
-      name: 'volunteer',
-      component: Volunteer
+      path: '/plan', // 招生计划
+      name: 'plan',
+      component: Plan
+    },
+    {
+      path: '/samescore', // 同分去向
+      name: 'samescore',
+      component: SameScore
+    },
+    {
+      path: '/evaluation', // 综合测试
+      name: 'evaluation',
+      component: Evaluation
+    },
+    {
+      path: '/more', // 更多
+      name: 'more',
+      component: More
     }
   ]
 })

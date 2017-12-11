@@ -7,94 +7,111 @@
       <!--</router-link>-->
       <mt-button icon="more" slot="right"></mt-button>
     </mt-header>
-    <div class="J_echart">
+    <div class="J_echart" @click="changeScore">
       <img class="idx-chart" src="../assets/imgs/idx-chart_02.png" alt="">
     </div>
     <!--<indexChart />-->
     <div class="md-list">
-      <a href="/#/volunteer">
+      <router-link :to="{name:'volunteer'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon1.png" alt="">
         </div>
         <p>填报志愿</p>
-      </a>
-      <a href="/#/major">
+      </router-link>
+      <router-link :to="{name:'majorfirst'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon2.png" alt="">
         </div>
         <p>专业优先</p>
-      </a>
-      <a href="/#/major">
+      </router-link>
+      <router-link :to="{name:'collegefirst'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon3.png" alt="">
         </div>
         <p>院校优先</p>
-      </a>
-      <a href="/#/college">
+      </router-link>
+      <router-link :to="{name:'passrate'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon4.png" alt="">
         </div>
         <p>录取率</p>
-      </a>
-      <a href="/#/collegelib">
+      </router-link>
+      <router-link :to="{name:'college'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon-college.png" alt="">
         </div>
         <p>大学库</p>
-      </a>
-      <a href="/#/majorlib">
+      </router-link>
+      <router-link :to="{name:'major'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon-major.png" alt="">
         </div>
         <p>专业库</p>
-      </a>
-      <a href="/#/joblib">
+      </router-link>
+      <router-link :to="{name:'job'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon-job.png" alt="">
         </div>
         <p>职业库</p>
-      </a>
-      <a href="/#/scoreline">
+      </router-link>
+      <router-link :to="{name:'scoreline'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon-scoreline.png" alt="">
         </div>
         <p>分数线</p>
-      </a>
-      <a href="/#/plan">
+      </router-link>
+      <router-link :to="{name:'plan'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon-plan.png" alt="">
         </div>
         <p>招生计划</p>
-      </a>
-      <a href="/#/samescore">
+      </router-link>
+      <router-link :to="{name:'samescore'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon-samescore.png" alt="">
         </div>
         <p>同分去向</p>
-      </a>
-      <a href="/#/evaluation">
+      </router-link>
+      <router-link :to="{name:'evaluation'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon-test.png" alt="">
         </div>
         <p>综合测试</p>
-      </a>
-      <a href="/#/more">
+      </router-link>
+      <router-link :to="{name:'more'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon-more.png" alt="">
         </div>
         <p>更多</p>
-      </a>
+      </router-link>
     </div>
     <div class="update-tips"><span>神秘功能敬请期待</span></div>
+
+    <dialog-set-score :isShow.sync="showScoreDialog"></dialog-set-score>
+
   </div>
 </template>
 
 <script>
   import indexChart from '../components/indexChart.vue'
+  import dialogSetScore from '../components/dialogSetScore.vue'
   export default {
     name: 'index',
     components: {
-      indexChart
+      indexChart,
+      dialogSetScore
+    },
+    data () {
+      return {
+        showScoreDialog: false
+      }
+    },
+    mounted () {
+    },
+    methods: {
+      changeScore () {
+        this.showScoreDialog = true
+      }
     }
   }
 </script>

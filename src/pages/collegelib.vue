@@ -195,7 +195,7 @@ export default {
 
 <style lang="less">
   .page_college_lib{
-    background-color: #f3f5f7;
+    background-color: #fff;
     .filter{
       background-color: #fff;
       display: flex;

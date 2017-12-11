@@ -15,3 +15,5 @@ yarn-error.log*
 *.sln
 /界面
 /demo
+/bower_components/css-layout/css/units
+/bower_components

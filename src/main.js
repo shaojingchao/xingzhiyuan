@@ -7,6 +7,7 @@ import iScroll from 'iscroll'
 import ECharts from 'echarts'
 import 'normalize.css'
 import 'mint-ui/lib/style.css'
+import '@/assets/less/base.less'
 import App from './App'
 import router from './router'
 

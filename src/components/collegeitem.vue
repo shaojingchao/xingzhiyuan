@@ -1,5 +1,5 @@
 <template>
-  <router-link tag="div" to="/" class="cl-cell bd-t">
+  <router-link tag="div" :to="linkTo" class="cl-cell bd-t">
     <img :src="logo" alt="" class="cl-cell-pic">
     <div class="cl-cell-text">
       <div class="main-info">中国石油大学 <span class="favor" @click="addMyFavor($event, 1, '')"></span>
@@ -19,7 +19,17 @@
 <script>
 export default {
   name: 'college-item',
-  props: ['item'],
+  props: {
+    item: {
+      required: true
+    },
+    linkTo: {
+      type: Object,
+      default: {
+        name: 'index'
+      }
+    }
+  },
   data () {
     return {
       logo: require('../assets/imgs/daxue/dx_logo.png')
