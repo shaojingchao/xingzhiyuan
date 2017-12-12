@@ -153,3 +153,18 @@
     cursor: not-allowed;
     box-shadow: none;
 }
+
+.btn-group{
+  display: inline-flex;
+  > .btn{
+    flex:1;
+    &:first-child{
+      border-radius:50px 0 0 50px;
+      border-right:none;
+    }
+    &:last-child{
+      border-radius:0 50px 50px 0;
+      border-left:none;
+    }
+  }
+}
