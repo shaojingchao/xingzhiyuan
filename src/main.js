@@ -9,8 +9,10 @@ import Theme from './assets/js/echart-themes'
 import 'normalize.css'
 import 'mint-ui/lib/style.css'
 import '@/assets/less/base.less'
+import store from './store'
 import App from './App'
 import router from './router'
+// import * as util from 'util'
 
 // 注册 echarts 主题
 ECharts.registerTheme('macarons', Theme)
@@ -25,29 +27,13 @@ window.$ = $
 Vue.use(MintUI)
 Vue.config.productionTip = false
 Vue.prototype.$echarts = ECharts
-
-/*!*
- * 图表创建
- * opt {object} echart配置项
- * selector {string} 选择器
- * */
-// $.extend({
-//   chart: function (opt, dom) {
-//     if ($dom.length > 0) {
-//       //创建图表实例
-//       var myChart = echarts.init(dom,"macarons");
-//       myChart.setOption(opt || {})
-//       // $(window).resize(myChart.resize);
-//     }
-//   }
-// })
-
 Vue.prototype.$Toast = MintUI.Toast
 Vue.prototype.$Indicator = MintUI.Indicator
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   template: '<App/>',
   mounted: function () {

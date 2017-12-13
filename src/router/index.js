@@ -4,9 +4,12 @@ import Index from '@/pages/index.vue'
 import CollegeFirst from '@/pages/collegefirst.vue'
 import MajorFirst from '@/pages/majorfirst.vue'
 import CollegeLib from '@/pages/collegelib.vue'
+import CollegeInfo from '@/pages/collegeinfo.vue'
 import CollegeSearch from '@/pages/collegesearch.vue'
 import Evaluation from '@/pages/evaluation.vue'
 import JobLib from '@/pages/joblib.vue'
+import JobItem from '@/pages/jobitem.vue'
+import JobInfo from '@/pages/jobinfo.vue'
 import Major from '@/pages/major.vue'
 import MajorInfo from '@/pages/majorinfo.vue'
 import More from '@/pages/more.vue'
@@ -20,7 +23,7 @@ import Volunteer from '@/pages/volunteer.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'hash',
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -58,6 +61,11 @@ export default new Router({
       component: CollegeLib
     },
     {
+      path: '/college/:id', // 大学库
+      name: 'collegeinfo',
+      component: CollegeInfo
+    },
+    {
       path: '/csearch', // 大学库搜索
       name: 'collegesearch',
       component: CollegeSearch
@@ -76,6 +84,16 @@ export default new Router({
       path: '/job', // 职业库
       name: 'job',
       component: JobLib
+    },
+    {
+      path: '/job/:id', // 职业库
+      name: 'jobitem',
+      component: JobItem
+    },
+    {
+      path: '/jobinfo/:id', // 职业库
+      name: 'jobinfo',
+      component: JobInfo
     },
     {
       path: '/scoreline', // 分数线

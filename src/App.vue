@@ -1,15 +1,27 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <transition :name="transformName">
+      <router-view class="child-view pct100"></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
   export default {
     name: 'app',
+    data () {
+      return {
+        transformName: 'fade'
+      }
+    },
     mounted () {
       // let iscroll = new iScroll('#app')
       // console.log(iscroll)
+    },
+    watch: {
+      '$route' (to, from) {
+        console.log(to, from)
+      }
     }
   }
 </script>
@@ -62,4 +74,29 @@
     background-position: top left;
     /*background-origin: content-box;*/
   }
+  .child-view {
+    position: absolute;
+    transition: all .3s cubic-bezier(.55,0,.1,1);
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0;
+    /*-webkit-transform: translate(30px, 0);*/
+    /*transform: translate(30px, 0);*/
+  }
+  .fade-leave-active, .fade-enter {
+    opacity: 0;
+    /*-webkit-transform: translate(-30px, 0);*/
+    /*transform: translate(-30px, 0);*/
+  }
+  .slide-left-enter, .slide-right-leave-active {
+    opacity: 0;
+    -webkit-transform: translate(30px, 0);
+    transform: translate(10%, 0);
+  }
+  .slide-left-leave-active, .slide-right-enter {
+    opacity: 0;
+    -webkit-transform: translate(-30px, 0);
+    transform: translate(-10%, 0);
+  }
+
 </style>

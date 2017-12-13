@@ -85,29 +85,96 @@
         <h3 class="item-title">
           大学排序分
         </h3>
-        <div class="cate-detail item1 pl10 pr10">
+        <div class="cate-detail pl10 pr10">
           <p>排序分是指当最低录取分数线上,同分考生多于招生人数时,以语文、数学、英语单科分数决定录取考生。</p>
           <div class="mt30" ref="chartSortScore" style="height:200px;"></div>
         </div>
       </div>
-      <div class="cate-item">
+      <div class="cate-item" style="padding-bottom:0;">
         <h3 class="item-title">
           该成绩能上的其他学校和专业
         </h3>
-        <div class="cate-detail item1 pl10 pr10">
-          <p>以你目前的成绩，勉强可以考上<span class="text-primary">北京外国语大学</span></p>
-          <p>你的分数还可以上对外经济贸易大学等<span class="text-primary">210所</span>一本院校</p>
-          <p>近三年与你成绩相近的人当中，被<span class="text-primary">中国政法大学</span>录取的考生最多(<span class="text-primary">28人</span>)</p>
+        <div class="cate-detail item4">
+          <mt-cell class="item4-school pl5" title="标题" label="描述信息" is-link v-for="(item,i) in 5" :key="item">
+            <div class="title" slot="title">
+              <div class="mb10">华北水利水电大学</div>
+              <div class="f12 text-muted">
+                <span class="mr10">地区：<span class="gray3">北京市</span></span>
+                <span>录取概率：<span class="gray3">98%</span></span>
+              </div>
+            </div>
+          </mt-cell>
         </div>
+        <div class="tc text-primary"><router-link class="btn btn-link btn-block p15" :to="{name:'volunteer'}">查看更多 >></router-link></div>
       </div>
       <div class="cate-item">
         <h3 class="item-title">
           同分考生去向
         </h3>
-        <div class="cate-detail item1 pl10 pr10">
-          <p>以你目前的成绩，勉强可以考上<span class="text-primary">北京外国语大学</span></p>
-          <p>你的分数还可以上对外经济贸易大学等<span class="text-primary">210所</span>一本院校</p>
-          <p>近三年与你成绩相近的人当中，被<span class="text-primary">中国政法大学</span>录取的考生最多(<span class="text-primary">28人</span>)</p>
+        <div class="cate-detail item5 pl10 pr10">
+          <p class="f16 tc mt15">录取人数最多的5所高校</p>
+          <div class="" ref="chartfiveCollege" style="height:200px; width:100%;">
+          </div>
+          <div id="J_QXMajor">
+            <p class="f16 tc mt30 mb10">录取人数最多的5个专业</p>
+            <div class="pb5">
+              <table class="qx-table-item">
+                <tbody>
+                <tr>
+                  <td class="num">1</td>
+                  <td>
+                    <div class="mb5">临床医学 <span class="grayb small">临床医学类</span></div>
+                    <div class="qx-process">
+                      <span class="qx-process-bar" style="width:200px;"></span>
+                      <span>59人</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="num">2</td>
+                  <td>
+                    <div class="mb5">材料成型及控制工程 <span class="grayb small">机械类</span></div>
+                    <div class="qx-process">
+                      <span class="qx-process-bar" style="width:160px;"></span>
+                      <span>39人</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="num">3</td>
+                  <td>
+                    <div class="mb5">电气工程及其自动化 <span class="grayb small">电气类</span></div>
+                    <div class="qx-process">
+                      <span class="qx-process-bar" style="width:120px;"></span>
+                      <span>34人</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="num">4</td>
+                  <td>
+                    <div class="mb5">金融学 <span class="grayb small">金融学类</span></div>
+                    <div class="qx-process">
+                      <span class="qx-process-bar" style="width:80px;"></span>
+                      <span>30人</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="num">5</td>
+                  <td>
+                    <div class="mb5">机械类 <span class="grayb small"></span></div>
+                    <div class="qx-process">
+                      <span class="qx-process-bar" style="width:40px;"></span>
+                      <span>29人</span>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="tc text-primary"><router-link class="btn btn-link btn-block p15" :to="{name:'volunteer'}">查看更多 >></router-link></div>
         </div>
       </div>
     </div>
@@ -115,6 +182,7 @@
 </template>
 
 <script>
+  import { substrLen } from '@/util'
   import CollegeItem from '../components/collegeitem.vue'
   export default {
     name: 'passrate',
@@ -174,13 +242,13 @@
         }],
         scoreSortData: [{
           'name': '\u8bed\u6587',
-          'data': [{'yid': '2016', 'score': '123'}]
+          'data': [{'yid': '2015', 'score': '123'}, {'yid': '2016', 'score': '124'}, {'yid': '2017', 'score': '124'}]
         }, {
           'name': '\u6570\u5b66',
-          'data': [{'yid': '2016', 'score': '131'}]
+          'data': [{'yid': '2015', 'score': '131'}, {'yid': '2016', 'score': '135'}, {'yid': '2017', 'score': '135'}]
         }, {
           'name': '\u82f1\u8bed\u542c\u529b',
-          'data': [{'yid': '2016', 'score': '26'}]
+          'data': [{'yid': '2015', 'score': '26'}, {'yid': '2016', 'score': '27'}, {'yid': '2017', 'score': '27'}]
         }],
         popupVisible: false,
         value: '',
@@ -193,7 +261,6 @@
       }
     },
     mounted () {
-      console.log(this.tabScoreRankingId)
       let _self = this
       let scoreData = _self.scoreData
 
@@ -244,6 +311,7 @@
       $(_self.$refs.firstScoreRankingChart).click()
       _self.createFsfbChart(_self.scoreBlock)
       _self.createScoreSortChart(_self.scoreSortData)
+      _self.createSameScoreChart()
     },
     methods: {
       tabScoreRanking (id, e) {
@@ -597,7 +665,7 @@
           series.push({
             name: item,
             type: 'bar',
-            barWidth: '14%',
+            barWidth: 15,
             data: seriesData,
             label: {
               normal: {
@@ -616,7 +684,7 @@
 
         optData.series = series
         let option = {
-          color: ['#a957bb', '#fd6b53', '#fdcc53', '#5bc4f1', '#13a753'].reverse(),
+          // color: ['#2497f4', '#01bcd6', '#8cc44a', '#fec108', '#fe7c08'],
           tooltip: {
             trigger: 'axis',
             axisPointer: { // 坐标轴指示器，坐标轴触发有效
@@ -625,6 +693,7 @@
           },
           legend: {
             bottom: 5,
+            width: '100%',
             data: optData.legend,
             icon: 'circle',
             right: 'center'
@@ -632,8 +701,8 @@
           grid: {
             left: '3%',
             right: '4%',
-            top: '3%',
-            bottom: 40,
+            top: '10',
+            bottom: '40',
             containLabel: true
           },
           xAxis: [{
@@ -647,6 +716,75 @@
           series: optData.series
         }
         _self.$echarts.init(_self.$refs.chartSortScore).setOption(option)
+      },
+      /**
+       * 排序分-柱状图
+       */
+      createSameScoreChart () {
+        let maxcollgedata = '[{"ccode":"10464","cname":"\u6cb3\u5357\u79d1\u6280\u5927\u5b66","count":"124"},{"ccode":"10460","cname":"\u6cb3\u5357\u7406\u5de5\u5927\u5b66","count":"88"},{"ccode":"10463","cname":"\u6cb3\u5357\u5de5\u4e1a\u5927\u5b66","count":"63"},{"ccode":"10472","cname":"\u65b0\u4e61\u533b\u5b66\u9662","count":"56"},{"ccode":"10459","cname":"\u90d1\u5dde\u5927\u5b66","count":"46"}]'
+        let _self = this
+        let data = {
+          el: _self.$refs.chartfiveCollege,
+          //            title: '录取人数最多的5所高校',
+          series: [],
+          legend: [],
+          seriesItemColor: ['#8dd47f', '#5bc4f1', '#f37fbe', '#faaa5b', '#fdcc53']
+        }
+        $.parseJSON(maxcollgedata).forEach(function (item) {
+          let _cname = substrLen(item['cname'], 4, '')
+          data.series.push({
+            name: _cname,
+            value: parseInt(item['count'])
+          })
+          data.legend.push({
+            name: _cname,
+            icon: 'circle'
+          })
+        })
+        let option = {
+          // color: data.seriesItemColor,
+          legend: {
+            orient: 'vertical',
+            align: 'left',
+            x: 'right',
+            y: 'center',
+            data: data.legend,
+            textStyle: {
+              color: '#333',
+              fontSize: 11
+            }
+          },
+          series: [
+            {
+              name: '学校数量',
+              type: 'pie',
+              center: ['30%', '50%'],
+              radius: ['40%', '70%'],
+              hoverAnimation: false,
+              avoidLabelOverlap: false,
+              label: {
+                normal: {
+                  position: 'outside',
+                  formatter: '{c}',
+                  textStyle: {
+                    color: '#999',
+                    fontSize: 14
+                  }
+                }
+              },
+              labelLine: {
+                normal: {
+                  show: true,
+                  smooth: true,
+                  length: 10,
+                  length2: 0
+                }
+              },
+              data: data.series
+            }
+          ]
+        }
+        _self.$echarts.init(data.el).setOption(option)
       }
     }
   }
@@ -724,6 +862,40 @@
             margin-top:3px;
             margin-left:-16px;
           }
+        }
+      }
+      .item4{}
+      .item4-school{
+        .title{
+          padding:10px 0;
+        }
+      }
+      .item5{
+        /*去向*/
+        .qx-table-item {
+          min-width: 300px;
+          table-layout: fixed;
+          margin: 0 auto;
+        }
+        .qx-table-item .num {
+          width: 0.8em;
+          line-height: 1.2em;
+          font-size: 40px;
+          font-style: italic;
+          color: #c9d1d7;
+          text-align: center;
+        }
+        .qx-table-item td {
+          padding: 5px;
+        }
+        .qx-table-item .qx-process-bar {
+          display: inline-block;
+          height: 9px;
+          border-radius: 5px;
+          background-color: @primary;
+        }
+        .qx-table-item .qx-process-bar-orange {
+          background-color: #ffb330;
         }
       }
     }

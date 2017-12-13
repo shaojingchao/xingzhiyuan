@@ -4,3 +4,5 @@
 /*.js
 /src/assets/
 /test/unit/coverage/
+/src/util/
+/src/store/
