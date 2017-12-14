@@ -1,9 +1,7 @@
 <template>
   <div class="page_college_search">
     <mt-header title="大学库">
-      <router-link to="/" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
+      <router-back slot="left"></router-back>
     </mt-header>
 
     <mt-search v-model="value" autofocus placeholder="输入专业名称" style="position:static;height:auto;">

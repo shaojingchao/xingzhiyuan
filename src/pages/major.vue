@@ -1,5 +1,9 @@
 <template>
-  <div>专业库</div>
+  <div class="page_major_lib">
+    <mt-header title="专业库">
+      <router-back slot="left"></router-back>
+    </mt-header>
+  </div>
 </template>
 
 <script>

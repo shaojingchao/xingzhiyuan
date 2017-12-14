@@ -1,9 +1,9 @@
 <template>
-  <div class="vip">
+  <div class="comp_vip">
     <p>开通星志愿VIP</p>
     <p>即可查看全部推荐院校</p>
     <div>
-      <mt-button class="btn">
+      <mt-button @click.native="goVipPage" class="btn btn-xl">
       <span slot="">立即开通</span>
       </mt-button>
     </div>
@@ -12,12 +12,18 @@
 
 <script>
   export default {
-    name: 'vip'
+    name: 'vip',
+    methods: {
+      goVipPage () {
+        this.$router.push({name: 'vip'})
+      }
+    }
   }
 </script>
 
-<style lang="less" scoped>
-  .vip {
+<style lang="less">
+  @import '../../assets/less/_mixins-wln/_wln-variables.less';
+  .comp_vip {
     padding:20px 0;
     text-align: center;
     p {
@@ -30,10 +36,10 @@
       border-radius:40px;
       color:#fff;
       padding:0 3.6em;
-      border-color:#f4be08;
+      border-color:@second;
       height:2.6em;
       line-height:2.6em;
-      background-color: #f4be08;
+      background-color: @second;
       box-shadow: 0 1px 5px rgba(244,190,8,.3);
     }
   }

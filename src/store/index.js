@@ -6,13 +6,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    pageTransName: 'slide-left',
     jobLib: {
       jobList: jobList
     }
   },
   mutations: {
-    increment (state) {
-      state.count++
+    setPageTransName (state, val) {
+      let effect = 'fade'
+      switch (val) {
+        case 'forward': effect = 'slide-left'
+          break
+        case 'back': effect = 'slide-right'
+          break
+      }
+      state.pageTransName = effect
     }
   }}
 )

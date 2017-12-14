@@ -1,9 +1,7 @@
 <template>
   <div class="page_passrate">
     <mt-header title="北京航空航天大学">
-      <router-link :to="{name:'passrate'}" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
+      <router-back slot="left"></router-back>
     </mt-header>
 
     <div class="rate-area">

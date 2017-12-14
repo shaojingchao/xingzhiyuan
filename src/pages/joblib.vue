@@ -1,9 +1,7 @@
 <template>
   <div class="page_joblib">
     <mt-header title="职业库">
-      <router-link to="/" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
+      <router-back slot="left"></router-back>
     </mt-header>
     <mt-cell class="my-job-link" style="background-image:none" title="适合我的职业" label="综合性格和兴趣，找到最合适的职业" is-link :to="{name: 'evaluation'}">
     </mt-cell>
@@ -27,7 +25,9 @@ export default {
       jobList: state => state.jobLib.jobList
     })
   },
-  mounted () {
+  beforeRouteUpdate (to, from, next) {
+    this.$store.commit('setPageTransName', 'from update')
+    next()
   }
 }
 </script>

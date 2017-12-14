@@ -1,9 +1,7 @@
 <template>
   <div class="page_jobitem">
     <mt-header :title="jobItemTitle">
-      <router-link :to="{name:'job'}" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
+      <router-back slot="left"></router-back>
     </mt-header>
     <div class="sort-list bbi">
       <div class="l-item current">

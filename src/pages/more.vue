@@ -1,5 +1,9 @@
 <template>
-  <div>更多</div>
+  <div class="page_more">
+    <mt-header title="更多">
+      <router-back slot="left"></router-back>
+    </mt-header>
+  </div>
 </template>
 
 <script>

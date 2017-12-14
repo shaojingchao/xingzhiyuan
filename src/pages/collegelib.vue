@@ -1,9 +1,7 @@
 <template>
   <div class="page_college_lib">
     <mt-header title="大学库">
-      <router-link to="/" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
+      <router-back slot="left"></router-back>
       <router-link :to="{name:'collegesearch'}" slot="right">
         <mt-button icon="search"></mt-button>
       </router-link>

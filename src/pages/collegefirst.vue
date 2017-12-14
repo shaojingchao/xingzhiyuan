@@ -1,9 +1,7 @@
 <template>
   <div class="page_major_info">
     <mt-header title="院校优先">
-      <router-link to="/" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
+      <router-back slot="left"></router-back>
     </mt-header>
 
     <div class="filter">

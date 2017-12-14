@@ -1,5 +1,9 @@
 <template>
-  <div>college</div>
+  <div class="page_collegeinfo">
+    <mt-header title="学院介绍">
+      <router-back slot="left"></router-back>
+    </mt-header>
+  </div>
 </template>
 
 <script>

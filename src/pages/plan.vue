@@ -1,5 +1,9 @@
 <template>
-  <div>招生计划</div>
+  <div class="page_plan">
+    <mt-header title="招生计划">
+      <router-back slot="left"></router-back>
+    </mt-header>
+  </div>
 </template>
 
 <script>

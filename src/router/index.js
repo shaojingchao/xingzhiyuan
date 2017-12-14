@@ -1,28 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/pages/index.vue'
-import CollegeFirst from '@/pages/collegefirst.vue'
-import MajorFirst from '@/pages/majorfirst.vue'
-import CollegeLib from '@/pages/collegelib.vue'
-import CollegeInfo from '@/pages/collegeinfo.vue'
-import CollegeSearch from '@/pages/collegesearch.vue'
-import Evaluation from '@/pages/evaluation.vue'
-import JobLib from '@/pages/joblib.vue'
-import JobItem from '@/pages/jobitem.vue'
-import JobInfo from '@/pages/jobinfo.vue'
-import Major from '@/pages/major.vue'
-import MajorInfo from '@/pages/majorinfo.vue'
-import More from '@/pages/more.vue'
-import PassRate from '@/pages/passrate.vue'
-import PassRateInfo from '@/pages/passrateinfo.vue'
-import Plan from '@/pages/plan.vue'
-import SameScore from '@/pages/samescore.vue'
-import ScoreLine from '@/pages/scoreline.vue'
-import Volunteer from '@/pages/volunteer.vue'
+
+// components
+const Index = () => import('@/pages/index.vue')
+const CollegeFirst = () => import('@/pages/collegefirst.vue')
+const MajorFirst = () => import('@/pages/majorfirst.vue')
+const CollegeLib = () => import('@/pages/collegelib.vue')
+const CollegeInfo = () => import('@/pages/collegeinfo.vue')
+const CollegeSearch = () => import('@/pages/collegesearch.vue')
+const Evaluation = () => import('@/pages/evaluation.vue')
+const JobLib = () => import('@/pages/joblib.vue')
+const JobItem = () => import('@/pages/jobitem.vue')
+const JobInfo = () => import('@/pages/jobinfo.vue')
+const Major = () => import('@/pages/major.vue')
+const MajorInfo = () => import('@/pages/majorinfo.vue')
+const More = () => import('@/pages/more.vue')
+const PassRate = () => import('@/pages/passrate.vue')
+const PassRateInfo = () => import('@/pages/passrateinfo.vue')
+const Plan = () => import('@/pages/plan.vue')
+const SameScore = () => import('@/pages/samescore.vue')
+const ScoreLine = () => import('@/pages/scoreline.vue')
+const Volunteer = () => import('@/pages/volunteer.vue')
+const Vip = () => import('@/pages/vip.vue')
+const Payment = () => import('@/pages/payment.vue')
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -119,6 +123,23 @@ export default new Router({
       path: '/more', // 更多
       name: 'more',
       component: More
+    },
+    {
+      path: '/vip', // VIP
+      name: 'vip',
+      component: Vip
+    },
+    {
+      path: '(购买VIP)',
+      name: 'payment',
+      component: Payment
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  // console.log('dsdaassasad', to, from, next)
+  next()
+})
+
+export default router

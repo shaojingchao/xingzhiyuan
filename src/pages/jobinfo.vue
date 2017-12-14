@@ -1,9 +1,7 @@
 <template>
   <div class="page_jobinfo">
     <mt-header :title="'职业'">
-      <router-link to="/" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
+      <router-back slot="left"></router-back>
     </mt-header>
     <h1>{{$route.path}}</h1>
   </div>

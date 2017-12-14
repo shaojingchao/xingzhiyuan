@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import Navigation from 'vue-navigation'
 import MintUI from 'mint-ui'
 import $ from 'jquery'
 import iScroll from 'iscroll'
@@ -12,7 +13,11 @@ import '@/assets/less/base.less'
 import store from './store'
 import App from './App'
 import router from './router'
-// import * as util from 'util'
+
+// 全局组件
+import RouterBack from '@/components/common/routerback'
+Vue.component('router-back', RouterBack)
+Vue.use(Navigation, {router, store, keyName: 'n'})
 
 // 注册 echarts 主题
 ECharts.registerTheme('macarons', Theme)
@@ -30,13 +35,31 @@ Vue.prototype.$echarts = ECharts
 Vue.prototype.$Toast = MintUI.Toast
 Vue.prototype.$Indicator = MintUI.Indicator
 
-/* eslint-disable no-new */
+// router.beforeEach((to, from, next) => {
+//   store.commit('setPageTransName', 'from update')
+//   next()
+// })
+
 new Vue({
-  el: '#app',
   store,
   router,
   template: '<App/>',
-  mounted: function () {
-  },
-  components: { App }
-})
+  components: {App},
+  mounted () {
+    this.$navigation.on('forward', (to, from) => {
+      store.commit('setPageTransName', 'forward')
+    })
+    this.$navigation.on('back', (to, from) => {
+      store.commit('setPageTransName', 'back')
+    })
+    this.$navigation.on('replace', (to, from) => {
+      store.commit('setPageTransName', 'replace')
+    })
+    this.$navigation.on('refresh', (to, from) => {
+      store.commit('setPageTransName', 'refresh')
+    })
+    this.$navigation.on('reset', () => {
+      store.commit('setPageTransName', 'reset')
+    })
+  }
+}).$mount('#app')

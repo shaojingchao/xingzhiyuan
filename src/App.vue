@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <transition :name="transformName">
-      <router-view class="child-view pct100"></router-view>
+      <navigation title="fdsfsssdfffasd">
+        <router-view class="child-view pct100"></router-view>
+      </navigation>
     </transition>
   </div>
 </template>
@@ -11,27 +13,23 @@
     name: 'app',
     data () {
       return {
-        transformName: 'fade'
       }
     },
-    mounted () {
-      // let iscroll = new iScroll('#app')
-      // console.log(iscroll)
-    },
-    watch: {
-      '$route' (to, from) {
-        console.log(to, from)
+    computed: {
+      transformName () {
+        return this.$store.state.pageTransName
       }
     }
   }
 </script>
 
 <style>
-  html,body{
-    height:100%;
+  html, body {
+    height: 100%;
     background-color: #f3f5f7;
-    font-size:14px;
+    font-size: 14px;
   }
+
   /* let's clear some floats */
   .clearfix:before, .clearfix:after {
     content: "\0020";
@@ -53,12 +51,12 @@
     width: 100%;
   }
 
-  .mint-header{
+  .mint-header {
     font-size: 16px;
-    height:44px;
+    height: 44px;
   }
 
-  .bd-b{
+  .bd-b {
     background-image: -webkit-gradient(linear, left top, left bottom, from(#d9d9d9), color-stop(50%, #d9d9d9), color-stop(50%, transparent));
     background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
     background-size: 120% 1px;
@@ -66,7 +64,8 @@
     background-position: bottom left;
     /*background-origin: content-box;*/
   }
-  .bd-t{
+
+  .bd-t {
     background-image: -webkit-gradient(linear, left top, left bottom, from(#d9d9d9), color-stop(50%, #d9d9d9), color-stop(50%, transparent));
     background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
     background-size: 120% 1px;
@@ -74,29 +73,32 @@
     background-position: top left;
     /*background-origin: content-box;*/
   }
+
   .child-view {
     position: absolute;
-    transition: all .3s cubic-bezier(.55,0,.1,1);
+    transition: all .3s cubic-bezier(.55, 0, .1, 1);
   }
+
   .fade-enter, .fade-leave-active {
     opacity: 0;
     /*-webkit-transform: translate(30px, 0);*/
     /*transform: translate(30px, 0);*/
   }
+
   .fade-leave-active, .fade-enter {
     opacity: 0;
     /*-webkit-transform: translate(-30px, 0);*/
     /*transform: translate(-30px, 0);*/
   }
+
   .slide-left-enter, .slide-right-leave-active {
     opacity: 0;
-    -webkit-transform: translate(30px, 0);
-    transform: translate(10%, 0);
+    transform: translate(10px, 0);
   }
+
   .slide-left-leave-active, .slide-right-enter {
     opacity: 0;
-    -webkit-transform: translate(-30px, 0);
-    transform: translate(-10%, 0);
+    transform: translate(-10px, 0);
   }
 
 </style>
