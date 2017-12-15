@@ -1,7 +1,7 @@
 <template>
   <div class="page_major">
     <mt-header title="专业优先">
-      <router-back slot="left"></router-back>
+      <c-router-back slot="left"></c-router-back>
     </mt-header>
 
     <mt-search v-model="value">

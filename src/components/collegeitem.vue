@@ -1,5 +1,5 @@
 <template>
-  <router-link tag="div" :to="linkTo" class="cl-cell bd-t">
+  <router-link tag="div" :to="linkTo" class="college-item bd-t on-active">
     <img :src="logo" alt="" class="cl-cell-pic">
     <div class="cl-cell-text">
       <div class="main-info">中国石油大学 <span class="favor" @click="addMyFavor($event, 1, '')"></span>
@@ -61,12 +61,11 @@ export default {
 </script>
 
 <style lang="less">
+
   /*大学列表*/
-  .college-list{
-    .cl-cell{
-      background-color: #fff;
-      padding:12px 10px;
-    }
+  .college-item{
+    background-color: #fff;
+    padding:12px 10px;
     .cl-cell-pic{
       float: left;
       margin-right:-80px;

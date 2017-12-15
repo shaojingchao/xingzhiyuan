@@ -1,6 +1,6 @@
 <template>
   <div class="page_scoreline">
-    <mt-header title="分数线">
+    <mt-header title="专业分数线">
       <c-router-back slot="left"></c-router-back>
     </mt-header>
   </div>
@@ -8,10 +8,10 @@
 
 <script>
 export default {
-  name: 'scoreline'
+  name: 'majorline'
 }
 </script>
 
-<style scoped>
+<style lang="less">
 
 </style>

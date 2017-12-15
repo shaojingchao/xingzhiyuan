@@ -1,7 +1,7 @@
 <template>
   <div class="page_major_info">
     <mt-header title="工商管理">
-      <router-back slot="left"></router-back>
+      <c-router-back slot="left"></c-router-back>
     </mt-header>
 
     <div class="filter">
@@ -45,7 +45,7 @@
         </div>
       </div>
     </div>
-    <mod-vip></mod-vip>
+    <c-vip></c-vip>
   </div>
 </template>
 
@@ -120,8 +120,6 @@
 </style>
 
 <script type="text/ecmascript-6">
-  import ModVip from '../components/common/vip.vue'
-
   export default {
     data () {
       return {
@@ -271,10 +269,6 @@
           }
         ]
       }
-    },
-    components: {
-      ModVip
-      // HeaderComponent
     },
     methods: {
       filterEvent (cate) {

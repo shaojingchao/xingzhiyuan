@@ -1,7 +1,7 @@
 <template>
   <div class="page_payment">
     <mt-header title="确认订单">
-      <router-back slot="left"></router-back>
+      <c-router-back slot="left"></c-router-back>
     </mt-header>
     <mt-cell class="no-bd" title="星志愿VIP"><span class="f14">¥ 198.0</span></mt-cell>
     <mt-cell title="支付金额："><b class="text-second f16">¥ 198.0</b></mt-cell>
@@ -39,7 +39,7 @@
 
 <script>
   export default {
-    name: 'vip',
+    name: 'payment',
     data () {
       return {
         payMode: 'wxpay'

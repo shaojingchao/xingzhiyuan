@@ -1,7 +1,7 @@
 <template>
   <div class="page_passrate">
     <mt-header title="北京航空航天大学">
-      <router-back slot="left"></router-back>
+      <c-router-back slot="left"></c-router-back>
     </mt-header>
 
     <div class="rate-area">
@@ -26,11 +26,9 @@
     <div class="cate-intro">
 
       <!--工作内容-->
-      <div class="cate-item">
-        <h3 class="item-title">
-          工作内容
-        </h3>
-        <div class="cate-detail item1 pl10 pr10">
+      <div class="cate-item pb10">
+        <c-section-title title="工作内容"></c-section-title>
+        <div class="cate-detail item1 pl10 pr10 mt-3">
           <p>以你目前的成绩，勉强可以考上<span class="text-primary">北京外国语大学</span></p>
           <p>你的分数还可以上对外经济贸易大学等<span class="text-primary">210所</span>一本院校</p>
           <p>近三年与你成绩相近的人当中，被<span class="text-primary">中国政法大学</span>录取的考生最多(<span class="text-primary">28人</span>)</p>
@@ -38,10 +36,8 @@
       </div>
 
       <!--各分数段录取排名-->
-      <div class="cate-item">
-        <h3 class="item-title">
-          各分数段录取排名
-        </h3>
+      <div class="cate-item pb10">
+        <c-section-title title="各分数段录取排名"></c-section-title>
         <div class="cate-detail item1 pl10 pr10">
           <div class="tc">
             <div class="btn-group">
@@ -70,28 +66,22 @@
           </div>
         </div>
       </div>
-      <div class="cate-item">
-        <h3 class="item-title">
-          本科第一批录取人数分布
-        </h3>
+      <div class="cate-item pb10">
+        <c-section-title title="本科第一批录取人数分布"></c-section-title>
         <div class="cate-detail item3 pl10 pr10">
-          <p>该校所有录取人的分数与控制线的差值，总体分布情况(%)。</p>
+          <div>该校所有录取人的分数与控制线的差值，总体分布情况(%)。</div>
           <div ref="chartFsfb" style="height:300px;"></div>
         </div>
       </div>
-      <div class="cate-item">
-        <h3 class="item-title">
-          大学排序分
-        </h3>
+      <div class="cate-item pb10">
+        <c-section-title title="大学排序分"></c-section-title>
         <div class="cate-detail pl10 pr10">
-          <p>排序分是指当最低录取分数线上,同分考生多于招生人数时,以语文、数学、英语单科分数决定录取考生。</p>
+          <div>排序分是指当最低录取分数线上,同分考生多于招生人数时,以语文、数学、英语单科分数决定录取考生。</div>
           <div class="mt30" ref="chartSortScore" style="height:200px;"></div>
         </div>
       </div>
-      <div class="cate-item" style="padding-bottom:0;">
-        <h3 class="item-title">
-          该成绩能上的其他学校和专业
-        </h3>
+      <div class="cate-item">
+        <c-section-title title="该成绩能上的其他学校和专业"></c-section-title>
         <div class="cate-detail item4">
           <mt-cell class="item4-school pl5" title="标题" label="描述信息" is-link v-for="(item,i) in 5" :key="item">
             <div class="title" slot="title">
@@ -106,15 +96,13 @@
         <div class="tc text-primary"><router-link class="btn btn-link btn-block p15" :to="{name:'volunteer'}">查看更多 >></router-link></div>
       </div>
       <div class="cate-item">
-        <h3 class="item-title">
-          同分考生去向
-        </h3>
+        <c-section-title title="同分考生去向"></c-section-title>
         <div class="cate-detail item5 pl10 pr10">
-          <p class="f16 tc mt15">录取人数最多的5所高校</p>
+          <div class="f16 tc">录取人数最多的5所高校</div>
           <div class="" ref="chartfiveCollege" style="height:200px; width:100%;">
           </div>
           <div id="J_QXMajor">
-            <p class="f16 tc mt30 mb10">录取人数最多的5个专业</p>
+            <p class="f16 tc mt10 mb10">录取人数最多的5个专业</p>
             <div class="pb5">
               <table class="qx-table-item">
                 <tbody>
@@ -172,8 +160,8 @@
               </table>
             </div>
           </div>
-          <div class="tc text-primary"><router-link class="btn btn-link btn-block p15" :to="{name:'volunteer'}">查看更多 >></router-link></div>
         </div>
+        <div class="tc text-primary"><router-link class="btn btn-link btn-block p15" :to="{name:'volunteer'}">查看更多 >></router-link></div>
       </div>
     </div>
   </div>
@@ -189,7 +177,6 @@
     },
     data () {
       return {
-        msg: 'hello vue',
         colorThemes: [
           ['#f4be08', '#ffaf25'],
           ['#c9d1d7', '#ffaf25'],
@@ -253,11 +240,11 @@
         result: 5
       }
     },
-    computed: {
-      tabScoreRankingId () {
-        return 'tab-container' + this.tabScoreRankingIndex
-      }
-    },
+    // computed: {
+    //   tabScoreRankingId () {
+    //     return 'tab-container' + this.tabScoreRankingIndex
+    //   }
+    // },
     mounted () {
       let _self = this
       let scoreData = _self.scoreData
@@ -518,7 +505,7 @@
             show: false,
             bottom: 40,
             right: 10,
-            top: 10,
+            top: 15,
             left: 10,
             containLabel: true
           },
@@ -600,7 +587,7 @@
               type: 'pie',
               center: ['50%', '45%'],
               radius: ['0%', '36%'],
-              roseType: 'radius',
+              // roseType: 'area',
               minAngle: 4,
               label: {
                 normal: {
@@ -729,7 +716,7 @@
           seriesItemColor: ['#8dd47f', '#5bc4f1', '#f37fbe', '#faaa5b', '#fdcc53']
         }
         $.parseJSON(maxcollgedata).forEach(function (item) {
-          let _cname = substrLen(item['cname'], 4, '')
+          let _cname = substrLen(item['cname'], 8, '')
           data.series.push({
             name: _cname,
             value: parseInt(item['count'])
@@ -749,7 +736,7 @@
             data: data.legend,
             textStyle: {
               color: '#333',
-              fontSize: 11
+              fontSize: 12
             }
           },
           series: [
@@ -839,15 +826,10 @@
       .cate-item{
         background-color: #fff;
         margin-bottom:10px;
-        padding:2px 0 10px;
-      }
-      .item-title{
-        font-size:18px;
-        padding-left:15px;
-        border-left:3px solid @primary;
       }
       .item1{
         p{
+          margin:0 0 8px;
           padding-left:16px;
           &:before{
             content:'';
@@ -862,7 +844,6 @@
           }
         }
       }
-      .item4{}
       .item4-school{
         .title{
           padding:10px 0;
@@ -888,8 +869,8 @@
         }
         .qx-table-item .qx-process-bar {
           display: inline-block;
-          height: 9px;
-          border-radius: 5px;
+          height: 8px;
+          border-radius: 10px;
           background-color: @primary;
         }
         .qx-table-item .qx-process-bar-orange {

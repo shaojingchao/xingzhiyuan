@@ -1,7 +1,7 @@
 <template>
   <div class="page_major_lib">
     <mt-header title="专业库">
-      <router-back slot="left"></router-back>
+      <c-router-back slot="left"></c-router-back>
     </mt-header>
   </div>
 </template>

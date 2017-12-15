@@ -1,17 +1,31 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import jobList from './joblist'
+import jobList from './joblist' // 职业列表
 
 Vue.use(Vuex)
-
-export default new Vuex.Store({
+let store = new Vuex.Store({
   state: {
+    user: {
+      isVip: false,
+      userID: '1247537710',
+      userName: 'shaojingchao',
+      email: '1247537710@qq.com',
+      phone: '15515545205'
+    },
     pageTransName: 'slide-left',
     jobLib: {
       jobList: jobList
     }
   },
+  getters: {
+    isVip (state) {
+      return state.user.isVip
+    }
+  },
   mutations: {
+    /**
+     * 页面跳转动画
+     */
     setPageTransName (state, val) {
       let effect = 'fade'
       switch (val) {
@@ -24,3 +38,9 @@ export default new Vuex.Store({
     }
   }}
 )
+//
+// setTimeout(()=>{
+//   store.state.user.isVip = true
+// },2000)
+
+export default store

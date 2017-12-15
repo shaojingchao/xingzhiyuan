@@ -1,7 +1,7 @@
 <template>
   <div class="comp_vip">
     <p>开通星志愿VIP</p>
-    <p>即可查看全部推荐院校</p>
+    <p>{{text}}</p>
     <div>
       <mt-button @click.native="goVipPage" class="btn btn-xl">
       <span slot="">立即开通</span>
@@ -12,7 +12,14 @@
 
 <script>
   export default {
-    name: 'vip',
+    name: 'c-vip',
+    props: {
+      text: {
+        type: String,
+        required: false,
+        default: '即可查看全部信息'
+      }
+    },
     methods: {
       goVipPage () {
         this.$router.push({name: 'vip'})

@@ -1,7 +1,7 @@
 <template>
   <div class="page_joblib">
     <mt-header title="职业库">
-      <router-back slot="left"></router-back>
+      <c-router-back slot="left"></c-router-back>
     </mt-header>
     <mt-cell class="my-job-link" style="background-image:none" title="适合我的职业" label="综合性格和兴趣，找到最合适的职业" is-link :to="{name: 'evaluation'}">
     </mt-cell>

@@ -1,7 +1,7 @@
 <template>
   <div class="page_vip">
     <mt-header title="星志愿VIP">
-      <router-back slot="left"></router-back>
+      <c-router-back slot="left"></c-router-back>
     </mt-header>
     <div class="p10">
       <img class="resp-img pb10 bg-white" src="../assets/imgs/vip-intro.png" alt="">

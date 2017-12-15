@@ -15,9 +15,14 @@ import App from './App'
 import router from './router'
 
 // 全局组件
+import Vip from '@/components/common/vip'
+import SectionTitle from '@/components/common/sectiontitle'
 import RouterBack from '@/components/common/routerback'
-Vue.component('router-back', RouterBack)
+Vue.component('c-vip', Vip)
+Vue.component('c-section-title', SectionTitle)
+Vue.component('c-router-back', RouterBack)
 Vue.use(Navigation, {router, store, keyName: 'n'})
+Vue.use(MintUI.Lazyload)
 
 // 注册 echarts 主题
 ECharts.registerTheme('macarons', Theme)
@@ -40,9 +45,13 @@ Vue.prototype.$Indicator = MintUI.Indicator
 //   next()
 // })
 
+// Vue.prototype.$isVip = store.getters.isVip
 new Vue({
   store,
   router,
+  data: {
+    $isVip: store.getters.isVip
+  },
   template: '<App/>',
   components: {App},
   mounted () {
