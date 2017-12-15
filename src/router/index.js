@@ -130,7 +130,7 @@ const router = new Router({
       component: Vip
     },
     {
-      path: '(购买VIP)',
+      path: '/payment', // 购买VIP
       name: 'payment',
       component: Payment
     }
