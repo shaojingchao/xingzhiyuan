@@ -15,9 +15,13 @@ import App from './App'
 import router from './router'
 
 // 全局组件
+import Endline from '@/components/common/endline'
+import More from '@/components/common/more'
 import Vip from '@/components/common/vip'
 import SectionTitle from '@/components/common/sectiontitle'
 import RouterBack from '@/components/common/routerback'
+Vue.component('c-endline', Endline)
+Vue.component('c-more', More)
 Vue.component('c-vip', Vip)
 Vue.component('c-section-title', SectionTitle)
 Vue.component('c-router-back', RouterBack)

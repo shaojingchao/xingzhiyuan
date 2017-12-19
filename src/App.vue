@@ -28,6 +28,7 @@
     height: 100%;
     background-color: #f3f5f7;
     font-size: 14px;
+    overflow-x: hidden;
   }
 
   /* let's clear some floats */
@@ -78,6 +79,19 @@
     position: absolute;
     transition: all .3s cubic-bezier(.55, 0, .1, 1);
   }
+  .none-enter, .none-leave-active {
+    transition: none;
+    /*opacity: 0;*/
+    /*-webkit-transform: translate(30px, 0);*/
+    /*transform: translate(30px, 0);*/
+  }
+
+  .none-leave-active, .none-enter {
+    transition: none;
+    /*opacity: 0;*/
+    /*-webkit-transform: translate(-30px, 0);*/
+    /*transform: translate(-30px, 0);*/
+  }
 
   .fade-enter, .fade-leave-active {
     opacity: 0;
@@ -100,5 +114,25 @@
     opacity: 0;
     transform: translate(-10px, 0);
   }
+  .slide-down-enter, .slide-up-leave-active {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+
+  .fade-in-down-leave-active, .fade-in-up-enter {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+
+  .fade-in-down-enter, .fade-in-up-leave-active {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  .fade-in-down-leave-active, .fade-in-up-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
 
 </style>

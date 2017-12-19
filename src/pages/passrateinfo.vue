@@ -93,7 +93,7 @@
             </div>
           </mt-cell>
         </div>
-        <div class="tc text-primary"><router-link class="btn btn-link btn-block p15" :to="{name:'volunteer'}">查看更多 >></router-link></div>
+        <c-more :to="{name:'volunteer'}"></c-more>
       </div>
       <div class="cate-item">
         <c-section-title title="同分考生去向"></c-section-title>
@@ -161,7 +161,7 @@
             </div>
           </div>
         </div>
-        <div class="tc text-primary"><router-link class="btn btn-link btn-block p15" :to="{name:'volunteer'}">查看更多 >></router-link></div>
+        <c-more :to="{name:'volunteer'}"></c-more>
       </div>
     </div>
   </div>

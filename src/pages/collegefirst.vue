@@ -17,7 +17,7 @@
       <mt-picker :slots="slots2" :valueKey="'cname'" @change="onValuesChange" v-if="filterCateIndex === 2"></mt-picker>
     </mt-popup>
     <div class="college-list">
-      <div class="cl-cell bd-t">
+      <router-link :to="{name:'collegeinfo', params:{id:'2'}}" tag="div" class="cl-cell bd-t">
         <div class="main-info">中国石油大学<small class="muted">北京市</small>
           <span class="prob">98%</span>
         </div>
@@ -26,8 +26,8 @@
           招生计划：<span class="score">39</span>
           <span class="level level-s">风险较小</span>
         </div>
-      </div>
-      <div class="cl-cell bd-t">
+      </router-link>
+      <router-link :to="{name:'collegeinfo', params:{id:'2'}}" tag="div" class="cl-cell bd-t">
         <div class="main-info">中国石油大学<small class="muted">北京市</small>
           <span class="prob">68%</span>
         </div>
@@ -36,8 +36,8 @@
           招生计划：<span class="score">39</span>
           <span class="level level-m">风险适中</span>
         </div>
-      </div>
-      <div class="cl-cell bd-t">
+      </router-link>
+      <router-link :to="{name:'collegeinfo', params:{id:'2'}}" tag="div" class="cl-cell bd-t">
         <div class="main-info">中国石油大学<small class="muted">北京市</small>
           <span class="prob">50%</span>
         </div>
@@ -46,7 +46,7 @@
           招生计划：<span class="score">39</span>
           <span class="level level-l">风险较高</span>
         </div>
-      </div>
+      </router-link>
     </div>
     <c-vip></c-vip>
   </div>

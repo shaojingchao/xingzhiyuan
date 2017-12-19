@@ -6,7 +6,7 @@ Vue.use(Vuex)
 let store = new Vuex.Store({
   state: {
     user: {
-      isVip: false,
+      isVip: true,
       userID: '1247537710',
       userName: 'shaojingchao',
       email: '1247537710@qq.com',
@@ -27,7 +27,7 @@ let store = new Vuex.Store({
      * 页面跳转动画
      */
     setPageTransName (state, val) {
-      let effect = 'fade'
+      let effect = 'none'
       switch (val) {
         case 'forward': effect = 'slide-left'
           break

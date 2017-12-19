@@ -5,8 +5,18 @@ import Router from 'vue-router'
 const Index = () => import('@/pages/index.vue')
 const CollegeFirst = () => import('@/pages/collegefirst.vue')
 const MajorFirst = () => import('@/pages/majorfirst.vue')
+
+// 大学库
 const CollegeLib = () => import('@/pages/collegelib.vue')
 const CollegeInfo = () => import('@/pages/collegeinfo.vue')
+const CollegeScoreline = () => import('@/pages/collegeinfo_scoreline.vue')
+const CollegeMajor = () => import('@/pages/collegeinfo_major.vue')
+const CollegeMajorScoreline = () => import('@/pages/collegeinfo_major_scoreline.vue')
+const CollegeMajorJiuye = () => import('@/pages/collegeinfo_major_jiuye.vue')
+const CollegeIntro = () => import('@/pages/collegeinfo_intro.vue')
+const CollegePhoto = () => import('@/pages/collegeinfo_photo.vue')
+const CollegePlan = () => import('@/pages/collegeinfo_plan.vue')
+const CollegeJiuye = () => import('@/pages/collegeinfo_jiuye.vue')
 const CollegeSearch = () => import('@/pages/collegesearch.vue')
 const Evaluation = () => import('@/pages/evaluation.vue')
 const JobLib = () => import('@/pages/joblib.vue')
@@ -28,6 +38,7 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
+  linkActiveClass: 'active',
   routes: [
     {
       path: '/',
@@ -65,9 +76,54 @@ const router = new Router({
       component: CollegeLib
     },
     {
-      path: '/college/:id', // 大学库
+      path: '/college/:id',
       name: 'collegeinfo',
-      component: CollegeInfo
+      redirect: {name: 'collegescoreline'},
+      component: CollegeInfo,
+      children: [
+        {
+          path: 'scoreline', // 分数线
+          name: 'collegescoreline',
+          component: CollegeScoreline
+        },
+        {
+          path: 'intro', // 介绍
+          name: 'collegeintro',
+          component: CollegeIntro
+        },
+        {
+          path: 'plan', // 招生
+          name: 'collegeplan',
+          component: CollegePlan
+        },
+        {
+          path: 'jiuye', // 就业
+          name: 'collegejiuye',
+          component: CollegeJiuye
+        }
+      ]
+    },
+    {
+      path: '/college/:id/photo', // 学校相册
+      name: 'collegephoto',
+      component: CollegePhoto
+    },
+    {
+      path: '/college/:cid/major/:mid', // 学校专业
+      name: 'collegemajor',
+      component: CollegeMajor,
+      children: [
+        {
+          path: 'scoreline',
+          name: 'collegemajorscoreline',
+          component: CollegeMajorScoreline
+        },
+        {
+          path: 'jiuye',
+          name: 'collegemajorjiuye',
+          component: CollegeMajorJiuye
+        }
+      ]
     },
     {
       path: '/csearch', // 大学库搜索
@@ -138,7 +194,6 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  // console.log('dsdaassasad', to, from, next)
   next()
 })
 
