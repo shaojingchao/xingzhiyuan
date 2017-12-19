@@ -11,27 +11,7 @@
         </div>
       </div>
       <div class="major-list">
-        <div class="pb20 bg-white">
-          <div class="ci-plan-list bbi pb1">
-            <div class="pc-item" v-for="(item,index) in 4" :key="index">
-              <mt-cell title="本科一批" @click.native="showPCItemDetail(index)">
-                <small slot="icon" class="mintui mintui-back rotate-180 dib grayb" :class="{isOpen:PCShowIndex[index]}"></small>
-              </mt-cell>
-              <div class="ov-h">
-                <transition name="fade-in-up">
-                  <div class="pc-item-body pl20 bti" v-show="PCShowIndex[index]">
-                    <mt-cell title="本科一批" @click.native="showPCItemDetail(index)">
-                      <small slot="icon" class="mintui mintui-back rotate-180 dib grayb" :class="{isOpen:PCShowIndex[index]}"></small>
-                    </mt-cell>
-                    <mt-cell title="本科一批" @click.native="showPCItemDetail(index)">
-                      <small slot="icon" class="mintui mintui-back rotate-180 dib grayb" :class="{isOpen:PCShowIndex[index]}"></small>
-                    </mt-cell>
-                  </div>
-                </transition>
-              </div>
-            </div>
-          </div>
-        </div>
+        <major-cell v-for="(item,index) in majorList" :items="item" :key="item.id"></major-cell>
       </div>
     </div>
 
@@ -39,8 +19,13 @@
 </template>
 
 <script>
+  import MajorCell from '@/components/major_cell'
+
   export default {
     name: 'major-lib',
+    components: {
+      MajorCell
+    },
     data () {
       return {
         tabActive: 'tab-1',
@@ -181,7 +166,6 @@
         }
       }
     }
-
   }
 
 </style>

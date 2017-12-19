@@ -4,7 +4,7 @@
     <p>{{text}}</p>
     <div>
       <mt-button @click.native="goVipPage" class="btn btn-xl">
-      <span slot="">立即开通</span>
+        立即开通
       </mt-button>
     </div>
   </div>
