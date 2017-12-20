@@ -22,7 +22,7 @@
     <div  ref="wrapper" :style="{overflow:'scroll', height: wrapperHeight + 'px' }">
       <mt-loadmore :bottom-method="loadBottom" :topDistance="50" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
         <div class="college-list">
-          <college-item :item="item" v-for="(item,i) in list" :linkTo="{name:'collegeinfo',params:{id:i}}" :key="i" ></college-item>
+          <college-item :item="item" v-for="(item,i) in list" :linkTo="{name:'collegeinfo',params:{cid:i}}" :key="i" ></college-item>
         </div>
       </mt-loadmore>
     </div>

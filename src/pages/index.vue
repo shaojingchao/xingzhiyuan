@@ -89,8 +89,8 @@
 </template>
 
 <script>
-  import indexChart from '../components/indexChart.vue'
-  import dialogSetScore from '../components/dialogSetScore.vue'
+  import indexChart from '../components/index_chart.vue'
+  import dialogSetScore from '../components/dialog_setscore.vue'
   export default {
     name: 'index',
     components: {

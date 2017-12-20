@@ -19,7 +19,7 @@
           v-for="(item,i) in hotList"
           :title="item.title"
           :key="i"
-          :to="'/major/'+item.id"
+          :to="{name: 'majorfirstinfo',params: {id: item.id}}"
           is-link>
           <span class="hm-sort-icon" slot="icon">{{i+1}}</span>
         </mt-cell>

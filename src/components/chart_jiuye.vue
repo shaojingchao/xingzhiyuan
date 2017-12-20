@@ -36,6 +36,29 @@
       </div>
     </section>
 
+    <!--毕业生就业公司（随机样例）-->
+    <section class="mb10" v-if="from === 'majorlib'">
+      <c-section-title title="毕业生就业公司" label="（随机样例）"></c-section-title>
+      <div class="table-wrap bg-white pt1 bti">
+        <table class="table table-fixed pct100">
+          <thead>
+          <tr class="bg-white bbi">
+            <th width="40" class="tc fw4 grayb">排名</th>
+            <th class="tl fw4 grayb">专业名称</th>
+            <th width="80" class="tl fw4 grayb">行业</th>
+          </tr>
+          </thead>
+          <tbody class="table-striped">
+          <tr v-for="(item,index) in companyList">
+            <td class="tc">{{index + 1}}</td>
+            <td>{{item.name}}</td>
+            <td v-text="item.trade"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!--专业薪酬排名-->
     <section class="mb10" v-if="from === 'college'">
       <c-section-title title="专业薪酬排名" label="（毕业5年内）"></c-section-title>
@@ -60,7 +83,7 @@
     </section>
 
     <!--毕业生平均月薪-->
-    <section class="mb10 bg-white" v-if="from === 'college'">
+    <section class="mb10 bg-white" v-if="from === 'college' || from === 'majorlib'">
       <c-section-title title="毕业生平均月薪"></c-section-title>
       <div class="p10">
         <high-charts :options="chartData.chart5" style="width:100%;"
@@ -69,7 +92,7 @@
     </section>
 
     <!--毕业生行业分布-->
-    <section class="mb10 bg-white" v-if="from === 'college'">
+    <section class="mb10 bg-white" v-if="from === 'college' || from === 'majorlib'">
       <c-section-title title="毕业生行业分布"></c-section-title>
       <div class="p10">
         <high-charts class="auto pb10" :options="chartData.chart6" style="width:100%;"
@@ -78,7 +101,7 @@
     </section>
 
     <!--毕业生地区分布-->
-    <section class="mb10 bg-white" v-if="from === 'college'">
+    <section class="mb10 bg-white" v-if="from === 'college' || from === 'majorlib'">
       <c-section-title title="毕业生地区分布"></c-section-title>
       <div class="p10">
         <high-charts :options="chartData.chart7" style="width:100%;"
@@ -115,6 +138,28 @@
           chart6: {},
           chart7: {}
         },
+        companyList: [
+          {
+            name: '上海中国建设银行',
+            trade: '金融投资'
+          },
+          {
+            name: '上海三亚文华传播展示有限公司',
+            trade: '广告'
+          },
+          {
+            name: '泰康人寿保险股份有限公司',
+            trade: '保险'
+          },
+          {
+            name: '烟台荣昌制药公司',
+            trade: '医药'
+          },
+          {
+            name: '远纺工业(上海)有限公司',
+            trade: '石油化工'
+          }
+        ],
         salaryList: [
           '朝鲜语',
           '法语',
@@ -393,7 +438,7 @@
         })
 
         // 学校需要显示下列图表
-        if (this.from !== 'college') return false
+        if (this.from !== 'college' && this.from !== 'majorlib') return false
         this.$set(this.chartData, 'chart5', {
           chart: {
             type: 'spline'

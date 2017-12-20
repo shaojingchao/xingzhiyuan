@@ -3,11 +3,11 @@
     <mt-header title="职业库">
       <c-router-back slot="left"></c-router-back>
     </mt-header>
-    <mt-cell class="my-job-link" style="background-image:none" title="适合我的职业" label="综合性格和兴趣，找到最合适的职业" is-link :to="{name: 'evaluation'}">
+    <mt-cell class="my-job-link on-active" style="background-image:none" title="适合我的职业" label="综合性格和兴趣，找到最合适的职业" is-link :to="{name: 'evaluation'}">
     </mt-cell>
-    <div class="joblist mt10 pt1 pb30">
-      <h3 class="f16 title">职业库</h3>
-      <mt-cell v-for="item in jobList" :key="item.id" :title="item.name" is-link :to="{name: 'jobitem',params:{id: item.id}}"></mt-cell>
+    <div class="mt10 bg-white">
+      <c-section-title title="职业库"></c-section-title>
+      <mt-cell class="on-active" v-for="item in list" :key="item.id" :title="item.name" is-link :to="{name: 'joblist',params:{id: item.id}}"></mt-cell>
     </div>
   </div>
 </template>
@@ -22,12 +22,8 @@ export default {
   },
   computed: {
     ...mapState({
-      jobList: state => state.jobLib.jobList
+      list: state => state.industry.list
     })
-  },
-  beforeRouteUpdate (to, from, next) {
-    this.$store.commit('setPageTransName', 'from update')
-    next()
   }
 }
 </script>
@@ -44,13 +40,6 @@ export default {
         .mint-cell-label{
           margin-top: 8px;
         }
-      }
-    }
-    .joblist{
-      background-color: #fff;
-      .title{
-        border-left:3px solid @primary;
-        padding-left: 15px;
       }
     }
   }

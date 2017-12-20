@@ -5,6 +5,7 @@ import Router from 'vue-router'
 const Index = () => import('@/pages/index.vue')
 const CollegeFirst = () => import('@/pages/collegefirst.vue')
 const MajorFirst = () => import('@/pages/majorfirst.vue')
+const MajorFirstInfo = () => import('@/pages/majorfirstinfo.vue')
 
 // 大学库
 const CollegeLib = () => import('@/pages/collegelib.vue')
@@ -18,12 +19,19 @@ const CollegePhoto = () => import('@/pages/collegeinfo_photo.vue')
 const CollegePlan = () => import('@/pages/collegeinfo_plan.vue')
 const CollegeJiuye = () => import('@/pages/collegeinfo_jiuye.vue')
 const CollegeSearch = () => import('@/pages/collegesearch.vue')
+
+// 专业库
+const MajorLib = () => import('@/pages/majorlib.vue')
+const MajorLibInfo = () => import('@/pages/majorlib_info.vue')
+const MajorLibInfoIntro = () => import('@/pages/majorlib_info_intro.vue')
+const MajorLibInfoCollege = () => import('@/pages/majorlib_info_college.vue')
+const MajorLibInfoJiuye = () => import('@/pages/majorlib_info_jiuye.vue')
+
 const Evaluation = () => import('@/pages/evaluation.vue')
 const JobLib = () => import('@/pages/joblib.vue')
-const JobItem = () => import('@/pages/jobitem.vue')
+const JobList = () => import('@/pages/joblist.vue')
 const JobInfo = () => import('@/pages/jobinfo.vue')
-const Major = () => import('@/pages/major.vue')
-const MajorInfo = () => import('@/pages/majorinfo.vue')
+
 const More = () => import('@/pages/more.vue')
 const PassRate = () => import('@/pages/passrate.vue')
 const PassRateInfo = () => import('@/pages/passrateinfo.vue')
@@ -56,6 +64,11 @@ const router = new Router({
       component: MajorFirst
     },
     {
+      path: '/majorfirst/:id', // 专业优先
+      name: 'majorfirstinfo',
+      component: MajorFirstInfo
+    },
+    {
       path: '/collegefirst', // 院校优先
       name: 'collegefirst',
       component: CollegeFirst
@@ -76,7 +89,7 @@ const router = new Router({
       component: CollegeLib
     },
     {
-      path: '/college/:id',
+      path: '/college/:cid',
       name: 'collegeinfo',
       redirect: {name: 'collegescoreline'},
       component: CollegeInfo,
@@ -104,7 +117,7 @@ const router = new Router({
       ]
     },
     {
-      path: '/college/:id/photo', // 学校相册
+      path: '/college/:cid/photo', // 学校相册
       name: 'collegephoto',
       component: CollegePhoto
     },
@@ -133,12 +146,30 @@ const router = new Router({
     {
       path: '/major', // 专业库
       name: 'major',
-      component: Major
+      component: MajorLib
     },
     {
-      path: '/major/:id', // 专业对应学校
-      name: 'majorinfo',
-      component: MajorInfo
+      path: '/major/:mid', // 专业对应学校
+      name: 'majorlibinfo',
+      component: MajorLibInfo,
+      redirect: {name: 'majorlibinfointro'},
+      children: [
+        {
+          path: 'intro', // 简介
+          name: 'majorlibinfointro',
+          component: MajorLibInfoIntro
+        },
+        {
+          path: 'college', // 开设院校
+          name: 'majorlibinfocollege',
+          component: MajorLibInfoCollege
+        },
+        {
+          path: 'jiuye', // 就业
+          name: 'majorlibinfojiuye',
+          component: MajorLibInfoJiuye
+        }
+      ]
     },
     {
       path: '/job', // 职业库
@@ -147,8 +178,8 @@ const router = new Router({
     },
     {
       path: '/job/:id', // 职业库
-      name: 'jobitem',
-      component: JobItem
+      name: 'joblist',
+      component: JobList
     },
     {
       path: '/jobinfo/:id', // 职业库

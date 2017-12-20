@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import jobList from './joblist' // 职业列表
+import industry from './industry' // 职业列表
 
 Vue.use(Vuex)
 let store = new Vuex.Store({
@@ -13,9 +13,7 @@ let store = new Vuex.Store({
       phone: '15515545205'
     },
     pageTransName: 'slide-left',
-    jobLib: {
-      jobList: jobList
-    }
+    industry: industry
   },
   getters: {
     isVip (state) {

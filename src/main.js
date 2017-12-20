@@ -36,6 +36,12 @@ ECharts.init = function (dom, theme, opts) {
   return _Echarts.init.call(null, dom, (theme || 'macarons'), opts)
 }
 
+// 注册过滤器
+Vue.filter('formatRatio', function (v) {
+  // 返回处理后的值
+  return parseInt(v * 1000, 10) / 10 + '%'
+})
+
 window.iScroll = iScroll
 window.$ = $
 Vue.use(MintUI)

@@ -23,12 +23,14 @@
   }
 </script>
 
-<style>
+<style lang="less">
+  @import './assets/less/_mixins-wln.less';
   html, body {
     height: 100%;
     background-color: #f3f5f7;
     font-size: 14px;
     overflow-x: hidden;
+    font-family: @font-family;
   }
 
   /* let's clear some floats */

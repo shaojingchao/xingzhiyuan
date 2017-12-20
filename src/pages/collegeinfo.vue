@@ -386,7 +386,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   @import '../assets/less/_mixins-wln.less';
   .page_collegeinfo{
     .ci-head{

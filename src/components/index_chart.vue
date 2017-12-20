@@ -83,12 +83,7 @@
 
 <script type="text/javascript">
   import $ from 'jquery'
-  // import ECharts from 'vue-echarts'
-  // import 'echarts/lib/chart/polar'
-  // import 'echarts/lib/chart/line'
-  // import 'echarts/lib/component/tooltip'
 
-  // console.log(ECharts)
   export default {
     data: function () {
       let data = []

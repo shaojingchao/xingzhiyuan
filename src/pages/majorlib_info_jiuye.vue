@@ -1,6 +1,6 @@
 <template>
   <div>
-    <chart-jiuye :from="'major'"></chart-jiuye>
+    <chart-jiuye :from="'majorlib'"></chart-jiuye>
     <c-endline></c-endline>
   </div>
 </template>
@@ -20,4 +20,3 @@
     methods: {}
   }
 </script>
-
