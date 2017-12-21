@@ -4,7 +4,7 @@
       <c-router-back slot="left"></c-router-back>
     </mt-header>
     <div class="ci-head">
-      <div class="f20 tc">工作内容</div>
+      <div class="f20 tc">IT管理/项目协调</div>
       <div class="tc mt10"><span class="dib plan-num">IT/互联网/通讯</span></div>
     </div>
 
