@@ -25,7 +25,7 @@
           <tr class="bg-white bti">
             <th class="tl fw4 gray9">专业对口</th>
             <th width="60" class="tr fw4 gray9">对口程度</th>
-            <th width="18" class="tr fw4 gray9"></th>
+            <th width="14" class="tr fw4 gray9"></th>
           </tr>
           </thead>
           <tbody>
@@ -33,7 +33,7 @@
               @click="$router.push({name:'majorlibinfo', params: {mid:item.id}})">
             <td>{{item.name}}</td>
             <td class="tr gray9">{{item.ratio}}</td>
-            <td class="tr"><span class="mintui mintui-back dib rotate-180"></span></td>
+            <td class="tr"><span class="mintui mintui-back f12 dib rotate-180"></span></td>
           </tr>
           </tbody>
         </table>
@@ -69,7 +69,6 @@
 <script>
   import {mapState} from 'vuex'
   import HighCharts from '@/components/highcharts'
-  console.log(HighCharts)
 
   export default {
     name: 'job-info',
@@ -116,7 +115,6 @@
       })
     },
     mounted () {
-      console.log(this.job)
       this.salaryChart()
       console.log(this.salaryChartData)
     },
