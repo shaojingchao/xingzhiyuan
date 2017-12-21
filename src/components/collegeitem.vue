@@ -2,7 +2,8 @@
   <router-link tag="div" :to="linkTo" class="college-item bd-t on-active">
     <img :src="logo" alt="" class="cl-cell-pic">
     <div class="cl-cell-text">
-      <div class="main-info">中国石油大学 <span class="favor" @click="addMyFavor($event, 1, '')"></span>
+      <div class="main-info">中国石油大学
+        <!--<span class="favor" @click="addMyFavor($event, 1, '')"></span>-->
       </div>
       <div class="more-info">
         2016专业最低分：<span class="score">584</span>
@@ -66,16 +67,17 @@ export default {
   .college-item{
     background-color: #fff;
     padding:12px 10px;
+    @logo-size: 65px;
     .cl-cell-pic{
       float: left;
-      margin-right:-80px;
-      width:70px;
-      height:70px;
+      margin-right:-@logo-size - 10px;
+      width: @logo-size;
+      height: @logo-size;
       border-radius:50%;
       background-color: #eee;
     }
     .cl-cell-text{
-      padding-left: 80px;
+      padding-left: @logo-size + 10px;
       padding-right: 30px;
       background: url(../assets/imgs/icon/arrow-right.png) right center no-repeat;
       -webkit-background-size: 9px;

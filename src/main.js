@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import Navigation from 'vue-navigation'
 import MintUI from 'mint-ui'
+// import 'pace/themes/blue/pace-theme-loading-bar.css'
 import $ from 'jquery'
 import iScroll from 'iscroll'
 import ECharts from 'echarts'
@@ -20,6 +21,7 @@ import More from '@/components/common/more'
 import Vip from '@/components/common/vip'
 import SectionTitle from '@/components/common/sectiontitle'
 import RouterBack from '@/components/common/routerback'
+
 Vue.component('c-endline', Endline)
 Vue.component('c-more', More)
 Vue.component('c-vip', Vip)
@@ -50,10 +52,11 @@ Vue.prototype.$echarts = ECharts
 Vue.prototype.$Toast = MintUI.Toast
 Vue.prototype.$Indicator = MintUI.Indicator
 
-// router.beforeEach((to, from, next) => {
-//   store.commit('setPageTransName', 'from update')
-//   next()
-// })
+router.beforeEach((to, from, next) => {
+  /* globals Pace */
+  Pace.restart()
+  next()
+})
 
 // Vue.prototype.$isVip = store.getters.isVip
 new Vue({

@@ -26,29 +26,29 @@
     <div class="cate-intro">
 
       <!--工作内容-->
-      <div class="cate-item pb10">
+      <section class="cate-item pb10">
         <c-section-title title="工作内容"></c-section-title>
         <div class="cate-detail item1 pl10 pr10 mt-3">
           <p>以你目前的成绩，勉强可以考上<span class="text-primary">北京外国语大学</span></p>
           <p>你的分数还可以上对外经济贸易大学等<span class="text-primary">210所</span>一本院校</p>
           <p>近三年与你成绩相近的人当中，被<span class="text-primary">中国政法大学</span>录取的考生最多(<span class="text-primary">28人</span>)</p>
         </div>
-      </div>
+      </section>
 
       <!--各分数段录取排名-->
-      <div class="cate-item pb10">
+      <section class="cate-item pb10">
         <c-section-title title="各分数段录取排名"></c-section-title>
         <div class="cate-detail item1 pl10 pr10">
           <div class="tc">
             <div class="btn-group">
-              <span class="btn btn-primary"
+              <span class="btn btn-sm"
                     ref="firstScoreRankingChart"
                     :class="[tabScoreRankingIndex === 1 ? 'btn-primary':'btn-second']"
                     @click="tabScoreRanking(1, $event)">最低分</span>
-              <span class="btn btn-second"
+              <span class="btn btn-sm"
                     :class="[tabScoreRankingIndex === 2 ? 'btn-primary':'btn-second']"
                     @click="tabScoreRanking(2, $event)">平均分</span>
-              <span class="btn btn-second"
+              <span class="btn btn-sm"
                     :class="[tabScoreRankingIndex === 3 ? 'btn-primary':'btn-second']"
                     @click="tabScoreRanking(3, $event)">最高分</span>
             </div>
@@ -65,22 +65,22 @@
                  v-show="tabScoreRankingIndex === 3"></div>
           </div>
         </div>
-      </div>
-      <div class="cate-item pb10">
+      </section>
+      <section class="cate-item pb10">
         <c-section-title title="本科第一批录取人数分布"></c-section-title>
         <div class="cate-detail item3 pl10 pr10">
           <div>该校所有录取人的分数与控制线的差值，总体分布情况(%)。</div>
           <div ref="chartFsfb" style="height:300px;"></div>
         </div>
-      </div>
-      <div class="cate-item pb10">
+      </section>
+      <section class="cate-item pb10">
         <c-section-title title="大学排序分"></c-section-title>
         <div class="cate-detail pl10 pr10">
           <div>排序分是指当最低录取分数线上,同分考生多于招生人数时,以语文、数学、英语单科分数决定录取考生。</div>
           <div class="mt30" ref="chartSortScore" style="height:200px;"></div>
         </div>
-      </div>
-      <div class="cate-item">
+      </section>
+      <section class="cate-item">
         <c-section-title title="该成绩能上的其他学校和专业"></c-section-title>
         <div class="cate-detail item4">
           <mt-cell class="item4-school pl5" title="标题" label="描述信息" is-link v-for="(item,i) in 5" :key="item">
@@ -94,86 +94,20 @@
           </mt-cell>
         </div>
         <c-more :to="{name:'volunteer'}"></c-more>
-      </div>
-      <div class="cate-item">
-        <c-section-title title="同分考生去向"></c-section-title>
-        <div class="cate-detail item5 pl10 pr10">
-          <div class="f16 tc">录取人数最多的5所高校</div>
-          <div class="" ref="chartfiveCollege" style="height:200px; width:100%;">
-          </div>
-          <div id="J_QXMajor">
-            <p class="f16 tc mt10 mb10">录取人数最多的5个专业</p>
-            <div class="pb5">
-              <table class="qx-table-item">
-                <tbody>
-                <tr>
-                  <td class="num">1</td>
-                  <td>
-                    <div class="mb5">临床医学 <span class="grayb small">临床医学类</span></div>
-                    <div class="qx-process">
-                      <span class="qx-process-bar" style="width:200px;"></span>
-                      <span>59人</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="num">2</td>
-                  <td>
-                    <div class="mb5">材料成型及控制工程 <span class="grayb small">机械类</span></div>
-                    <div class="qx-process">
-                      <span class="qx-process-bar" style="width:160px;"></span>
-                      <span>39人</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="num">3</td>
-                  <td>
-                    <div class="mb5">电气工程及其自动化 <span class="grayb small">电气类</span></div>
-                    <div class="qx-process">
-                      <span class="qx-process-bar" style="width:120px;"></span>
-                      <span>34人</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="num">4</td>
-                  <td>
-                    <div class="mb5">金融学 <span class="grayb small">金融学类</span></div>
-                    <div class="qx-process">
-                      <span class="qx-process-bar" style="width:80px;"></span>
-                      <span>30人</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="num">5</td>
-                  <td>
-                    <div class="mb5">机械类 <span class="grayb small"></span></div>
-                    <div class="qx-process">
-                      <span class="qx-process-bar" style="width:40px;"></span>
-                      <span>29人</span>
-                    </div>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <c-more :to="{name:'volunteer'}"></c-more>
-      </div>
+      </section>
+      <same-score></same-score>
     </div>
   </div>
 </template>
 
 <script>
-  import { substrLen } from '@/util'
   import CollegeItem from '../components/collegeitem.vue'
+  import SameScore from '../components/samescore.vue'
   export default {
     name: 'passrate',
     components: {
-      CollegeItem
+      CollegeItem,
+      SameScore
     },
     data () {
       return {
@@ -296,7 +230,6 @@
       $(_self.$refs.firstScoreRankingChart).click()
       _self.createFsfbChart(_self.scoreBlock)
       _self.createScoreSortChart(_self.scoreSortData)
-      _self.createSameScoreChart()
     },
     methods: {
       tabScoreRanking (id, e) {
@@ -701,75 +634,6 @@
           series: optData.series
         }
         _self.$echarts.init(_self.$refs.chartSortScore).setOption(option)
-      },
-      /**
-       * 排序分-柱状图
-       */
-      createSameScoreChart () {
-        let maxcollgedata = '[{"ccode":"10464","cname":"\u6cb3\u5357\u79d1\u6280\u5927\u5b66","count":"124"},{"ccode":"10460","cname":"\u6cb3\u5357\u7406\u5de5\u5927\u5b66","count":"88"},{"ccode":"10463","cname":"\u6cb3\u5357\u5de5\u4e1a\u5927\u5b66","count":"63"},{"ccode":"10472","cname":"\u65b0\u4e61\u533b\u5b66\u9662","count":"56"},{"ccode":"10459","cname":"\u90d1\u5dde\u5927\u5b66","count":"46"}]'
-        let _self = this
-        let data = {
-          el: _self.$refs.chartfiveCollege,
-          //            title: '录取人数最多的5所高校',
-          series: [],
-          legend: [],
-          seriesItemColor: ['#8dd47f', '#5bc4f1', '#f37fbe', '#faaa5b', '#fdcc53']
-        }
-        $.parseJSON(maxcollgedata).forEach(function (item) {
-          let _cname = substrLen(item['cname'], 8, '')
-          data.series.push({
-            name: _cname,
-            value: parseInt(item['count'])
-          })
-          data.legend.push({
-            name: _cname,
-            icon: 'circle'
-          })
-        })
-        let option = {
-          // color: data.seriesItemColor,
-          legend: {
-            orient: 'vertical',
-            align: 'left',
-            x: 'right',
-            y: 'center',
-            data: data.legend,
-            textStyle: {
-              color: '#333',
-              fontSize: 12
-            }
-          },
-          series: [
-            {
-              name: '学校数量',
-              type: 'pie',
-              center: ['30%', '50%'],
-              radius: ['40%', '70%'],
-              hoverAnimation: false,
-              avoidLabelOverlap: false,
-              label: {
-                normal: {
-                  position: 'outside',
-                  formatter: '{c}',
-                  textStyle: {
-                    color: '#999',
-                    fontSize: 14
-                  }
-                }
-              },
-              labelLine: {
-                normal: {
-                  show: true,
-                  smooth: true,
-                  length: 10,
-                  length2: 0
-                }
-              },
-              data: data.series
-            }
-          ]
-        }
-        _self.$echarts.init(data.el).setOption(option)
       }
     }
   }
@@ -847,34 +711,6 @@
       .item4-school{
         .title{
           padding:10px 0;
-        }
-      }
-      .item5{
-        /*去向*/
-        .qx-table-item {
-          min-width: 300px;
-          table-layout: fixed;
-          margin: 0 auto;
-        }
-        .qx-table-item .num {
-          width: 0.8em;
-          line-height: 1.2em;
-          font-size: 40px;
-          font-style: italic;
-          color: #c9d1d7;
-          text-align: center;
-        }
-        .qx-table-item td {
-          padding: 5px;
-        }
-        .qx-table-item .qx-process-bar {
-          display: inline-block;
-          height: 8px;
-          border-radius: 10px;
-          background-color: @primary;
-        }
-        .qx-table-item .qx-process-bar-orange {
-          background-color: #ffb330;
         }
       }
     }

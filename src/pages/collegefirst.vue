@@ -17,7 +17,7 @@
       <mt-picker :slots="slots2" :valueKey="'cname'" @change="onValuesChange" v-if="filterCateIndex === 2"></mt-picker>
     </mt-popup>
     <div class="college-list">
-      <router-link :to="{name:'collegeinfo', params:{id:'2'}}" tag="div" class="cl-cell bd-t">
+      <router-link :to="{name:'collegeinfo', params:{cid:'2'}}" tag="div" class="cl-cell bd-t">
         <div class="main-info">中国石油大学<small class="muted">北京市</small>
           <span class="prob">98%</span>
         </div>
@@ -27,7 +27,7 @@
           <span class="level level-s">风险较小</span>
         </div>
       </router-link>
-      <router-link :to="{name:'collegeinfo', params:{id:'2'}}" tag="div" class="cl-cell bd-t">
+      <router-link :to="{name:'collegeinfo', params:{cid:'2'}}" tag="div" class="cl-cell bd-t">
         <div class="main-info">中国石油大学<small class="muted">北京市</small>
           <span class="prob">68%</span>
         </div>
@@ -37,7 +37,7 @@
           <span class="level level-m">风险适中</span>
         </div>
       </router-link>
-      <router-link :to="{name:'collegeinfo', params:{id:'2'}}" tag="div" class="cl-cell bd-t">
+      <router-link :to="{name:'collegeinfo', params:{cid:'2'}}" tag="div" class="cl-cell bd-t on-active">
         <div class="main-info">中国石油大学<small class="muted">北京市</small>
           <span class="prob">50%</span>
         </div>
@@ -48,80 +48,9 @@
         </div>
       </router-link>
     </div>
-    <c-vip></c-vip>
+    <c-vip v-if="!isVip"></c-vip>
   </div>
 </template>
-
-<style lang="less" rel="stylesheet/less">
-
-  .page_major_info{
-    background-color: #f3f5f7;
-    .filter{
-      background-color: #fff;
-      display: flex;
-      justify-content: center;
-      align-content: center;
-      span{
-        width:33.3%;
-        text-align: center;
-        padding:15px 0;
-        &:after{
-          content:'';
-          vertical-align:2px;
-          margin-left: 4px;
-          display: inline-block;
-          border-color:#93999f #fff  #fff #fff;
-          border-width:7px 5px 0 5px;
-          border-style:solid solid solid solid ;
-        }
-      }
-    }
-    .filter-popup{
-      width:100%
-    }
-
-    /*大学列表*/
-    .college-list{
-      .main-info{
-        font-size:16px;
-        .muted{
-          color:#bbb;
-          margin-left: 10px;
-        }
-      }
-      .more-info{
-        margin-top:6px;
-        color:#999;
-        .score{
-          color:#333;
-          margin-right:10px;
-        }
-      }
-      .cl-cell{
-        background-color: #fff;
-        padding:15px 10px;
-        .prob {
-          float: right;
-        }
-        .level {
-          float: right;
-          &.level-s{
-            color:#00adef;
-          }
-          &.level-m{
-            color:#fd9900;
-          }
-          &.level-l{
-            color:#e9470f;
-
-          }
-        }
-
-      }
-    }
-  }
-
-</style>
 
 <script type="text/ecmascript-6">
   export default {
@@ -274,6 +203,11 @@
         ]
       }
     },
+    computed: {
+      isVip () {
+        return this.$store.getters.isVip
+      }
+    },
     methods: {
       filterEvent (cate) {
         this.filterCateIndex = cate
@@ -288,3 +222,74 @@
     }
   }
 </script>
+
+<style lang="less" rel="stylesheet/less">
+
+  .page_major_info{
+    background-color: #f3f5f7;
+    .filter{
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      span{
+        width:33.3%;
+        text-align: center;
+        padding:15px 0;
+        &:after{
+          content:'';
+          vertical-align:2px;
+          margin-left: 4px;
+          display: inline-block;
+          border-color:#93999f #fff  #fff #fff;
+          border-width:7px 5px 0 5px;
+          border-style:solid solid solid solid ;
+        }
+      }
+    }
+    .filter-popup{
+      width:100%
+    }
+
+    /*大学列表*/
+    .college-list{
+      .main-info{
+        font-size:16px;
+        .muted{
+          color:#bbb;
+          margin-left: 10px;
+        }
+      }
+      .more-info{
+        margin-top:6px;
+        color:#999;
+        .score{
+          color:#333;
+          margin-right:10px;
+        }
+      }
+      .cl-cell{
+        background-color: #fff;
+        padding:15px 10px;
+        .prob {
+          float: right;
+        }
+        .level {
+          float: right;
+          &.level-s{
+            color:#00adef;
+          }
+          &.level-m{
+            color:#fd9900;
+          }
+          &.level-l{
+            color:#e9470f;
+
+          }
+        }
+
+      }
+    }
+  }
+
+</style>

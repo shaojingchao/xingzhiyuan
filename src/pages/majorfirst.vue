@@ -59,7 +59,6 @@
         font-size:14px;
         color:#999;
         background-color: #fff;
-        margin-top:10px;
         padding:15px 10px;
       }
     }

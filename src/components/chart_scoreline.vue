@@ -5,19 +5,19 @@
       <div class="J_chartScoreLine">
         <div class="tc">
           <div class="btn-group">
-              <span class="btn btn-primary"
+              <span class="btn btn-primary btn-sm"
                     ref="firstScoreRankingChart"
                     :class="[tabScoreRankingIndex === 1 ? 'btn-primary':'btn-second']"
                     @click="tabScoreRanking(1, $event)">本一批</span>
-            <span class="btn btn-second"
+            <span class="btn btn-second btn-sm"
                   :class="[tabScoreRankingIndex === 2 ? 'btn-primary':'btn-second']"
                   @click="tabScoreRanking(2, $event)">高一批</span>
           </div>
         </div>
         <div class="p10">
-          <div style="height:240px;" ref="chart_scoreRanking"
+          <div style="height:220px;" ref="chart_scoreRanking"
                v-show="tabScoreRankingIndex === 1"></div>
-          <div style="height:240px;" ref="chart_scoreAvg"
+          <div style="height:220px;" ref="chart_scoreAvg"
                v-show="tabScoreRankingIndex === 2"></div>
         </div>
       </div>
@@ -68,7 +68,8 @@
     <section class="bg-white mb10 pb15" v-if="from === 'college'">
       <c-section-title class="mt10" title="专业录取分数线" vip></c-section-title>
       <div class="majorline-list" v-if="isVip">
-        <mt-cell v-for="(item,i) in majorScoreLineList" :key="i" :title="item" :to="{name:'collegemajorscoreline',params: {cid:$route.params.cid,mid:i}}" is-link></mt-cell>
+        <mt-cell v-for="(item,i) in majorScoreLineList" :key="i" :title="item"
+                 :to="{name:'collegemajorscoreline',params: {cid:$route.params.cid,mid:i}}" is-link></mt-cell>
       </div>
       <c-vip class="bti" v-if="!isVip"></c-vip>
     </section>
@@ -101,7 +102,8 @@
         ],
         scoreData: {
           'maxscore': [{'yid': '2012', 'score': '676'}, {'yid': '2013', 'score': '652'}, {
-            'yid': '2014', 'score': '680'}
+            'yid': '2014', 'score': '680'
+          }
           ],
           'minscore': [{'yid': '2012', 'score': '641'}, {'yid': '2013', 'score': '624'}, {
             'yid': '2014', 'score': '661'
@@ -252,7 +254,7 @@
               normal: {
                 show: true,
                 position: 'top',
-                formatter: function (obj) {
+                formatter (obj) {
                   return obj.value[1]
                 }
               }
@@ -287,7 +289,7 @@
                 normal: {
                   show: true,
                   position: 'top',
-                  formatter: function (obj) {
+                  formatter (obj) {
                     return obj.value[1]
                   }
                 }
@@ -340,7 +342,7 @@
               normal: {
                 show: true,
                 position: 'top',
-                formatter: function (obj) {
+                formatter (obj) {
                   return obj.value[1]
                 }
               }
@@ -373,19 +375,29 @@
           dataZoom: false,
           grid: {
             show: false,
-            bottom: 40,
-            right: 10,
-            top: 15,
-            left: 10,
-            containLabel: true
+            bottom: 55,
+            right: 20,
+            top: 20,
+            left: 20
+            // containLabel: true
           },
           xAxis: {
+            type: 'category',
+            boundaryGap: false,
             data: xAxisData
           },
           yAxis: {
+            type: 'value',
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
             // max: data.full,
             scale: true,
             axisLabel: {
+              show: false,
               formatter: data.zoom ? '{value}%' : '{value}',
               textStyle: {
                 fontSize: 12
@@ -423,6 +435,7 @@
 
 <style lang="less" scoped>
   @import '../assets/less/_mixins-wln.less';
-  .page_collegeinfo{
+
+  .page_collegeinfo {
   }
 </style>

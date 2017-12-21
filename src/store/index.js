@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import industry from './industry' // 职业列表
+import job from './job' // 职业列表
 
 Vue.use(Vuex)
 let store = new Vuex.Store({
+  modules: {
+    job
+  },
   state: {
     user: {
       isVip: true,

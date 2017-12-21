@@ -19,6 +19,7 @@
     "jquery": "^2.1.4",
     "mint-ui": "^2.2.12",
     "normalize.css": "^7.0.0",
+    "pace-js": "^1.0.2",
     "vue": "^2.5.2",
     "vue-gallery": "^1.2.4",
     "vue-navigation": "^1.1.3",

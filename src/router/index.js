@@ -1,11 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// components
+// 首页
 const Index = () => import('@/pages/index.vue')
+
+// 填报志愿
+const Volunteer = () => import('@/pages/volunteer.vue')
+
+// 院校优先
 const CollegeFirst = () => import('@/pages/collegefirst.vue')
+
+// 专业优先
 const MajorFirst = () => import('@/pages/majorfirst.vue')
 const MajorFirstInfo = () => import('@/pages/majorfirstinfo.vue')
+
+// 录取率
+const PassRate = () => import('@/pages/passrate.vue')
+const PassRateInfo = () => import('@/pages/passrateinfo.vue')
 
 // 大学库
 const CollegeLib = () => import('@/pages/collegelib.vue')
@@ -28,19 +39,30 @@ const MajorLibInfoCollege = () => import('@/pages/majorlib_info_college.vue')
 const MajorLibInfoJiuye = () => import('@/pages/majorlib_info_jiuye.vue')
 
 const Evaluation = () => import('@/pages/evaluation.vue')
+
+// 职业库
 const JobLib = () => import('@/pages/joblib.vue')
 const JobList = () => import('@/pages/joblist.vue')
 const JobInfo = () => import('@/pages/jobinfo.vue')
 
-const More = () => import('@/pages/more.vue')
-const PassRate = () => import('@/pages/passrate.vue')
-const PassRateInfo = () => import('@/pages/passrateinfo.vue')
-const Plan = () => import('@/pages/plan.vue')
-const SameScore = () => import('@/pages/samescore.vue')
+// 分数线
 const ScoreLine = () => import('@/pages/scoreline.vue')
-const Volunteer = () => import('@/pages/volunteer.vue')
+const ScoreLineInfo = () => import('@/pages/scoreline_info.vue')
+
+// 招生计划
+const Plan = () => import('@/pages/plan.vue')
+const PlanInfo = () => import('@/pages/plan_info.vue')
+
+// 同位分
+const SameScore = () => import('@/pages/samescore.vue')
+const SameScoreMore = () => import('@/pages/samescore_more.vue')
+
+// VIP
 const Vip = () => import('@/pages/vip.vue')
 const Payment = () => import('@/pages/payment.vue')
+
+// 更多
+const More = () => import('@/pages/more.vue')
 
 Vue.use(Router)
 
@@ -177,12 +199,12 @@ const router = new Router({
       component: JobLib
     },
     {
-      path: '/job/:id', // 职业库
+      path: '/job/:id', // 职业库列表
       name: 'joblist',
       component: JobList
     },
     {
-      path: '/jobinfo/:id', // 职业库
+      path: '/jobinfo/:id', // 职业库介绍
       name: 'jobinfo',
       component: JobInfo
     },
@@ -192,14 +214,29 @@ const router = new Router({
       component: ScoreLine
     },
     {
+      path: '/scoreline/cid', // 分数线详情
+      name: 'scorelineinfo',
+      component: ScoreLineInfo
+    },
+    {
       path: '/plan', // 招生计划
       name: 'plan',
       component: Plan
     },
     {
+      path: '/plan/cid', // 招生计划
+      name: 'planinfo',
+      component: PlanInfo
+    },
+    {
       path: '/samescore', // 同分去向
       name: 'samescore',
       component: SameScore
+    },
+    {
+      path: '/samescore/more', // 更多同分去向
+      name: 'samescoremore',
+      component: SameScoreMore
     },
     {
       path: '/evaluation', // 综合测试

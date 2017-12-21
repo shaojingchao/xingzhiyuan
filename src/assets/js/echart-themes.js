@@ -306,7 +306,7 @@ const theme = {
       }
     },
     "splitLine": {
-      "show": false,
+      "show": true,
       "lineStyle": {
         "color": [
           "#f7f7f7"
@@ -413,6 +413,7 @@ const theme = {
     }
   },
   "tooltip": {
+    trigger: 'axis',
     "confine": true,
     "axisPointer": {
       "lineStyle": {

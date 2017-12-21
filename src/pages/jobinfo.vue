@@ -61,6 +61,50 @@
       </div>
 
       <div class="f16 tc p20">薪酬趋势示意图</div>
+      <div ref="salaryStatChart" class="p10" style="height:200px;">
+      </div>
+    </section>
+
+    <!--男女比例-->
+    <section class="mb10 bg-white">
+      <c-section-title title="男女比例"></c-section-title>
+      <div class="man-woman-wrap">
+        <div class="man-icon">
+          <img src="../assets/imgs/man-photo.png" alt="男神">
+        </div>
+        <div class="man-ratio">
+          <div class="ratio"><span style="color:#00adef;">90</span><span
+            style="vertical-align: 2px;letter-spacing: -4px"> : </span><span style="color:#ff8787;">10</span></div>
+          <div class="ratio-bar-wrap mt5">
+            <div class="ratio-bar trans" style="width:80%;"></div>
+          </div>
+        </div>
+        <div class="man-icon">
+          <img src="../assets/imgs/woman-photo.png" alt="女神">
+        </div>
+      </div>
+    </section>
+
+    <!--学历构成-->
+    <section class="mb10 bg-white">
+      <c-section-title title="学历构成"></c-section-title>
+      <div class="education-wrap">
+        <div class="tc f16">平均学历较高</div>
+        <div class="tc text-primary pt20">69%学历在本科以上</div>
+        <div class="edu-ratio-wrap">
+          <div class="edu-ratio">
+            <div class="ratio-bar-wrap">
+              <div class="ratio-bar trans" style="width:31%;">
+                <span class="dash-line"></span>
+              </div>
+            </div>
+          </div>
+          <div class="edu-label">
+            <span class="pct50 text-muted">本科以下</span>
+            <span class="pct50 text-primary">本科及以上</span>
+          </div>
+        </div>
+      </div>
     </section>
 
   </div>
@@ -110,13 +154,12 @@
       }
     },
     computed: {
-      ...mapState({
-        job: state => state.industry.job
-      })
+      ...mapState('job', ['salaryTrends'])
     },
     mounted () {
+      console.log(this.salaryTrends)
       this.salaryChart()
-      console.log(this.salaryChartData)
+      this.salaryStatChart()
     },
     methods: {
       salaryChart () {
@@ -193,6 +236,87 @@
             }]
           }]
         })
+      },
+      salaryStatChart () {
+        let data = {
+          xAxisData: ['应届生', '2年', '3-5年', '5-7年', '7-9年', '10年'],
+          seriesData1: [],
+          seriesData2: []
+        }
+        // ['应届毕业生', '0-2年', '3-5年', '6-7年', '8-10年']
+        this.salaryTrends.salary_general.forEach((item) => {
+          // data.xAxisData.push(item.years)
+          data.seriesData1.push(item.salary)
+        })
+        this.salaryTrends.salary_years.forEach((item) => {
+          data.seriesData2.push(item.salary)
+        })
+        // 薪酬趋势
+        let option = {
+          grid: {
+            left: 20,
+            top: 10,
+            right: 20,
+            bottom: 30
+            // containLabel: true
+          },
+          color: ['#00adef', '#dde5ec'],
+          tooltip: {},
+          xAxis: [
+            {
+              type: 'category',
+              boundaryGap: false,
+              data: data.xAxisData
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              scale: true,
+              axisLine: {
+                show: false
+              },
+              axisTick: {
+                show: false
+              },
+              axisLabel: {
+                show: false
+              },
+              splitLine: {
+                show: true,
+                lineStyle: {
+                  color: [
+                    '#f3f5f7'
+                  ]
+                }
+              }
+            }
+          ],
+          series: [
+            {
+              name: '本职位',
+              type: 'line',
+              // areaStyle: {normal: {}},
+              data: data.seriesData1,
+              label: {
+                normal: {
+                  show: true,
+                  position: 'top',
+                  formatter (obj) {
+                    return '¥' + obj.value
+                  }
+                }
+              }
+            },
+            {
+              name: '一般岗位',
+              type: 'line',
+              data: data.seriesData2
+            }
+          ]
+        }
+
+        this.$echarts.init(this.$refs.salaryStatChart).setOption(option)
       }
     }
   }
@@ -226,30 +350,128 @@
     }
 
     /*前景分析*/
-    .salary-chart-wrap{
+    .salary-chart-wrap {
       border-radius: 10px;
       margin: 0 10px;
-      border:1px dashed #ccc;
-      .chart-wrap{
+      border: 1px dashed #ccc;
+      .chart-wrap {
         display: flex;
         justify-content: center;
         align-items: center;
-        .charts{
-          width:45%;
+        .charts {
+          width: 45%;
         }
-        .split-line{
-          width:1%;
-          border-left:1px solid #ddd;
-          height:60px;
+        .split-line {
+          width: 1%;
+          border-left: 1px solid #ddd;
+          height: 60px;
         }
-        .chart-data{
-          width:54%;
-          .big-num{
-            font-size:40px;
-            span{
+        .chart-data {
+          width: 54%;
+          .big-num {
+            font-size: 40px;
+            span {
               vertical-align: 14px;
             }
           }
+        }
+      }
+    }
+
+    /*男女比例*/
+    .man-woman-wrap {
+      padding: 20px 20px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @man-color: #00adef;
+      @woman-color: #ff8787;
+      .clr-man {
+        color: #00adef;
+      }
+      .clr-woman {
+        color: #ff8787;
+      }
+      .man-icon {
+        width: 25%;
+        text-align: center;
+        img {
+          max-width: 100%;
+          display: block;
+          margin: 0 auto;
+        }
+      }
+      .man-ratio {
+        box-sizing: border-box;
+        width: 50%;
+        .ratio {
+          font-size: 36px;
+          text-align: center;
+          color: #d9dde1;
+          .ratio-colon {
+          }
+        }
+        .ratio-bar-wrap {
+          height: 9px;
+          box-sizing: content-box;
+          background-color: @woman-color;
+          border-radius: 4.5px;
+          display: flex;
+          overflow: hidden;
+          transform: scale(0.75);
+          .ratio-bar {
+            width: 0;
+            /*border-radius: 4.5px;*/
+            background-color: @man-color;
+          }
+        }
+      }
+    }
+
+    /*学历构成*/
+    .education-wrap {
+      padding:5px 0 30px;
+      .edu-ratio-wrap{
+        .edu-ratio {
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:15px 6%;
+          .ratio-bar-wrap {
+            height: 40px;
+            width: 50%;
+            background-color: @primary;
+            display: inline-flex;
+            .ratio-bar {
+              position: relative;
+              width: 0;
+              height: 100%;
+              background-color: #d9dde1;
+              .dash-line{
+                position: absolute;
+                right:-3px;
+                padding:0 3px;
+                top:-5px;
+                bottom:-5px;
+                display: flex;
+                background-color: rgba(255,255,255,.7);
+                &:after{
+                  width: 0;
+                  border-right:1px dashed @primary;
+                  content: '';
+                  display: block;
+                  margin:0 auto;
+                }
+              }
+            }
+          }
+        }
+        .edu-label{
+          text-align: center;
+          font-size:12px;
+          padding:0 6%;
+          display: flex;
         }
       }
     }

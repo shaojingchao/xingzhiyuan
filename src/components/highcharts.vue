@@ -47,13 +47,11 @@
     },
     watch: {
       'options' () {
-        console.log('watch------------')
         this.initChart()
       }
     },
     methods: {
       initChart () {
-        console.log(this.$el)
         this.chart = new Highcharts.Chart(this.$el, this.options)
       }
     }

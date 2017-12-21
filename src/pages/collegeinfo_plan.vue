@@ -1,11 +1,12 @@
 <template>
   <div class="collegeinfo-plan">
-    <c-section-title title="2016年招生计划"></c-section-title>
+    <c-section-title title="2017年招生计划"></c-section-title>
     <div class="pb20 bg-white">
       <div class="ci-plan-list bbi pb1">
-        <div class="pc-item" v-for="(item,index) in 4" :key="index">
-          <mt-cell title="本科一批" @click.native="showPCItemDetail(index)">
-            <small slot="icon" class="mintui mintui-back rotate-180 dib grayb" :class="{isOpen:PCShowIndex[index]}"></small>
+        <div class="pc-item" v-for="(item,index) in majorList" :key="index">
+          <mt-cell :title="item" @click.native="showPCItemDetail(index)">
+            <small slot="icon" class="mintui mintui-back rotate-180 dib gray6"
+                   :class="{isOpen:PCShowIndex[index]}"></small>
           </mt-cell>
           <div class="ov-h">
             <transition name="fade-in-up">
@@ -55,7 +56,7 @@
   export default {
     data () {
       return {
-        majorList: 4,
+        majorList: ['本科一批', '国家专项计划本科批', '提前批普通本科'],
         PCShowIndex: []
       }
     },
@@ -74,21 +75,21 @@
   .collegeinfo-plan {
     .ci-plan-list {
       background-color: #fff;
-      .mintui{
-        font-size:14px;
+      .mintui {
+        font-size: 14px;
         transition: transform 0.3s;
-        &.isOpen{
+        &.isOpen {
           transform: rotateZ(270deg);
         }
       }
-      .pc-item{
-        &:last-child{
+      .pc-item {
+        &:last-child {
         }
       }
     }
     .pc-item-body {
       background-color: #fff;
-      transition:transform 0.3s, opacity 0.3s;
+      transition: transform 0.3s, opacity 0.3s;
       .plan-list-item {
         &:last-child {
           background-image: none;
