@@ -50,6 +50,7 @@ Vue.use(MintUI)
 Vue.config.productionTip = false
 Vue.prototype.$echarts = ECharts
 Vue.prototype.$Toast = MintUI.Toast
+Vue.prototype.$MessageBox = MintUI.MessageBox
 Vue.prototype.$Indicator = MintUI.Indicator
 
 router.beforeEach((to, from, next) => {

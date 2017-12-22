@@ -68,7 +68,7 @@
         </div>
         <p>同分去向</p>
       </router-link>
-      <router-link :to="{name:'evaluation'}">
+      <router-link :to="{name:'mbti'}">
         <div class="md-icon">
           <img src="../assets/imgs/icon/md-icon-test.png" alt="">
         </div>

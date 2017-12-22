@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition :name="transformName">
-      <navigation title="fdsfsssdfffasd">
+      <navigation>
         <router-view class="child-view pct100"></router-view>
       </navigation>
     </transition>
@@ -135,6 +135,61 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
+
+  .rotateY-enter, .rotateY-leave-active {
+    /*opacity: 0;*/
+    /*transform: rotate3d();*/
+    transform: perspective(500px) rotate3d(0, 1, 0,  -90deg);
+  }
+
+  .rotateY-leave-active, .rotateY-enter {
+    /*opacity: 0;*/
+    transform: perspective(-500px) rotate3d(0, 1, 0,  90deg);
+  }
+
+
+  @duration: 0.3s;
+  .flipY-right-enter-active {
+    animation: flipInY @duration;
+  }
+  .flipY-right-leave-active {
+    animation: flipOutY @duration reverse;
+  }
+
+  .flipY-left-enter-active {
+    animation: flipOutY @duration;
+  }
+  .flipY-left-leave-active {
+    animation: flipInY @duration reverse;
+  }
+
+
+@perspective: 300vw;
+  @keyframes flipInY {
+    from {
+      transform: perspective(@perspective) rotate3d(0, 1, 0, 90deg);
+      animation-timing-function: ease;
+    }
+    to {
+      transform: perspective(@perspective);
+    }
+  }
+  @keyframes flipOutY {
+    from {
+      transform: perspective(@perspective) rotate3d(0, 1, 0, -90deg);
+      animation-timing-function: ease;
+    }
+    to {
+      transform: perspective(@perspective);
+    }
+  }
+
+  /*.flipInY {*/
+    /*-webkit-backface-visibility: visible !important;*/
+    /*backface-visibility: visible !important;*/
+    /*animation-name: flipInY;*/
+  /*}*/
 
 
 </style>

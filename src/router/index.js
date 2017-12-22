@@ -38,8 +38,6 @@ const MajorLibInfoIntro = () => import('@/pages/majorlib_info_intro.vue')
 const MajorLibInfoCollege = () => import('@/pages/majorlib_info_college.vue')
 const MajorLibInfoJiuye = () => import('@/pages/majorlib_info_jiuye.vue')
 
-const Evaluation = () => import('@/pages/evaluation.vue')
-
 // 职业库
 const JobLib = () => import('@/pages/joblib.vue')
 const JobList = () => import('@/pages/joblist.vue')
@@ -57,6 +55,10 @@ const PlanInfo = () => import('@/pages/plan_info.vue')
 const SameScore = () => import('@/pages/samescore.vue')
 const SameScoreMore = () => import('@/pages/samescore_more.vue')
 
+// 综合测评
+const MBTI = () => import('@/pages/mbti.vue')
+const MBTIStart = () => import('@/pages/mbti_start.vue')
+const MBTIReport = () => import('@/pages/mbti_report.vue')
 // VIP
 const Vip = () => import('@/pages/vip.vue')
 const Payment = () => import('@/pages/payment.vue')
@@ -234,14 +236,24 @@ const router = new Router({
       component: SameScore
     },
     {
-      path: '/samescore/more', // 更多同分去向
+      path: '/samescore/more', // 同分去向-更多
       name: 'samescoremore',
       component: SameScoreMore
     },
     {
-      path: '/evaluation', // 综合测试
-      name: 'evaluation',
-      component: Evaluation
+      path: '/mbti', // 职业性格测试
+      name: 'mbti',
+      component: MBTI
+    },
+    {
+      path: '/mbti/start/:part', // 职业性格测试-作答
+      name: 'mbtistart',
+      component: MBTIStart
+    },
+    {
+      path: '/mbti/report', // 职业性格测试-报告
+      name: 'mbtireport',
+      component: MBTIReport
     },
     {
       path: '/more', // 更多
