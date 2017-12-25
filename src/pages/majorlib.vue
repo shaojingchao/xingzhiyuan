@@ -12,8 +12,22 @@
       </div>
       <div class="major-list">
         <transition-group name="fade">
-          <major-cell class="trans" v-if="tabActive === 'tab-1'" v-for="(item,index) in majorList1" :items="item" :deepIndex="0" :key="item.id"></major-cell>
-          <major-cell class="trans" v-if="tabActive === 'tab-2'" v-for="(item,index) in majorList2" :items="item" :deepIndex="0" :key="item.id"></major-cell>
+          <major-cell class="trans"
+                      v-if="tabActive === 'tab-1'"
+                      v-for="(item,index) in majorList1"
+                      :items="item"
+                      :toLink="{name:'majorlibinfo'}"
+                      :toLinkParam="'id'"
+                      :deepIndex="0"
+                      :key="item.id"></major-cell>
+          <major-cell class="trans"
+                      v-if="tabActive === 'tab-2'"
+                      v-for="(item,index) in majorList2"
+                      :items="item"
+                      :toLink="{name:'majorlibinfo'}"
+                      :toLinkParam="'id'"
+                      :deepIndex="0"
+                      :key="item.id"></major-cell>
         </transition-group>
       </div>
     </div>

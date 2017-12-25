@@ -12,9 +12,9 @@
 
     <div class="tab-wrap">
       <div class="tab-nav bbi">
-        <router-link tag="div" :to="{name:'majorlibinfointro'}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-1'}">简介</span></router-link>
-        <router-link tag="div" :to="{name:'majorlibinfocollege'}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-2'}">开设院校</span></router-link>
-        <router-link tag="div" :to="{name:'majorlibinfojiuye'}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-3'}">就业</span></router-link>
+        <router-link tag="div" :to="{name:'majorlibinfointro', params:{id:$route.params.id}}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-1'}">简介</span></router-link>
+        <router-link tag="div" :to="{name:'majorlibinfocollege', params:{id:$route.params.id}}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-2'}">开设院校</span></router-link>
+        <router-link tag="div" :to="{name:'majorlibinfojiuye', params:{id:$route.params.id}}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-3'}">就业</span></router-link>
       </div>
       <router-view></router-view>
     </div>
@@ -29,6 +29,9 @@ export default {
       isLike: true,
       tabActive: 'tab-1'
     }
+  },
+  mounted () {
+    // console.log(this.$route)
   }
 }
 </script>

@@ -42,6 +42,9 @@
     name: 'majorlib-info-intro',
     data () {
       return {}
+    },
+    mounted () {
+      console.log(this.$route.params)
     }
   }
 </script>

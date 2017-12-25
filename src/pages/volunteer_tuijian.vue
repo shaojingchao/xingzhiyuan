@@ -1,6 +1,6 @@
 <template>
   <div class="page_major_info">
-    <mt-header title="院校优先">
+    <mt-header title="冲刺推荐（本科一批）">
       <c-router-back slot="left"></c-router-back>
     </mt-header>
 
@@ -18,33 +18,36 @@
     </mt-popup>
     <div class="college-list">
       <router-link :to="{name:'collegeinfo', params:{id:'2'}}" tag="div" class="cl-cell bd-t">
-        <div class="main-info">中国石油大学<small class="muted">北京市</small>
-          <span class="prob">98%</span>
+        <div class="main-info">中国石油大学<small class="muted">（39个专业推荐）</small>
+          <span class="prob">
+            <c-add-favor :itemId="23" :url="'/api/v1/fav_college'"></c-add-favor>
+          </span>
         </div>
         <div class="more-info">
           2016专业最低分：<span class="score">584</span>
-          招生计划：<span class="score">39</span>
-          <span class="level level-s">风险较小</span>
+          录取几率：<span class="score">54%</span>
         </div>
       </router-link>
       <router-link :to="{name:'collegeinfo', params:{id:'2'}}" tag="div" class="cl-cell bd-t">
-        <div class="main-info">中国石油大学<small class="muted">北京市</small>
-          <span class="prob">68%</span>
+        <div class="main-info">中国石油大学<small class="muted">（39个专业推荐）</small>
+          <span class="prob">
+            <c-add-favor :itemId="23" :url="'/api/v1/fav_college'"></c-add-favor>
+          </span>
         </div>
         <div class="more-info">
           2016专业最低分：<span class="score">584</span>
-          招生计划：<span class="score">39</span>
-          <span class="level level-m">风险适中</span>
+          录取几率：<span class="score">54%</span>
         </div>
       </router-link>
-      <router-link :to="{name:'collegeinfo', params:{id:'2'}}" tag="div" class="cl-cell bd-t on-active">
-        <div class="main-info">中国石油大学<small class="muted">北京市</small>
-          <span class="prob">50%</span>
+      <router-link :to="{name:'collegeinfo', params:{id:'2'}}" tag="div" class="cl-cell bd-t">
+        <div class="main-info">中国石油大学<small class="muted">（39个专业推荐）</small>
+          <span class="prob">
+            <c-add-favor :itemId="23" :url="'/api/v1/fav_college'"></c-add-favor>
+          </span>
         </div>
         <div class="more-info">
           2016专业最低分：<span class="score">584</span>
-          招生计划：<span class="score">39</span>
-          <span class="level level-l">风险较高</span>
+          录取几率：<span class="score">54%</span>
         </div>
       </router-link>
     </div>
@@ -206,6 +209,9 @@
       isVip () {
         return this.$store.getters.isVip
       }
+    },
+    mounted () {
+      console.log(this.$route.query)
     },
     methods: {
       filterEvent (cate) {

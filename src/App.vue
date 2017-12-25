@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <transition :name="transformName">
-      <navigation>
-        <router-view class="child-view pct100"></router-view>
-      </navigation>
-    </transition>
+    <navigation>
+      <router-view class="child-view pct100"></router-view>
+    </navigation>
+    <!--<transition :name="transformName">-->
+      <!---->
+    <!--</transition>-->
   </div>
 </template>
 

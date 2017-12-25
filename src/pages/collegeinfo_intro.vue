@@ -73,7 +73,7 @@
           </div>
         </div>
       </div>
-      <c-more class="bti" :to="{name:'collegephoto',params: {id:1}}"></c-more>
+      <c-more class="bti" :to="{name:'collegephoto',params: {id:$route.params.id}}"></c-more>
     </section>
   </div>
 </template>

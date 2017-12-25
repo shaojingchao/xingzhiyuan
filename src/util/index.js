@@ -132,3 +132,9 @@ export function isRegExp (obj) {
 export function isObject (obj) {
   return isEmpty(obj) ? false : type(obj) === 'object';
 }
+export function getUrlParam (url, name) {
+  console.log(url)
+  let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+  let r = url.split('?')[1].match(reg);
+  if (r != null) return unescape(r[2]); return null;
+}

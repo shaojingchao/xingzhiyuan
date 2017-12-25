@@ -157,7 +157,6 @@
       ...mapState('job', ['salaryTrends'])
     },
     mounted () {
-      console.log(this.salaryTrends)
       this.salaryChart()
       this.salaryStatChart()
     },

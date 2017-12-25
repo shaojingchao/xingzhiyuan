@@ -2,7 +2,7 @@
   <div class="collegeinfo-plan">
     <c-section-title title="开设院校"></c-section-title>
     <div class="pb20 bg-white">
-      <mt-cell v-for="(item,i) in collegeList" :title="item" :key="i" is-link :to="{name: 'collegeinfo',params: {cid:i}}"></mt-cell>
+      <mt-cell v-for="(item,i) in collegeList" :title="item" :key="i" is-link :to="{name: 'collegeinfo',params: {id:i}}"></mt-cell>
     </div>
   </div>
 </template>

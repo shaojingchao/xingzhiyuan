@@ -23,10 +23,10 @@
 
     <div class="tab-wrap">
       <div class="tab-nav bbi">
-        <router-link tag="div" :to="{name:'collegescoreline'}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-1'}">分数线</span></router-link>
-        <router-link tag="div" :to="{name:'collegeintro'}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-2'}">介绍</span></router-link>
-        <router-link tag="div" :to="{name:'collegeplan'}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-3'}">招生</span></router-link>
-        <router-link tag="div" :to="{name:'collegejiuye'}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-4'}">就业</span></router-link>
+        <router-link tag="div" :to="{name:'collegescoreline',params: {id:$route.params.id}}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-1'}">分数线</span></router-link>
+        <router-link tag="div" :to="{name:'collegeintro',params: {id:$route.params.id}}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-2'}">介绍</span></router-link>
+        <router-link tag="div" :to="{name:'collegeplan',params: {id:$route.params.id}}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-3'}">招生</span></router-link>
+        <router-link tag="div" :to="{name:'collegejiuye',params: {id:$route.params.id}}" replace class="nav-item"><span class="trans" :class="{on:tabActive === 'tab-4'}">就业</span></router-link>
       </div>
       <router-view></router-view>
     </div>
@@ -99,6 +99,7 @@ export default {
     }
   },
   mounted () {
+    console.log(this.$route.params)
     let _self = this
     let scoreData = _self.scoreData
 

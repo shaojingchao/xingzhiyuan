@@ -4,6 +4,8 @@ import Vue from 'vue'
 import Navigation from 'vue-navigation'
 import MintUI from 'mint-ui'
 // import 'pace/themes/blue/pace-theme-loading-bar.css'
+
+import axios from 'axios'
 import $ from 'jquery'
 import iScroll from 'iscroll'
 import ECharts from 'echarts'
@@ -21,12 +23,14 @@ import More from '@/components/common/more'
 import Vip from '@/components/common/vip'
 import SectionTitle from '@/components/common/sectiontitle'
 import RouterBack from '@/components/common/routerback'
+import AddFavor from '@/components/add_favor'
 
 Vue.component('c-endline', Endline)
 Vue.component('c-more', More)
 Vue.component('c-vip', Vip)
 Vue.component('c-section-title', SectionTitle)
 Vue.component('c-router-back', RouterBack)
+Vue.component('c-add-favor', AddFavor)
 Vue.use(Navigation, {router, store, keyName: 'n'})
 Vue.use(MintUI.Lazyload)
 
@@ -43,6 +47,11 @@ Vue.filter('formatRatio', function (v) {
   // 返回处理后的值
   return parseInt(v * 1000, 10) / 10 + '%'
 })
+
+// 请求
+require('../mock/index')
+require('es6-promise').polyfill()
+Vue.prototype.$http = axios
 
 window.iScroll = iScroll
 window.$ = $

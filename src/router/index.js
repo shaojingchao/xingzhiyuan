@@ -6,6 +6,7 @@ const Index = () => import('@/pages/index.vue')
 
 // 填报志愿
 const Volunteer = () => import('@/pages/volunteer.vue')
+const VolunteerRecommend = () => import('@/pages/volunteer_tuijian.vue')
 
 // 院校优先
 const CollegeFirst = () => import('@/pages/collegefirst.vue')
@@ -59,6 +60,10 @@ const SameScoreMore = () => import('@/pages/samescore_more.vue')
 const MBTI = () => import('@/pages/mbti.vue')
 const MBTIStart = () => import('@/pages/mbti_start.vue')
 const MBTIReport = () => import('@/pages/mbti_report.vue')
+const ReportDesc = () => import('@/pages/mbti_report_desc.vue')
+const ReportAnalysis = () => import('@/pages/mbti_report_analysis.vue')
+const ReportCareer = () => import('@/pages/mbti_report_career.vue')
+const ReportSuggest = () => import('@/pages/mbti_report_suggest.vue')
 // VIP
 const Vip = () => import('@/pages/vip.vue')
 const Payment = () => import('@/pages/payment.vue')
@@ -69,7 +74,18 @@ const More = () => import('@/pages/more.vue')
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  // mode: 'history',
+  scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      }
+    } else if (savedPosition) {
+      return savedPosition
+    } else {
+      return {x: 0, y: 0}
+    }
+  },
   linkActiveClass: 'active',
   routes: [
     {
@@ -81,6 +97,11 @@ const router = new Router({
       path: '/volunteer', // 填报志愿
       name: 'volunteer',
       component: Volunteer
+    },
+    {
+      path: '/recommend', // 填报志愿
+      name: 'volunteerrecommend',
+      component: VolunteerRecommend
     },
     {
       path: '/majorfirst', // 专业优先
@@ -113,7 +134,7 @@ const router = new Router({
       component: CollegeLib
     },
     {
-      path: '/college/:cid',
+      path: '/college/:id',
       name: 'collegeinfo',
       redirect: {name: 'collegescoreline'},
       component: CollegeInfo,
@@ -141,12 +162,12 @@ const router = new Router({
       ]
     },
     {
-      path: '/college/:cid/photo', // 学校相册
+      path: '/college/:id/photo', // 学校相册
       name: 'collegephoto',
       component: CollegePhoto
     },
     {
-      path: '/college/:cid/major/:mid', // 学校专业
+      path: '/college/:id/major/:mid', // 学校专业
       name: 'collegemajor',
       component: CollegeMajor,
       children: [
@@ -173,7 +194,7 @@ const router = new Router({
       component: MajorLib
     },
     {
-      path: '/major/:mid', // 专业对应学校
+      path: '/major/:id', // 专业对应学校
       name: 'majorlibinfo',
       component: MajorLibInfo,
       redirect: {name: 'majorlibinfointro'},
@@ -216,7 +237,7 @@ const router = new Router({
       component: ScoreLine
     },
     {
-      path: '/scoreline/cid', // 分数线详情
+      path: '/scoreline/:cid', // 分数线详情
       name: 'scorelineinfo',
       component: ScoreLineInfo
     },
@@ -226,7 +247,7 @@ const router = new Router({
       component: Plan
     },
     {
-      path: '/plan/cid', // 招生计划
+      path: '/plan/:cid', // 招生计划
       name: 'planinfo',
       component: PlanInfo
     },
@@ -253,7 +274,30 @@ const router = new Router({
     {
       path: '/mbti/report', // 职业性格测试-报告
       name: 'mbtireport',
-      component: MBTIReport
+      component: MBTIReport,
+      redirect: {name: 'mbtireportdesc'},
+      children: [
+        {
+          path: 'desc',
+          name: 'mbtireportdesc',
+          component: ReportDesc
+        },
+        {
+          path: 'analysis',
+          name: 'mbtireportanalysis',
+          component: ReportAnalysis
+        },
+        {
+          path: 'career',
+          name: 'mbtireportcareer',
+          component: ReportCareer
+        },
+        {
+          path: 'suggest',
+          name: 'mbtireportsuggest',
+          component: ReportSuggest
+        }
+      ]
     },
     {
       path: '/more', // 更多
@@ -273,8 +317,9 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  next()
+router.afterEach((to, from, next) => {
+  console.log(to)
+  // next()
 })
 
 export default router

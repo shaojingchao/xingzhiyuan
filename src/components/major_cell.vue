@@ -1,7 +1,7 @@
 <template>
   <div class="major-cell bti">
     <div class="mj-head bbi on-active"
-         @click="hasChild ? (showBody=!showBody) : $router.push({name:'majorlibinfo',params:{mid:items.id}})"
+         @click="hasChild ? (showBody=!showBody) : $router.push(compToLink)"
          :style="{fontSize:hasChild ? '16px' : '15px',
          color:!hasChild ? '#93999f' : '#333333',
          paddingLeft: (deepIndex * 20) + 10 + 'px'}">
@@ -13,6 +13,8 @@
       <major-cell v-if="hasChild"
                   v-for="(item,index) in items.child"
                   :items="item"
+                  :toLink="toLink"
+                  :toLinkParam="toLinkParam"
                   :deepIndex="compDeepIndex"
                   :key="item.id"></major-cell>
     </div>
@@ -31,6 +33,13 @@
       deepIndex: {
         type: Number
       },
+      toLink: {
+        type: Object
+      },
+      toLinkParam: {
+        type: String,
+        default: 'id'
+      },
       items: {
         type: Object,
         required: true
@@ -47,13 +56,18 @@
       },
       compDeepIndex () {
         return this.deepIndex + 1
+      },
+      compToLink () {
+        let _self = this
+        let obj = {params: {[_self.toLinkParam]: _self.items.id}}
+        return $.extend({}, _self.toLink, obj)
       }
     },
     watch: {
       showBody () {
         console.log(this.$refs)
         let $this = $(this.$refs.itemBody)
-        $this.stop().slideToggle(300, function () {
+        $this.stop().slideToggle(300, () => {
           $this.height('auto')
         })
       }
@@ -69,7 +83,7 @@
     margin-top: -1px;
     background-color: #fff;
     .mj-head {
-      font-size:16px;
+      font-size: 16px;
       padding: 15px 10px;
       .mintui {
         margin-right: 8px;
