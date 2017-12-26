@@ -7,6 +7,8 @@ const Index = () => import('@/pages/index.vue')
 // 填报志愿
 const Volunteer = () => import('@/pages/volunteer.vue')
 const VolunteerRecommend = () => import('@/pages/volunteer_tuijian.vue')
+const VolunteerRecommendMajor = () => import('@/pages/volunteer_tuijianzhuanye.vue')
+const VolunteerTable = () => import('@/pages/volunteer_table.vue')
 
 // 院校优先
 const CollegeFirst = () => import('@/pages/collegefirst.vue')
@@ -99,9 +101,19 @@ const router = new Router({
       component: Volunteer
     },
     {
-      path: '/recommend', // 填报志愿
+      path: '/recommend', // 推荐
       name: 'volunteerrecommend',
       component: VolunteerRecommend
+    },
+    {
+      path: '/recommend/:id', // 专业推荐
+      name: 'volunteerrecommendmajor',
+      component: VolunteerRecommendMajor
+    },
+    {
+      path: '/volunteer/table', // 专业推荐
+      name: 'volunteertable',
+      component: VolunteerTable
     },
     {
       path: '/majorfirst', // 专业优先
@@ -318,7 +330,6 @@ const router = new Router({
 })
 
 router.afterEach((to, from, next) => {
-  console.log(to)
   // next()
 })
 

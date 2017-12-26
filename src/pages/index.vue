@@ -138,12 +138,29 @@
     }
     a {
       display: block;
-      padding:10px 0;
+      padding:15px 0;
       font-size:14px;
       color:#666;
       text-decoration: none;
       text-align: center;
       width:25%;
+      background-color: #fff;
+      &:nth-child(1){
+        margin-bottom:10px;
+        padding-bottom: 15px;
+      }
+      &:nth-child(2){
+        margin-bottom:10px;
+        padding-bottom: 15px;
+      }
+      &:nth-child(3){
+        margin-bottom:10px;
+        padding-bottom: 15px;
+      }
+      &:nth-child(4){
+        margin-bottom:10px;
+        padding-bottom: 15px;
+      }
       p{
         margin:6px 0 0;
       }

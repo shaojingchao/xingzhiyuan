@@ -12,7 +12,7 @@ let store = new Vuex.Store({
   },
   state: {
     user: {
-      isVip: true,
+      isVip: false,
       userID: '1247537710',
       userName: 'shaojingchao',
       email: '1247537710@qq.com',

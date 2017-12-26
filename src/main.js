@@ -24,6 +24,7 @@ import Vip from '@/components/common/vip'
 import SectionTitle from '@/components/common/sectiontitle'
 import RouterBack from '@/components/common/routerback'
 import AddFavor from '@/components/add_favor'
+import FooterBtn from '@/components/footer_btn'
 
 Vue.component('c-endline', Endline)
 Vue.component('c-more', More)
@@ -31,6 +32,7 @@ Vue.component('c-vip', Vip)
 Vue.component('c-section-title', SectionTitle)
 Vue.component('c-router-back', RouterBack)
 Vue.component('c-add-favor', AddFavor)
+Vue.component('c-footer-btn', FooterBtn)
 Vue.use(Navigation, {router, store, keyName: 'n'})
 Vue.use(MintUI.Lazyload)
 

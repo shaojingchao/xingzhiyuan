@@ -5,7 +5,7 @@
     </mt-header>
     <div class="my-score bg-white p10 mb10 ov-h">
       <span class="gray9 fl pt1">你的成绩：河南 理科 <span class="gray0">609分</span></span>
-      <a href="javascript:" class="btn link fr">修改 <i class="iconfont xzy-icon-edit"></i></a>
+      <a href="javascript:" class="text-primary fr">修改 <i class="iconfont xzy-icon-edit"></i></a>
     </div>
 
     <div class="app-suggest">
@@ -27,9 +27,8 @@
         </mt-cell>
       </div>
     </div>
-    <footer class="app-btm-btn bti bg-white p10">
-      <a href="javascript:" class="btn btn-primary btn-block round btn-lg">模拟填报分析</a>
-    </footer>
+
+    <c-footer-btn :text="'模拟填报分析'" :toLink="{name:'volunteertable'}"></c-footer-btn>
   </div>
 </template>
 

@@ -33,6 +33,9 @@
     overflow-x: hidden;
     font-family: @font-family;
   }
+  a{
+    text-decoration: none;
+  }
 
   /* let's clear some floats */
   .clearfix:before, .clearfix:after {
