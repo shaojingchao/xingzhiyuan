@@ -7,7 +7,7 @@ import MintUI from 'mint-ui'
 
 import axios from 'axios'
 import $ from 'jquery'
-import iScroll from 'iscroll'
+import Bscroll from 'better-scroll'
 import ECharts from 'echarts'
 import Theme from './assets/js/echart-themes'
 import 'normalize.css'
@@ -25,6 +25,8 @@ import SectionTitle from '@/components/common/sectiontitle'
 import RouterBack from '@/components/common/routerback'
 import AddFavor from '@/components/add_favor'
 import FooterBtn from '@/components/footer_btn'
+import Dialog from '@/components/dialog/dialog'
+import Scroll from '@/components/bscroll'
 
 Vue.component('c-endline', Endline)
 Vue.component('c-more', More)
@@ -33,6 +35,8 @@ Vue.component('c-section-title', SectionTitle)
 Vue.component('c-router-back', RouterBack)
 Vue.component('c-add-favor', AddFavor)
 Vue.component('c-footer-btn', FooterBtn)
+Vue.component('c-dialog', Dialog)
+Vue.component('c-scroll', Scroll)
 Vue.use(Navigation, {router, store, keyName: 'n'})
 Vue.use(MintUI.Lazyload)
 
@@ -55,7 +59,7 @@ require('../mock/index')
 require('es6-promise').polyfill()
 Vue.prototype.$http = axios
 
-window.iScroll = iScroll
+window.Bscroll = Bscroll
 window.$ = $
 Vue.use(MintUI)
 Vue.config.productionTip = false

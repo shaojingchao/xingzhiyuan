@@ -4,7 +4,7 @@
       <router-view class="child-view pct100"></router-view>
     </navigation>
     <!--<transition :name="transformName">-->
-      <!---->
+    <!---->
     <!--</transition>-->
   </div>
 </template>
@@ -13,19 +13,21 @@
   export default {
     name: 'app',
     data () {
-      return {
-      }
+      return {}
     },
     computed: {
       transformName () {
         return this.$store.state.pageTransName
       }
+    },
+    mounted () {
     }
   }
 </script>
 
 <style lang="less">
   @import './assets/less/_mixins-wln.less';
+
   html, body {
     height: 100%;
     background-color: #f3f5f7;
@@ -33,7 +35,8 @@
     overflow-x: hidden;
     font-family: @font-family;
   }
-  a{
+
+  a {
     text-decoration: none;
   }
 
@@ -85,6 +88,7 @@
     position: absolute;
     transition: all .3s cubic-bezier(.55, 0, .1, 1);
   }
+
   .none-enter, .none-leave-active {
     transition: none;
     /*opacity: 0;*/
@@ -120,6 +124,7 @@
     opacity: 0;
     transform: translate(-10px, 0);
   }
+
   .slide-down-enter, .slide-up-leave-active {
     opacity: 0;
     transform: translateY(-30%);
@@ -132,7 +137,7 @@
 
   .fade-in-down-enter, .fade-in-up-leave-active {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-30%);
   }
 
   .fade-in-down-leave-active, .fade-in-up-enter {
@@ -140,23 +145,32 @@
     transform: translateY(-20px);
   }
 
+  .slide-in-down-enter, .slide-in-up-leave-active {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  .slide-in-down-leave-active, .slide-in-up-enter {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
 
   .rotateY-enter, .rotateY-leave-active {
     /*opacity: 0;*/
     /*transform: rotate3d();*/
-    transform: perspective(500px) rotate3d(0, 1, 0,  -90deg);
+    transform: perspective(500px) rotate3d(0, 1, 0, -90deg);
   }
 
   .rotateY-leave-active, .rotateY-enter {
     /*opacity: 0;*/
-    transform: perspective(-500px) rotate3d(0, 1, 0,  90deg);
+    transform: perspective(-500px) rotate3d(0, 1, 0, 90deg);
   }
-
 
   @duration: 0.3s;
   .flipY-right-enter-active {
     animation: flipInY @duration;
   }
+
   .flipY-right-leave-active {
     animation: flipOutY @duration reverse;
   }
@@ -164,12 +178,12 @@
   .flipY-left-enter-active {
     animation: flipOutY @duration;
   }
+
   .flipY-left-leave-active {
     animation: flipInY @duration reverse;
   }
 
-
-@perspective: 300vw;
+  @perspective: 300vw;
   @keyframes flipInY {
     from {
       transform: perspective(@perspective) rotate3d(0, 1, 0, 90deg);
@@ -179,6 +193,7 @@
       transform: perspective(@perspective);
     }
   }
+
   @keyframes flipOutY {
     from {
       transform: perspective(@perspective) rotate3d(0, 1, 0, -90deg);
@@ -190,9 +205,9 @@
   }
 
   /*.flipInY {*/
-    /*-webkit-backface-visibility: visible !important;*/
-    /*backface-visibility: visible !important;*/
-    /*animation-name: flipInY;*/
+  /*-webkit-backface-visibility: visible !important;*/
+  /*backface-visibility: visible !important;*/
+  /*animation-name: flipInY;*/
   /*}*/
 
 

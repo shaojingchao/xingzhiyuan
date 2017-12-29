@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "better-scroll": "^1.6.3",
     "countup": "^1.8.2",
     "echarts": "^3.8.5",
+    "es6-promise": "^4.2.2",
     "highcharts": "^6.0.4",
     "iscroll": "^5.2.0",
     "jquery": "^2.1.4",

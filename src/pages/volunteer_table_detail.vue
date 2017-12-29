@@ -1,14 +1,10 @@
 <template>
-  <div class="page_volunteer_table">
+  <div class="page_volunteer_table_datail">
     <mt-header>
       <c-router-back slot="left"></c-router-back>
       <span slot="right" @click="editTable">{{!editMode ? '管理' : '完成'}}</span>
     </mt-header>
 
-    <div class="ci-head">
-      <div class="f20 tc" @click="editTableName">{{tableName}} <i class="iconfont xzy-icon-edit"></i></div>
-      <div class="tc mt10"><span class="dib plan-num">河南 理科 本科第一批</span></div>
-    </div>
 
     <div class="table-analysis on-active" v-show="tableAnalysisDone" @click="showAnalysisResult"
          ref="tableAnalysisTips">
@@ -18,52 +14,43 @@
 
     <div class="v-table-wrap">
       <div class="v-table-item bg-white mb10" v-for="(item,i) in list" :key="i">
-        <div class="item-body" @click="$router.push({name:'volunteerdetail',params:{id:i}})" :class="{'on-active': !editMode,disabled: editMode}">
+        <div class="item-body">
 
-          <span slot="icon" class="order-num">{{orderNum[i]}}</span>
+          <span class="order-num">{{i + 1}}</span>
 
           <transition-group tag="div" name="slide-right">
             <span class="iconfont del xzy-icon-trash trans" v-if="editMode" :key="2"></span>
-            <span class="iconfont xzy-icon-enter trans" v-else :key="1"></span>
+            <span class="iconfont xzy-icon-jiaohuan trans" v-else :key="1"></span>
           </transition-group>
 
-          <div class="ib-main bbi">
+          <div class="ib-main" :class="{disabled: editMode}">
             <div class="ib-title">
-              <b>{{item['cname']}}</b>
-              <small class="grayb ml10">服从调剂</small>
+              <b>工科试验班类（自动化与工业工程）</b>
             </div>
             <div class="ib-label">
-              <span class="text-muted">17年最低分数线：<span class="gray3">684</span></span>
+              <span class="text-muted">录取人数：<span class="gray3">6</span></span>
               <span class="text-muted ml10">录取几率：<span class="gray3">57%</span></span>
             </div>
           </div>
-
-        </div>
-        <div class="ib-footer" :class="{disabled: editMode}" v-if="item.major.length">
-          <span class="ib-f-item" v-for="(majorItem,index) in item.major" :key="index">{{index+1}}：{{majorItem}}</span>
-          <span class="ib-f-item" v-if="item.major.length < limitMajor"
-                v-for="(majorItem,index) in (limitMajor - item.major.length)" :key="index">{{majorItem + item.major.length}}：</span>
-        </div>
-        <div class="ib-footer-empty" :class="{'on-active': !editMode,disabled: editMode}" v-else>
-          <div class="add-icon"><i class="iconfont xzy-icon-add"></i></div>
-          <div>添加收藏专业</div>
         </div>
       </div>
 
       <div class="v-table-item bg-white mb10" v-if="list.length < limitCollege"
            v-for="collegeItem in (limitCollege - list.length)" :key="collegeItem">
         <div class="item-body" style="padding-top:0;">
-          <span slot="icon" class="order-num">{{orderNum[collegeItem - 1 + list.length]}}</span>
+          <span class="order-num">{{collegeItem + list.length}}</span>
         </div>
         <div class="ib-footer-empty" :class="{'on-active': !editMode,disabled: editMode}">
           <div class="add-icon"><i class="iconfont xzy-icon-add"></i></div>
-          <div>添加收藏院校</div>
+          <div>添加收藏专业</div>
         </div>
       </div>
-    </div>
-    <div class="p30"></div>
 
-    <c-footer-btn :text="'保存并分析合理性'" :class="{disabled: editMode}" @click.native="tableAnalysis" is-vip></c-footer-btn>
+      <div class="tc p15 bg-white" :class="{'on-active': !editMode,disabled: editMode}" @click="toggleAdjust">
+        <span class="f16"><i class="iconfont xzy-icon-success_fill mr5 f20 v-2" :class="[allowAdjust ? 'text-success' : 'grayc']"></i>服从调剂</span>
+      </div>
+    </div>
+
     <c-dialog
       :visible.sync="showEditTableName"
       :width="300"
@@ -72,8 +59,7 @@
       name="changeTableName"
       @confirm="editTableNameConfirm">
       <div slot="content" class="form p10">
-        <input class="pct100" type="text" placeholder="请输入名称" :value="tableName" ref="inputTableName"
-               :autofocus="autofocus">
+        <input class="pct100" type="text" placeholder="请输入名称" :value="tableName" ref="inputTableName" :autofocus="autofocus">
       </div>
     </c-dialog>
   </div>
@@ -93,7 +79,7 @@
         tableName: '模拟志愿表01',
         autofocus: true,
         showEditTableName: false,
-        orderNum: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+        allowAdjust: false,
         list: [
           {
             cname: '清华大学',
@@ -119,6 +105,10 @@
       })
     },
     methods: {
+      toggleAdjust () {
+        if (this.editMode) return
+        this.allowAdjust = !this.allowAdjust
+      },
       editTableNameConfirm () {
         this.tableName = this.$refs.inputTableName.value
         this.$toast({
@@ -157,7 +147,7 @@
 <style lang="less" rel="stylesheet/less">
   @import '../assets/less/_mixins-wln.less';
 
-  .page_volunteer_table {
+  .page_volunteer_table_datail {
     background-color: #f3f5f7;
     .ci-head {
       background-color: @primary;
@@ -183,12 +173,12 @@
       .item-body {
         position: relative;
         padding-left: 35px;
-        padding-top: 15px;
+        padding-top: 18px;
         .order-num {
           @size: 16px;
           position: absolute;
           left: 10px;
-          top: 15px;
+          top: 18px;
           background-color: @primary;
           border-radius: @size;
           height: @size;
@@ -205,8 +195,8 @@
             font-size: 15px;
           }
           .ib-label {
-            margin-top: 10px;
-            padding-bottom: 12px;
+            margin-top: 12px;
+            padding-bottom: 18px;
           }
         }
         .iconfont, .del {
@@ -236,7 +226,7 @@
         }
       }
       .ib-footer-empty {
-        padding: 20px 20px 25px;
+        padding: 16px 20px 18px;
         color: #999;
         text-align: center;
         .add-icon {

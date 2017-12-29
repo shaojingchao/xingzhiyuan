@@ -9,6 +9,8 @@ const Volunteer = () => import('@/pages/volunteer.vue')
 const VolunteerRecommend = () => import('@/pages/volunteer_tuijian.vue')
 const VolunteerRecommendMajor = () => import('@/pages/volunteer_tuijianzhuanye.vue')
 const VolunteerTable = () => import('@/pages/volunteer_table.vue')
+const VolunteerDetail = () => import('@/pages/volunteer_table_detail.vue')
+const VolunteerTableAnalysis = () => import('@/pages/volunteer_table_analysis.vue')
 
 // 院校优先
 const CollegeFirst = () => import('@/pages/collegefirst.vue')
@@ -111,9 +113,19 @@ const router = new Router({
       component: VolunteerRecommendMajor
     },
     {
-      path: '/volunteer/table', // 专业推荐
+      path: '/volunteer/:id', // 专业推荐
       name: 'volunteertable',
       component: VolunteerTable
+    },
+    {
+      path: '/volunteer/detail/:id', // 专业推荐
+      name: 'volunteerdetail',
+      component: VolunteerDetail
+    },
+    {
+      path: '/volunteer/:id/analysis', // 专业推荐
+      name: 'volunteertableanalysis',
+      component: VolunteerTableAnalysis
     },
     {
       path: '/majorfirst', // 专业优先

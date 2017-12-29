@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <c-footer-btn :text="'模拟填报分析'" :toLink="{name:'volunteertable'}"></c-footer-btn>
+    <c-footer-btn :text="'模拟填报分析'" :toLink="{name:'volunteertable',params: {id: 1}}"></c-footer-btn>
   </div>
 </template>
 
