@@ -1,26 +1,38 @@
 <template>
-  <div class="page_volunteer_table_datail">
-    <mt-header>
+  <div class="page_volunteer_table_detail">
+    <mt-header title="志愿详情">
       <c-router-back slot="left"></c-router-back>
       <span slot="right" @click="editTable">{{!editMode ? '管理' : '完成'}}</span>
     </mt-header>
 
+    <div class="college-wrap pt5 pb5 bg-white">
+      <div class="cl-cell">
+        <div class="cl-cell-inner">
+          <div class="cl-logo"><img :src="logo" :alt="''"></div>
+          <div class="mt5 f16"><b>北京大学</b>
+          </div>
+          <div class="cl-label">
+            <span class="text-muted">17年最低分数线：<span class="gray3">684</span></span>
+            <span class="text-muted ml10">录取几率：<span class="gray3">57%</span></span>
+          </div>
 
-    <div class="table-analysis on-active" v-show="tableAnalysisDone" @click="showAnalysisResult"
-         ref="tableAnalysisTips">
-      志愿表 <span class="f16">良好</span> ，有4项可优化项
-      <i class="iconfont xzy-icon-enter fr"></i>
+          <transition name="slide-right">
+            <i class="iconfont xzy-icon-jiaohuan trans fr" v-if="!editMode" @click="$router.push({name:'volunteerfavorite',query:{page:'college', for: 'replace'}})"></i>
+          </transition>
+
+        </div>
+      </div>
     </div>
 
-    <div class="v-table-wrap">
+    <div class="v-table-wrap mt10">
       <div class="v-table-item bg-white mb10" v-for="(item,i) in list" :key="i">
         <div class="item-body">
 
           <span class="order-num">{{i + 1}}</span>
 
           <transition-group tag="div" name="slide-right">
-            <span class="iconfont del xzy-icon-trash trans" v-if="editMode" :key="2"></span>
-            <span class="iconfont xzy-icon-jiaohuan trans" v-else :key="1"></span>
+            <span class="iconfont del xzy-icon-trash trans" v-if="editMode" :key="2" @click="removeThisMajor(i)"></span>
+            <span class="iconfont xzy-icon-jiaohuan trans" v-else :key="1" @click="$router.push({name:'volunteerfavorite',query:{page:'major', for: 'replace'}})"></span>
           </transition-group>
 
           <div class="ib-main" :class="{disabled: editMode}">
@@ -35,64 +47,41 @@
         </div>
       </div>
 
-      <div class="v-table-item bg-white mb10" v-if="list.length < limitCollege"
-           v-for="collegeItem in (limitCollege - list.length)" :key="collegeItem">
+      <div class="v-table-item bg-white mb10" v-if="list.length < limitMajor"
+           v-for="majorItem in (limitMajor - list.length)" :key="majorItem">
         <div class="item-body" style="padding-top:0;">
-          <span class="order-num">{{collegeItem + list.length}}</span>
+          <span class="order-num">{{majorItem + list.length}}</span>
         </div>
-        <div class="ib-footer-empty" :class="{'on-active': !editMode,disabled: editMode}">
+        <div class="ib-footer-empty" @click="$router.push({name:'volunteerfavorite',query:{page:'major'}})"
+             :class="{'on-active': !editMode,disabled: editMode}">
           <div class="add-icon"><i class="iconfont xzy-icon-add"></i></div>
           <div>添加收藏专业</div>
         </div>
       </div>
 
       <div class="tc p15 bg-white" :class="{'on-active': !editMode,disabled: editMode}" @click="toggleAdjust">
-        <span class="f16"><i class="iconfont xzy-icon-success_fill mr5 f20 v-2" :class="[allowAdjust ? 'text-success' : 'grayc']"></i>服从调剂</span>
+        <span class="f16"><i class="iconfont xzy-icon-success_fill mr5 f20 v-2"
+                             :class="[allowAdjust ? 'text-success' : 'grayc']"></i>服从调剂</span>
       </div>
     </div>
 
-    <c-dialog
-      :visible.sync="showEditTableName"
-      :width="300"
-      :height="300"
-      :title="'修改标题'"
-      name="changeTableName"
-      @confirm="editTableNameConfirm">
-      <div slot="content" class="form p10">
-        <input class="pct100" type="text" placeholder="请输入名称" :value="tableName" ref="inputTableName" :autofocus="autofocus">
-      </div>
-    </c-dialog>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import CollegeItem from '../components/collegeitem.vue'
-
   export default {
-    components: {
-      CollegeItem
-    },
     data () {
       return {
+        logo: require('../assets/imgs/daxue/dx_logo.png'),
         editMode: false, // 管理模式
-        tableAnalysisDone: false, // 志愿分析
-        tableName: '模拟志愿表01',
-        autofocus: true,
-        showEditTableName: false,
-        allowAdjust: false,
+        allowAdjust: false, // 服从调剂
         list: [
           {
             cname: '清华大学',
             major: ['工科调试班类（自动...', '土木类', '建筑类（五年）', '工科实验班类（能源）']
-          },
-          {
-            cname: '河南工业大学',
-            major: []
           }
         ],
-        limitCollege: 7,
-        limitMajor: 6,
-        filterCateIndex: 0
+        limitMajor: 6
       }
     },
     computed: {
@@ -109,36 +98,16 @@
         if (this.editMode) return
         this.allowAdjust = !this.allowAdjust
       },
-      editTableNameConfirm () {
-        this.tableName = this.$refs.inputTableName.value
-        this.$toast({
-          message: '已修改',
-          duration: 1000
-        })
-      },
       editTable () {
         this.editMode = !this.editMode
       },
-      editTableName () {
+      removeThisMajor (index) {
         let _self = this
-        _self.showEditTableName = true
-        _self.autofocus = true
-      },
-      tableAnalysis () {
-        let _vm = this
-        _vm.$Indicator.open('正在分析，请稍候...')
-        setTimeout(() => {
-          _vm.$Indicator.close()
-          $(_vm.$refs.tableAnalysisTips).slideDown(300)
-          _vm.tableAnalysisDone = true
-        }, 1000)
-      },
-      showAnalysisResult () {
-        if (this.isVip) {
-          this.$router.push({name: 'volunteertableanalysis'})
-        } else {
-          this.$router.push({name: 'vip'})
-        }
+        this.$messagebox.confirm('确定要删除该专业？').then((type) => {
+          if (type === 'confirm') {
+            _self.list.splice(index, 1)
+          }
+        }).catch(() => {})
       }
     }
   }
@@ -147,27 +116,39 @@
 <style lang="less" rel="stylesheet/less">
   @import '../assets/less/_mixins-wln.less';
 
-  .page_volunteer_table_datail {
-    background-color: #f3f5f7;
-    .ci-head {
-      background-color: @primary;
-      color: #fff;
-      padding: 20px 10px 30px;
-      .plan-num {
-        border: 1px solid rgba(255, 255, 255, .4);
-        border-radius: 30px;
-        padding: 3px 12px;
+  .page_volunteer_table_detail {
+    .college-wrap {
+      .cl-cell {
+        padding: 10px 10px;
+        .cl-cell-inner {
+          position: relative;
+          @logo_size: 55px;
+          padding-left: @logo_size + 10px;
+          padding-right: 30px;
+          overflow: hidden;
+          .cl-logo {
+            float: left;
+            width: @logo_size + 10px;
+            margin-left: -(@logo_size + 10px);
+            img {
+              max-width: @logo_size;
+              display: block;
+            }
+          }
+          .cl-label {
+            margin-top: 13px;
+          }
+
+          .iconfont {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -8px;
+          }
+        }
       }
     }
 
-    /*志愿分析提示*/
-    .table-analysis {
-      background-color: @second;
-      color: #fff;
-      padding: 15px 10px;
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
     /*志愿列表*/
     .v-table-item {
       .item-body {
@@ -190,7 +171,7 @@
         }
         .ib-main {
           position: relative;
-          padding-right: 24px;
+          margin-right: 34px;
           .ib-title {
             font-size: 15px;
           }
@@ -213,18 +194,6 @@
         }
       }
 
-      .ib-footer {
-        display: flex;
-        color: #888;
-        font-size: 13px;
-        padding: 10px 8px 10px 35px;
-        flex-flow: wrap;
-        span {
-          width: 50%;
-          box-sizing: border-box;
-          padding: 5px 3px;
-        }
-      }
       .ib-footer-empty {
         padding: 16px 20px 18px;
         color: #999;

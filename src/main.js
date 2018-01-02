@@ -1,7 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import Navigation from 'vue-navigation'
+// import Navigation from 'vue-navigation'
 import MintUI from 'mint-ui'
 // import 'pace/themes/blue/pace-theme-loading-bar.css'
 
@@ -16,18 +16,22 @@ import '@/assets/less/base.less'
 import store from './store'
 import App from './App'
 import router from './router'
+import VueTouch from 'vue-touch'
 
 // 全局组件
+import PageHead from '@/components/common/page_head'
 import Endline from '@/components/common/endline'
 import More from '@/components/common/more'
 import Vip from '@/components/common/vip'
 import SectionTitle from '@/components/common/sectiontitle'
 import RouterBack from '@/components/common/routerback'
+import Empty from '@/components/common/data_empty'
 import AddFavor from '@/components/add_favor'
 import FooterBtn from '@/components/footer_btn'
 import Dialog from '@/components/dialog/dialog'
 import Scroll from '@/components/bscroll'
 
+Vue.component('c-page-head', PageHead)
 Vue.component('c-endline', Endline)
 Vue.component('c-more', More)
 Vue.component('c-vip', Vip)
@@ -37,8 +41,12 @@ Vue.component('c-add-favor', AddFavor)
 Vue.component('c-footer-btn', FooterBtn)
 Vue.component('c-dialog', Dialog)
 Vue.component('c-scroll', Scroll)
-Vue.use(Navigation, {router, store, keyName: 'n'})
+Vue.component('c-empty', Empty)
+// Vue.use(router)
+// Vue.use(store)
+// Vue.use(Navigation, {router, store, keyName: 'n'})
 Vue.use(MintUI.Lazyload)
+Vue.use(VueTouch, {name: 'v-touch'})
 
 // 注册 echarts 主题
 ECharts.registerTheme('macarons', Theme)
@@ -84,20 +92,20 @@ new Vue({
   template: '<App/>',
   components: {App},
   mounted () {
-    this.$navigation.on('forward', (to, from) => {
-      store.commit('setPageTransName', 'forward')
-    })
-    this.$navigation.on('back', (to, from) => {
-      store.commit('setPageTransName', 'back')
-    })
-    this.$navigation.on('replace', (to, from) => {
-      store.commit('setPageTransName', 'replace')
-    })
-    this.$navigation.on('refresh', (to, from) => {
-      store.commit('setPageTransName', 'refresh')
-    })
-    this.$navigation.on('reset', () => {
-      store.commit('setPageTransName', 'reset')
-    })
+    // this.$navigation.on('forward', (to, from) => {
+    //   store.commit('setPageTransName', 'forward')
+    // })
+    // this.$navigation.on('back', (to, from) => {
+    //   store.commit('setPageTransName', 'back')
+    // })
+    // this.$navigation.on('replace', (to, from) => {
+    //   store.commit('setPageTransName', 'replace')
+    // })
+    // this.$navigation.on('refresh', (to, from) => {
+    //   store.commit('setPageTransName', 'refresh')
+    // })
+    // this.$navigation.on('reset', () => {
+    //   store.commit('setPageTransName', 'reset')
+    // })
   }
 }).$mount('#app')

@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <navigation>
-      <router-view class="child-view pct100"></router-view>
-    </navigation>
+    <router-view class="child-view pct100"></router-view>
+    <!--<navigation>-->
+      <!---->
+    <!--</navigation>-->
     <!--<transition :name="transformName">-->
     <!---->
     <!--</transition>-->
@@ -19,8 +20,6 @@
       transformName () {
         return this.$store.state.pageTransName
       }
-    },
-    mounted () {
     }
   }
 </script>

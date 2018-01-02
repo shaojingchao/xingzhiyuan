@@ -11,6 +11,7 @@ const VolunteerRecommendMajor = () => import('@/pages/volunteer_tuijianzhuanye.v
 const VolunteerTable = () => import('@/pages/volunteer_table.vue')
 const VolunteerDetail = () => import('@/pages/volunteer_table_detail.vue')
 const VolunteerTableAnalysis = () => import('@/pages/volunteer_table_analysis.vue')
+const VolunteerFavorite = () => import('@/pages/volunteer_favorite.vue')
 
 // 院校优先
 const CollegeFirst = () => import('@/pages/collegefirst.vue')
@@ -74,11 +75,13 @@ const Payment = () => import('@/pages/payment.vue')
 
 // 更多
 const More = () => import('@/pages/more.vue')
+const MoreChengji = () => import('@/pages/more_chengjichaxun.vue')
+const MoreGaokanrenshu = () => import('@/pages/more_gaokaorenshu.vue')
 
 Vue.use(Router)
 
 const router = new Router({
-  // mode: 'history',
+  mode: 'history',
   scrollBehavior (to, from, savedPosition) {
     if (to.hash) {
       return {
@@ -126,6 +129,11 @@ const router = new Router({
       path: '/volunteer/:id/analysis', // 专业推荐
       name: 'volunteertableanalysis',
       component: VolunteerTableAnalysis
+    },
+    {
+      path: '/favorite', // 收藏
+      name: 'volunteerfavorite',
+      component: VolunteerFavorite
     },
     {
       path: '/majorfirst', // 专业优先
@@ -327,6 +335,16 @@ const router = new Router({
       path: '/more', // 更多
       name: 'more',
       component: More
+    },
+    {
+      path: '/more/cjcx', // 成绩查询
+      name: 'morechengji',
+      component: MoreChengji
+    },
+    {
+      path: '/more/gkrs', // 高考人数
+      name: 'moregaokanrenshu',
+      component: MoreGaokanrenshu
     },
     {
       path: '/vip', // VIP

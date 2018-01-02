@@ -18,7 +18,8 @@
 
     <div class="v-table-wrap">
       <div class="v-table-item bg-white mb10" v-for="(item,i) in list" :key="i">
-        <div class="item-body" @click="$router.push({name:'volunteerdetail',params:{id:i}})" :class="{'on-active': !editMode,disabled: editMode}">
+        <div class="item-body" @click="$router.push({name:'volunteerdetail',params:{id:i}})"
+             :class="{'on-active': !editMode,disabled: editMode}">
 
           <span slot="icon" class="order-num">{{orderNum[i]}}</span>
 
@@ -44,7 +45,8 @@
           <span class="ib-f-item" v-if="item.major.length < limitMajor"
                 v-for="(majorItem,index) in (limitMajor - item.major.length)" :key="index">{{majorItem + item.major.length}}：</span>
         </div>
-        <div class="ib-footer-empty" :class="{'on-active': !editMode,disabled: editMode}" v-else>
+        <div class="ib-footer-empty" @click="$router.push({name:'volunteerfavorite',query:{page:'major'}})"
+             :class="{'on-active': !editMode,disabled: editMode}" v-else>
           <div class="add-icon"><i class="iconfont xzy-icon-add"></i></div>
           <div>添加收藏专业</div>
         </div>
@@ -55,7 +57,8 @@
         <div class="item-body" style="padding-top:0;">
           <span slot="icon" class="order-num">{{orderNum[collegeItem - 1 + list.length]}}</span>
         </div>
-        <div class="ib-footer-empty" :class="{'on-active': !editMode,disabled: editMode}">
+        <div class="ib-footer-empty" @click="$router.push({name:'volunteerfavorite',query:{page:'college'}})"
+             :class="{'on-active': !editMode,disabled: editMode}">
           <div class="add-icon"><i class="iconfont xzy-icon-add"></i></div>
           <div>添加收藏院校</div>
         </div>
