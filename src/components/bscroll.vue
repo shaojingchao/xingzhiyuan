@@ -1,8 +1,6 @@
 <template>
-  <div :style="{height:height,'overflow':'scroll'}">
-    <div class="---------------------">
-      <slot></slot>
-    </div>
+  <div :style="{height:height,width:width,'overflow':'auto'}">
+    <slot></slot>
   </div>
 </template>
 
@@ -18,12 +16,20 @@
       height: {
         type: String,
         default: '100%'
+      },
+      width: {
+        type: String,
+        default: '100%'
       }
     },
     mounted () {
       this.$nextTick(() => {
         /* globals Bscroll */
-        this.iscroll = new Bscroll(this.$el, {click: true, tap: true})
+        this.iscroll = new Bscroll(this.$el, {scrollX: true,
+          scrollY: false,
+          momentum: false,
+          click: true
+        })
       })
     }
   }

@@ -54,7 +54,7 @@
 
 <script>
   export default {
-    name: 'more',
+    name: 'more-gaofenrenshu',
     data () {
       return {}
     }
@@ -64,7 +64,7 @@
 <style lang="less">
   @import '../assets/less/_mixins-wln.less';
 
-  .page_more_cjcx {
+  .page_more {
 
   }
 </style>

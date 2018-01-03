@@ -13,7 +13,7 @@
           </div>
           <div class="tg-label">成绩查询</div>
         </router-link>
-        <router-link tag="div" class="grid-item item2 on-active" :to="''">
+        <router-link tag="div" class="grid-item item2 on-active" :to="{name:'moretianbaochaxun'}">
           <div class="tg-icon">
             <img src="../assets/imgs/more/more_icon_clock.png" alt="">
           </div>
@@ -56,77 +56,77 @@
           },
           {
             label: '加分政策',
-            href: '',
+            href: {name: 'morejiafenzhengce'},
             icon: require('../assets/imgs/more/icon_bk_2.png')
           },
           {
             label: '特殊招生',
-            href: '',
+            href: {name: 'moreteshuzhaosheng'},
             icon: require('../assets/imgs/more/icon_bk_3.png')
           },
           {
             label: '助学贷款',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_4.png')
           },
           {
             label: '高招防骗',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_5.png')
           },
           {
             label: '军检要求',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_6.png')
           },
           {
             label: '体检要就',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_7.png')
           },
           {
             label: '志愿百科',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_8.png')
           },
           {
             label: '艺术院校',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_9.png')
           },
           {
             label: '重点学科',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_10.png')
           },
           {
             label: '高考月历',
-            href: '',
+            href: {name: 'moregaokaoyueli'},
             icon: require('../assets/imgs/more/icon_bk_11.png')
           },
           {
             label: '填报流程',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_12.png')
           },
           {
             label: '志愿模式',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_13.png')
           },
           {
             label: '高招办',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_14.png')
           },
           {
             label: '手动填报',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_15.png')
           },
           {
             label: '系统说明',
-            href: '',
+            href: {name: 'article', params: {id: 0}},
             icon: require('../assets/imgs/more/icon_bk_16.png')
           }]
       }

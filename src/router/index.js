@@ -76,7 +76,12 @@ const Payment = () => import('@/pages/payment.vue')
 // 更多
 const More = () => import('@/pages/more.vue')
 const MoreChengji = () => import('@/pages/more_chengjichaxun.vue')
-const MoreGaokanrenshu = () => import('@/pages/more_gaokaorenshu.vue')
+const MoreGaokaorenshu = () => import('@/pages/more_gaokaorenshu.vue')
+const MoreJiafenzhengce = () => import('@/pages/more_jiafenzhengce.vue')
+const MoreTianbaochaxun = () => import('@/pages/more_tianbaochaxun.vue')
+const MoreTeshuzhaosheng = () => import('@/pages/more_teshuzhaosheng.vue')
+const MoreGaokaoyueli = () => import('@/pages/more_gaokaoyueli.vue')
+const Article = () => import('@/pages/more_article.vue')
 
 Vue.use(Router)
 
@@ -343,8 +348,33 @@ const router = new Router({
     },
     {
       path: '/more/gkrs', // 高考人数
-      name: 'moregaokanrenshu',
-      component: MoreGaokanrenshu
+      name: 'moregaokaorenshu',
+      component: MoreGaokaorenshu
+    },
+    {
+      path: '/more/jfzc', // 加分政策
+      name: 'morejiafenzhengce',
+      component: MoreJiafenzhengce
+    },
+    {
+      path: '/more/tbcx', // 填报查询
+      name: 'moretianbaochaxun',
+      component: MoreTianbaochaxun
+    },
+    {
+      path: '/more/tszs', // 特殊招生
+      name: 'moreteshuzhaosheng',
+      component: MoreTeshuzhaosheng
+    },
+    {
+      path: '/more/gkyl', // 高考月历
+      name: 'moregaokaoyueli',
+      component: MoreGaokaoyueli
+    },
+    {
+      path: '/article/:id', // 文章详情页
+      name: 'article',
+      component: Article
     },
     {
       path: '/vip', // VIP

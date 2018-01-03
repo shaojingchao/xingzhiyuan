@@ -1,15 +1,47 @@
 {
   "presets": [
-    ["env", {
-      "modules": false
-    }],
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
     "stage-2"
   ],
-  "plugins": ["transform-runtime", "syntax-dynamic-import"],
+  "plugins": [
+    ["transform-strict-mode", {
+      "strict": false
+    }],
+    "transform-runtime",
+    "syntax-dynamic-import"
+  ],
   "env": {
     "test": {
-      "presets": ["env", "stage-2"],
-      "plugins": ["transform-es2015-modules-commonjs", "dynamic-import-node"]
+      "presets": [
+        "env",
+        [
+          "es2015",
+          {
+            "modules": false
+          }
+        ],
+        "stage-2"
+      ],
+      "plugins": [
+        [
+          "transform-es2015-modules-commonjs",
+          {
+            "strictMode": false
+          }
+        ],
+        "dynamic-import-node"
+      ]
     }
   }
 }
