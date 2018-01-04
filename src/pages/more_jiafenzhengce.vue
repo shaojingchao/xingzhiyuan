@@ -27,7 +27,14 @@
   export default {
     name: 'more-jiafenzhengce',
     data () {
-      return {}
+      return {
+        pageTitle: '标题'
+      }
+    },
+    mounted () {
+      setTimeout(() => {
+        this.pageTitle = '12312'
+      }, 2000)
     }
   }
 </script>

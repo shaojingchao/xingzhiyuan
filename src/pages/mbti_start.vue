@@ -63,7 +63,6 @@
       // this.answeredNum = this.answered.length
     },
     created () {
-      this.answered.length = 64
       if (this.$route.params.part === 'tab1') {
         this.pageName = '职业性格测试'
       } else {

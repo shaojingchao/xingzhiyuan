@@ -86,7 +86,7 @@ const Article = () => import('@/pages/more_article.vue')
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  // mode: 'history',
   scrollBehavior (to, from, savedPosition) {
     if (to.hash) {
       return {

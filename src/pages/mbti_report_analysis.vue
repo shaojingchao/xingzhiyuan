@@ -47,6 +47,9 @@
 <script>
   export default {
     name: 'mbti-report-analysis',
+    data () {
+      return {}
+    },
     mounted () {
     },
     methods: {}

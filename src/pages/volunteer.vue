@@ -5,7 +5,7 @@
     </mt-header>
     <div class="my-score bg-white p10 mb10 ov-h">
       <span class="gray9 fl pt1">你的成绩：河南 理科 <span class="gray0">609分</span></span>
-      <a href="javascript:" class="text-primary fr">修改 <i class="iconfont xzy-icon-edit"></i></a>
+      <a href="javascript:" class="text-primary fr" @click="changeScore">修改 <i class="iconfont xzy-icon-edit"></i></a>
     </div>
 
     <div class="app-suggest">
@@ -29,6 +29,8 @@
     </div>
 
     <c-footer-btn :text="'模拟填报分析'" :toLink="{name:'volunteertable',params: {id: 1}}"></c-footer-btn>
+
+    <dialog-set-score :isShow.sync="showScoreDialog"></dialog-set-score>
   </div>
 </template>
 
@@ -37,11 +39,17 @@
     name: 'volunteer',
     data () {
       return {
+        showScoreDialog: false,
         icon: [
           require('../assets/imgs/icon/icon_zhiyuan_chongci.png'),
           require('../assets/imgs/icon/icon_zhiyuan_wentuo.png'),
           require('../assets/imgs/icon/icon_zhiyuan_baodi.png')
         ]
+      }
+    },
+    methods: {
+      changeScore () {
+        this.showScoreDialog = true
       }
     }
   }

@@ -89,7 +89,7 @@
 
   .layer-score-content {
     margin: 0 auto;
-    position: absolute;
+    position: fixed;
     z-index: 101;
     top: 50%;
     left: 50%;

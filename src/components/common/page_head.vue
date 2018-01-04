@@ -1,6 +1,6 @@
 <template>
   <div class="comp_page_head">
-    <div class="main-title">{{title}}</div>
+    <div class="main-title" ref="mainTitle">{{title}}</div>
     <div class="sub-title"><span>{{subtitle}}</span></div>
   </div>
 </template>
@@ -16,6 +16,29 @@
       subtitle: {
         type: String,
         default: '页面副标题'
+      }
+    },
+    mounted () {
+      this.autoSetPageTitle()
+    },
+    methods: {
+      autoSetPageTitle () {
+        let $title = $('.mint-header').find('.mint-header-title')
+        let $mainTitle = $(this.$refs.mainTitle)
+        let _offsetTop = $mainTitle.offset().top
+        if (!$title.text() && $mainTitle.length) {
+          $(document).on('scroll', () => {
+            if ($(document).scrollTop() > _offsetTop + $mainTitle.outerHeight() - $('.mint-header').outerHeight()) {
+              if (!$('.mint-header').find('.mint-header-title').text()) {
+                $title.html(this.title)
+              }
+            } else {
+              if ($title.text()) {
+                $title.html('')
+              }
+            }
+          })
+        }
       }
     }
   }

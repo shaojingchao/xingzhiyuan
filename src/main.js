@@ -31,6 +31,9 @@ import FooterBtn from '@/components/footer_btn'
 import Dialog from '@/components/dialog/dialog'
 import Scroll from '@/components/bscroll'
 
+// 弹框
+import DialogSetScore from '@/components/dialog_setscore'
+
 Vue.component('c-page-head', PageHead)
 Vue.component('c-endline', Endline)
 Vue.component('c-more', More)
@@ -42,8 +45,11 @@ Vue.component('c-footer-btn', FooterBtn)
 Vue.component('c-dialog', Dialog)
 Vue.component('c-scroll', Scroll)
 Vue.component('c-empty', Empty)
-// Vue.use(router)
-// Vue.use(store)
+
+Vue.component('dialog-set-score', DialogSetScore)
+
+console.log(MintUI)
+
 // Vue.use(Navigation, {router, store, keyName: 'n'})
 Vue.use(MintUI.Lazyload)
 Vue.use(VueTouch, {name: 'v-touch'})
