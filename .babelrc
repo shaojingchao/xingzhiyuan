@@ -6,18 +6,9 @@
         "modules": false
       }
     ],
-    [
-      "es2015",
-      {
-        "modules": false
-      }
-    ],
     "stage-2"
   ],
   "plugins": [
-    ["transform-strict-mode", {
-      "strict": false
-    }],
     "transform-runtime",
     "syntax-dynamic-import"
   ],
@@ -25,21 +16,10 @@
     "test": {
       "presets": [
         "env",
-        [
-          "es2015",
-          {
-            "modules": false
-          }
-        ],
         "stage-2"
       ],
       "plugins": [
-        [
-          "transform-es2015-modules-commonjs",
-          {
-            "strictMode": false
-          }
-        ],
+        "transform-es2015-modules-commonjs",
         "dynamic-import-node"
       ]
     }

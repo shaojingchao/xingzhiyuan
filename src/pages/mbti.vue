@@ -77,12 +77,6 @@
       }
       .t-footer{
         margin:20px 30px 0 30px;
-        .btn-primary{
-          box-shadow: 0 2px 4px rgba(0,173,239,.6)
-        }
-        .btn-yellow{
-          box-shadow: 0 2px 4px rgba(239, 145, 28, 0.6)
-        }
       }
 
     }

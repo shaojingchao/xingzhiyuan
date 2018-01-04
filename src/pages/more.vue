@@ -51,7 +51,7 @@
         gaokaowiki: [
           {
             label: '高考人数',
-            href: {name: 'moregaokanrenshu'},
+            href: {name: 'moregaokaorenshu'},
             icon: require('../assets/imgs/more/icon_bk_1.png')
           },
           {

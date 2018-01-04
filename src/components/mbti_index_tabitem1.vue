@@ -18,7 +18,7 @@
       </p>
     </div>
     <div class="t-footer">
-      <router-link class="btn btn-lg btn-primary round btn-block" :to="{name: 'mbtistart', params: {part:'tab1'}}">开始测试</router-link>
+      <router-link class="btn btn-lg btn-primary shadow round btn-block" :to="{name: 'mbtistart', params: {part:'tab1'}}">开始测试</router-link>
     </div>
   </div>
 </template>

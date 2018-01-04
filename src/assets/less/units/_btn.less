@@ -2,177 +2,210 @@
 
 /*按钮*/
 .btn {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-    *line-height: normal;
-    line-height: 1.4;
-    white-space: nowrap;
-    vertical-align: baseline;
-    text-align: center;
-    cursor: pointer;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  *line-height: normal;
+  line-height: 1.4;
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
+
 .btn::-moz-focus-inner {
-    padding: 0;
-    border: 0;
+  padding: 0;
+  border: 0;
 }
+
 .btn {
-    font-family: inherit;
-    font-size: 100%;
-    *font-size: 90%;
-    *overflow: visible;
-    padding: 0.5em 0.8em;
-    color: #444;
-    color: rgba(0, 0, 0, 0.80);
-    *color: #444;
-    border: 1px solid @btn-default;
-    // border: none rgba(0, 0, 0, 0);
-    background-color:@btn-default;
-    text-decoration: none;
+  font-family: inherit;
+  font-size: 100%;
+  *font-size: 90%;
+  *overflow: visible;
+  padding: 0.5em 0.8em;
+  color: #444;
+  color: rgba(0, 0, 0, 0.80);
+  *color: #444;
+  border: 1px solid @btn-default;
+  // border: none rgba(0, 0, 0, 0);
+  background-color: @btn-default;
+  text-decoration: none;
 }
-.btn-link{
+
+.btn-link {
   border: 0;
-  color:inherit;
-  background-color:transparent;
+  color: inherit;
+  background-color: transparent;
 }
-.btn.link{
-  padding-top:0;
-  padding-bottom:0;
+
+.btn.link {
+  padding-top: 0;
+  padding-bottom: 0;
   border: 0;
-  color:inherit;
-  background-color:transparent;
+  color: inherit;
+  background-color: transparent;
 }
-.btn-close{
-  padding:0;
+
+.btn-close {
+  padding: 0;
   border: 0;
-  color:inherit;
-  background-color:transparent;
+  color: inherit;
+  background-color: transparent;
 }
+
 .btn-hidden {
-    display: none;
+  display: none;
 }
 
 .btn-primary, .btn-selected, a.btn-primary, a.btn-selected {
-    background-color: @btn-primary;
-    border-color: @btn-primary;
-    color: #fff;
-}
-.btn-white{
-    background-color: #fff;
-    &:hover{
-    border-color:@btn-primary;
-    color:@btn-primary;
-    }
-    &.checked{
-        border-color:@btn-primary;
-        color:@btn-primary;
-        cursor:default;
-    }
+  background-color: @btn-primary;
+  border-color: @btn-primary;
+  color: #fff;
 }
 
-.btn-yellow,.btn-yellow:hover {
-    background-color: @btn-yellow;
-    border-color: @btn-yellow;
-    color: #fff;
+.btn-primary.shadow {
+  box-shadow: 0 5px 18px -3px @btn-primary;
 }
-.btn-second {
-    background: #fff;
-    color: @btn-primary;
+
+.btn-white {
+  background-color: #fff;
+  &:hover {
     border-color: @btn-primary;
-    .transition(background-color .3s ~", " color .3s);
+    color: @btn-primary;
+  }
+  &.checked {
+    border-color: @btn-primary;
+    color: @btn-primary;
+    cursor: default;
+  }
+}
+
+.btn-yellow, .btn-yellow:hover {
+  background-color: @btn-yellow;
+  border-color: @btn-yellow;
+  color: #fff;
+}
+
+.btn-yellow.shadow {
+  box-shadow: 0 5px 18px -3px @btn-yellow;
+}
+
+.btn-second {
+  background: #fff;
+  color: @btn-primary;
+  border-color: @btn-primary;
+  .transition(background-color .3s ~", " color .3s);
 }
 
 .btn-second:hover {
-    background: @btn-primary;
-    color: white;
+  background: @btn-primary;
+  color: white;
 }
+
 /*btn-扩展*/
 
 /*状态*/
 .btn-success, .btn-error, .btn-warning {
-    color: white;
+  color: white;
 }
+
 .btn-success {
-    background: @btn-success;
-    border-color: @btn-success;
+  background: @btn-success;
+  border-color: @btn-success;
 }
+
 .btn-error {
-    background: @btn-danger;
-    border-color: @btn-danger;
+  background: @btn-danger;
+  border-color: @btn-danger;
 }
+
 .btn-warning {
-    background: @btn-warning;
-    border-color: @btn-warning;
+  background: @btn-warning;
+  border-color: @btn-warning;
 }
 
 /*大小*/
 .btn-xs {
-    font-size: 70%;
+  font-size: 70%;
 }
+
 .btn-sm {
-    font-size: 85%;
+  font-size: 85%;
 }
+
 .btn-lg {
-    font-size: 110%;
+  font-size: 110%;
 }
+
 .btn-xl {
-    font-size: 125%;
+  font-size: 125%;
 }
+
 /* 宽度 */
-.btn-lg-w{
-    min-width:@btn-lg-width;
+.btn-lg-w {
+  min-width: @btn-lg-width;
 }
-.btn-md-w{
-    min-width:@btn-md-width;
+
+.btn-md-w {
+  min-width: @btn-md-width;
 }
-.btn-block{
+
+.btn-block {
   display: block;
 }
+
 /* 交互 */
 .btn-hover, .btn:hover, .btn:focus {
-    #gradient > .vertical(rgba(255, 255, 255, .1), rgba(255, 255, 255, .1));
+  #gradient > .vertical(rgba(255, 255, 255, .1), rgba(255, 255, 255, .1));
 }
 
 .btn:focus {
-    outline: 0;
+  outline: 0;
 }
-.btn-active,.btn-active:hover{
-  cursor:default;
-    #gradient > .vertical(rgba(0, 0, 0, .25), rgba(0, 0, 0, .1));
+
+.btn-active, .btn-active:hover {
+  cursor: default;
+  #gradient > .vertical(rgba(0, 0, 0, .25), rgba(0, 0, 0, .1));
 }
- .btn:active {
-    #gradient > .vertical(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1));
+
+.btn:active {
+  #gradient > .vertical(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1));
 }
+
 .btn[disabled], .btn-disabled, .btn-disabled:hover, .btn-disabled:focus, .btn-disabled:active {
-    // border: none;
-    background-image: none;
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-    filter: alpha(opacity=40);
-    -khtml-opacity: 0.40;
-    -moz-opacity: 0.40;
-    opacity: 0.40;
-    cursor: not-allowed;
-    box-shadow: none;
+  // border: none;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  filter: alpha(opacity=40);
+  -khtml-opacity: 0.40;
+  -moz-opacity: 0.40;
+  opacity: 0.40;
+  cursor: not-allowed;
+  box-shadow: none;
 }
-.btn.round{
+
+.btn.round {
   border-radius: 50px;
 }
-.btn-group{
+
+.btn-group {
   display: inline-flex;
-  > .btn{
-    flex:1;
-    &:first-child{
-      border-radius:50px 0 0 50px;
-      border-right:none;
+  > .btn {
+    flex: 1;
+    &:first-child {
+      border-radius: 50px 0 0 50px;
+      border-right: none;
     }
-    &:last-child{
-      border-radius:0 50px 50px 0;
-      border-left:none;
+    &:last-child {
+      border-radius: 0 50px 50px 0;
+      border-left: none;
     }
   }
 }

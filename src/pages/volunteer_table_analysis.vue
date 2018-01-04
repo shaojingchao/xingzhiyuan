@@ -4,45 +4,48 @@
       <c-router-back slot="left"></c-router-back>
     </mt-header>
 
-    <div class="ci-head">
-      <div class="f20 tc">{{tableStateText}}</div>
-      <div class="tc mt10"><span class="dib plan-num">4个可优化项，请尽快调整</span></div>
-    </div>
-
-    <div class="text-muted p10 pb15 bg-white">
-      <p>*你的成绩超出批次线较多，只分析成绩所在批次的合理性。</p>
-      <div class="helpers-tips">
-        <span><i class="iconfont xzy-icon-warning_fill text-danger"></i>严重错误</span>
-        <span><i class="iconfont xzy-icon-warning_fill text-second"></i>建议优化</span>
-        <span><i class="iconfont xzy-icon-success_fill text-success"></i>填报合理</span>
+    <div class="ci-head-wrap">
+      <div class="ci-head headTrans" :style="{'transform':'translateY('+headStyle.translateY+') scale('+headStyle.scale+')'}">
+        <div class="tc" style="font-size:36px;">{{tableStateText}}</div>
+        <div class="tc mt10"><span class="dib plan-num">4个可优化项，请尽快调整</span></div>
       </div>
     </div>
+    <div class="scrollContent" style="box-shadow:0 -5px 15px 10px rgba(255,194,51,0.85);">
+      <div class="text-muted p10 pb15 bg-white">
+        <p>*你的成绩超出批次线较多，只分析成绩所在批次的合理性。</p>
+        <div class="helpers-tips">
+          <span><i class="iconfont xzy-icon-warning_fill text-danger"></i>严重错误</span>
+          <span><i class="iconfont xzy-icon-warning_fill text-second"></i>建议优化</span>
+          <span><i class="iconfont xzy-icon-success_fill text-success"></i>填报合理</span>
+        </div>
+      </div>
 
-    <div class="v-analysis-result-wrap">
-      <div class="v-analysis-item bg-white mt10" v-for="(item,index) in analysisList">
-        <div class="item-body">
-          <span class="item-icon" :class="['icon-' + index]"></span>
-          <div class="ib-main">
-            <div class="ib-title pr10">
-              <b>{{item}}</b>
-              <small class="fr text-second">1项建议优化</small>
+      <div class="v-analysis-result-wrap">
+        <div class="v-analysis-item bg-white mt10" v-for="(item,index) in analysisList">
+          <div class="item-body">
+            <span class="item-icon" :class="['icon-' + index]"></span>
+            <div class="ib-main">
+              <div class="ib-title pr10">
+                <b>{{item}}</b>
+                <small class="fr text-second">1项建议优化</small>
+              </div>
+              <div class="ib-desc pr10 bti">
+                <table class="pct100 pt10">
+                  <tbody>
+                  <tr>
+                    <td class="gray9">存在可保底学校（录取概率≥98%）</td>
+                    <td width="20" align="right"><i class="iconfont xzy-icon-success_fill text-success"></i></td>
+                  </tr>
+                  <tr>
+                    <td class="gray9">本科一批没有可冲击的学校，建议填报1-2所录取概率50%-80%的学校冲一冲</td>
+                    <td width="20" align="right" valign="top"><i class="iconfont xzy-icon-success_fill text-success"></i></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="ib-desc pr10 bti">
-              <table class="pct100 pt10">
-                <tbody>
-                <tr>
-                  <td class="gray9">存在可保底学校（录取概率≥98%）</td>
-                  <td width="20" align="right"><i class="iconfont xzy-icon-success_fill text-success"></i></td>
-                </tr>
-                <tr>
-                  <td class="gray9">本科一批没有可冲击的学校，建议填报1-2所录取概率50%-80%的学校冲一冲</td>
-                  <td width="20" align="right" valign="top"><i class="iconfont xzy-icon-success_fill text-success"></i></td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
+
           </div>
-
         </div>
       </div>
     </div>
@@ -53,6 +56,7 @@
   export default {
     data () {
       return {
+        scrollTop: 0,
         tableStateText: '良好',
         analysisList: ['志愿表梯度合理性', '志愿表完整度', '专业设置合理性', '符合个人意愿'],
         tableAnalysisDone: false, // 志愿分析
@@ -75,9 +79,22 @@
     computed: {
       isVip () {
         return this.$store.getters.isVip
+      },
+      headStyle () {
+        let minTranslateY = -60
+        let maxTranslateY = 0
+        let maxSize = 1
+        let minSize = 0.5
+        return {
+          translateY: Math.max(maxTranslateY - this.scrollTop * 0.4, minTranslateY) + 'px',
+          scale: Math.max(maxSize - this.scrollTop * 0.0035, minSize)
+        }
       }
     },
     mounted () {
+      $(document).on('scroll', () => {
+        this.scrollTop = $(document).scrollTop()
+      })
       this.$nextTick(() => {
       })
     },
@@ -110,15 +127,31 @@
     .mint-header{
       background-color: @second;
     }
-    .ci-head {
+    .headTrans{
+      transition: all 0.02s;
+    }
+    .ci-head-wrap{
+      position: fixed;
+      top:44px;
+      left:0;
+      right:0;
+      /*z-index: 0;*/
       background-color: @second;
+    }
+    .ci-head {
       color: #fff;
-      padding: 20px 10px 30px;
+      padding: 35px 10px 45px;
       .plan-num {
         border: 1px solid rgba(255, 255, 255, .4);
         border-radius: 30px;
         padding: 3px 12px;
       }
+    }
+    .scrollContent{
+      position: relative;
+      z-index: 90;
+      margin-top:150px;
+      background-color: @bg-body;
     }
     .helpers-tips{
       display: flex;
