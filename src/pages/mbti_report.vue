@@ -106,13 +106,15 @@
 </template>
 
 <script>
+  import Orientation from '../util/orientation'
+
   export default {
     name: 'mbti-report',
     data () {
       return {}
     },
     mounted () {
-      // this.init()
+      Orientation.create('.cs-content')
     },
     methods: {}
   }
@@ -153,6 +155,7 @@
         @round-size: 140px;
         position: relative;
         height: 300px;
+        transition: transform 0.2s;
         .cs-user-keywords {
           display: inline-block;
           width: 90px;

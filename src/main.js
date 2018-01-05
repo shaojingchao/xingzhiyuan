@@ -48,8 +48,6 @@ Vue.component('c-empty', Empty)
 
 Vue.component('dialog-set-score', DialogSetScore)
 
-console.log(MintUI)
-
 // Vue.use(Navigation, {router, store, keyName: 'n'})
 Vue.use(MintUI.Lazyload)
 Vue.use(VueTouch, {name: 'v-touch'})

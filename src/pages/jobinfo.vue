@@ -3,10 +3,8 @@
     <mt-header title="">
       <c-router-back slot="left"></c-router-back>
     </mt-header>
-    <div class="ci-head">
-      <div class="f20 tc">IT管理/项目协调</div>
-      <div class="tc mt10"><span class="dib plan-num">IT/互联网/通讯</span></div>
-    </div>
+
+    <c-page-head :title="'IT管理/项目协调'" :subtitle="'IT/互联网/通讯'"></c-page-head>
 
     <!--工作内容-->
     <section class="bg-white mb10">
@@ -325,16 +323,6 @@
   @import '../assets/less/_mixins-wln.less';
 
   .page_jobinfo {
-    .ci-head {
-      background-color: @primary;
-      color: #fff;
-      padding: 20px 10px 30px;
-      .plan-num {
-        border: 1px solid rgba(255, 255, 255, .4);
-        border-radius: 30px;
-        padding: 3px 12px;
-      }
-    }
     .desc-content {
       padding: 0 10px 5px 10px;
       line-height: 1.8;

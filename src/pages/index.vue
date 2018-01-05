@@ -2,7 +2,9 @@
   <div class="page_index">
     <mt-header title="星志愿">
       <router-link slot="right" :to="{name: 'volunteer'}">
-        <mt-button><small>志愿表</small></mt-button>
+        <mt-button>
+          <small>志愿表</small>
+        </mt-button>
       </router-link>
     </mt-header>
     <div class="J_echart" @click="changeScore" v-if="userInfo">
@@ -17,8 +19,8 @@
       </div>
     </div>
     <!--<indexChart />-->
-    <div class="md-list">
-      <router-link :to="item.href" v-for="(item,index) in moduleList" :key="index">
+    <div class="md-list pb10">
+      <router-link :to="item.href" v-for="(item,index) in moduleList.slice(0,4)" :key="index">
         <div class="md-icon">
           <div class="md-icon-img">
             <img :src="item.icon" :alt="item.label">
@@ -27,6 +29,37 @@
         </div>
         <p>{{item.label}}</p>
       </router-link>
+    </div>
+
+    <div class="md-list mt10 pt10 pb10">
+      <router-link :to="item.href" v-for="(item,index) in moduleList.slice(4)" :key="index">
+        <div class="md-icon">
+          <div class="md-icon-img">
+            <img :src="item.icon" :alt="item.label">
+            <span class="hot-tips" v-if="item.hot">热门</span>
+          </div>
+        </div>
+        <p>{{item.label}}</p>
+      </router-link>
+    </div>
+
+    <div>
+      <div id="alpha">alpha</div>
+      <div id="beta">beta</div>
+      <div id="gamma">gamma</div>
+      <div id="heading">heading</div>
+      <div id="accuracy">accuracy</div>
+      <p></p>
+      <div id="interval">interval</div>
+      <div id="x">x</div>
+      <div id="y">y</div>
+      <div id="z">z</div>
+      <div id="xg">xg</div>
+      <div id="yg">yg</div>
+      <div id="zg">zg</div>
+      <div id="Ralpha">Ralpha</div>
+      <div id="Rbeta">Rbeta</div>
+      <div id="Rgamma">Rgamma</div>
     </div>
     <div class="update-tips"><span>神秘功能敬请期待</span></div>
 
@@ -37,6 +70,7 @@
 
 <script>
   import indexChart from '../components/index_chart.vue'
+  import Orientation from '../util/orientation'
 
   export default {
     name: 'index',
@@ -44,6 +78,8 @@
       indexChart
     },
     data () {
+      let _MbtiDone = this.$store.state.user.mbtiDone
+      console.log(_MbtiDone)
       return {
         userInfo: true,
         showScoreDialog: false,
@@ -110,7 +146,7 @@
           },
           {
             icon: require('../assets/imgs/icon/md-icon-test.png'),
-            href: {name: 'mbti'},
+            href: {name: _MbtiDone ? 'mbtireport' : 'mbti'},
             label: '综合测试',
             hot: true
           },
@@ -122,6 +158,9 @@
           }
         ]
       }
+    },
+    mounted () {
+      Orientation.create('.J_echart')
     },
     methods: {
       changeScore () {
@@ -148,68 +187,63 @@
     .md-list {
       display: flex;
       flex-wrap: wrap;
+      background-color: #fff;
       .md-icon {
-        /*height:40px;*/
+        @iconSize: 44px;
+        height: @iconSize;
         position: relative;
         text-align: center;
         .md-icon-img {
-          display: inline-block;
+          width: @iconSize;
+          height: @iconSize;
+          margin: 0 auto;
           position: relative;
           .hot-tips {
             transform: scale(0.7);
             position: absolute;
             top: 0;
             right: -15px;
-            font-weight: 700;
             display: inline-block;
             background-color: #ff4537;
             color: #fff;
             font-size: 12px;
             border-radius: 13px;
-            /*height:17px;*/
-            /*line-height:17px;*/
-            padding: 3px 6px 1px 6px;
+            padding: 2px 5px 1px 5px;
+            &:after {
+              content: '';
+              display: block;
+              width: 0;
+              height: 0;
+              position: absolute;
+              left: -3px;
+              bottom: -3px;
+              border-width: 8px 0 8px 8px;
+              border-style: solid;
+              border-color: transparent transparent #ff4537 transparent;
+              transform: rotate(-35deg);
+            }
           }
         }
         img {
-          /*position: absolute;*/
-          /*left:50%;*/
-          /*top:50%;*/
-          transform: scale(0.6);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0.55);
           display: block;
-
-          /*width:28px;*/
-          /*max-height: 100%;*/
           margin: 0 auto;
         }
       }
       a {
         display: block;
-        padding: 15px 0;
+        padding: 6px 0;
         font-size: 14px;
         color: #666;
         text-decoration: none;
         text-align: center;
         width: 25%;
         background-color: #fff;
-        &:nth-child(1) {
-          margin-bottom: 10px;
-          padding-bottom: 15px;
-        }
-        &:nth-child(2) {
-          margin-bottom: 10px;
-          padding-bottom: 15px;
-        }
-        &:nth-child(3) {
-          margin-bottom: 10px;
-          padding-bottom: 15px;
-        }
-        &:nth-child(4) {
-          margin-bottom: 10px;
-          padding-bottom: 15px;
-        }
         p {
-          margin: 6px 0 0;
+          margin: 2px 0 8px;
         }
       }
     }

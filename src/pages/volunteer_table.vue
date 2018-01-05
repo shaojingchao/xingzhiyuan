@@ -142,8 +142,9 @@
         _vm.$Indicator.open('正在分析，请稍候...')
         setTimeout(() => {
           _vm.$Indicator.close()
-          $(_vm.$refs.tableAnalysisTips).slideDown(300)
+          $(document).scrollTop(0)
           _vm.tableAnalysisDone = true
+          $(_vm.$refs.tableAnalysisTips).slideDown(300)
         }, 1000)
       },
       showAnalysisResult () {
@@ -162,6 +163,7 @@
 
   .page_volunteer_table {
     background-color: #f3f5f7;
+
     .ci-head {
       background-color: @primary;
       color: #fff;

@@ -59,9 +59,6 @@
         return this.answered.length
       }
     },
-    update () {
-      // this.answeredNum = this.answered.length
-    },
     created () {
       if (this.$route.params.part === 'tab1') {
         this.pageName = '职业性格测试'
@@ -74,18 +71,19 @@
     methods: {
       answerEvent (ans) {
         let _vm = this
-        _vm.$set(this.answered, _vm.answeredNum, ans)
-        _vm.answered[_vm.answeredNum] = ans
-        if (_vm.answeredNum === _vm.quesTotalNum) {
-          _vm.$Indicator.open('正在分析测试结果，请稍候...')
-          setTimeout(() => {
-            _vm.$Indicator.close()
-            _vm.$router.replace({name: 'mbtireport'})
-          }, 1000)
-        }
+        setTimeout(() => {
+          _vm.$set(this.answered, _vm.answeredNum, ans)
+          _vm.answered[_vm.answeredNum] = ans
+          if (_vm.answeredNum === _vm.quesTotalNum) {
+            _vm.$Indicator.open('正在分析测试结果，请稍候...')
+            setTimeout(() => {
+              _vm.$Indicator.close()
+              _vm.$router.replace({name: 'mbtireport'})
+            }, 1000)
+          }
+        }, 100)
       }
     }
-
   }
 </script>
 

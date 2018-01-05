@@ -5,10 +5,8 @@
       <img src="../assets/imgs/icon/icon-like-no.png" v-if="!isLike" slot="right" width="16" alt="">
       <img src="../assets/imgs/icon/icon-like-yes.png" v-else slot="right" width="16" alt="">
     </mt-header>
-    <div class="ci-head">
-      <div class="f20 tc">人力资源管理专业</div>
-      <div class="tc mt10"><span class="dib plan-num">预计招收6人</span></div>
-    </div>
+
+    <c-page-head :title="'人力资源管理专业'" :subtitle="'预计招收6人'"></c-page-head>
 
     <div class="tab-wrap">
       <div class="tab-nav bbi">
@@ -35,16 +33,6 @@ export default {
 <style lang="less">
   @import '../assets/less/_mixins-wln.less';
   .page_collegeinfo{
-    .ci-head{
-      background-color: @primary;
-      color:#fff;
-      padding:20px 10px 30px;
-      .plan-num{
-        border:1px solid rgba(255,255,255,.4);
-        border-radius:30px;
-        padding:3px 12px;
-      }
-    }
   }
 
 </style>

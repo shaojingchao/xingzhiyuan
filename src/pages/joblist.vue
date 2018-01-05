@@ -88,7 +88,9 @@
           padding: 15px 0;
           border-bottom: 2px solid transparent;
           .icon {
-            color: #999;
+            color: #bbb;
+            font-weight: 700;
+            font-size: 13px;
           }
         }
         &.current {

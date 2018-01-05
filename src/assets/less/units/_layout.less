@@ -1,10 +1,60 @@
 @import (reference) "../_mixins-wln.less";
-@import (reference) "../_mixins-wln.less";
 
+html, body {
+  height: 100%;
+  background-color: #f3f5f7;
+  font-size: 14px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  font-family: @font-family;
+}
+
+body{
+  padding-top: 44px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* let's clear some floats */
+.clearfix:before, .clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
 
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.04);
 }
+
+.bd-b {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d9d9d9), color-stop(50%, #d9d9d9), color-stop(50%, transparent));
+  background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+  background-size: 120% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  /*background-origin: content-box;*/
+}
+
+.bd-t {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d9d9d9), color-stop(50%, #d9d9d9), color-stop(50%, transparent));
+  background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+  background-size: 120% 1px;
+  background-repeat: no-repeat;
+  background-position: top left;
+  /*background-origin: content-box;*/
+}
+
 //layout
 .content {
   margin-left: auto;
@@ -14,6 +64,18 @@ a {
   height: 100%;
   max-width: @max-page-width;
   min-width: @min-page-width;
+}
+
+.rotate-90 {
+  transform: rotateZ(90deg);
+}
+
+.rotate-180 {
+  transform: rotateZ(180deg);
+}
+
+.rotate-270 {
+  transform: rotateZ(270deg);
 }
 
 .hide {
@@ -37,11 +99,13 @@ div.dib {
   *display: inline;
   *zoom: 1;
 }
-.on-active{
+
+.on-active {
   transition: background-color 0.05s;
 }
-.on-active:active{
-  background-color:rgba(0,0,0,.05);
+
+.on-active:active {
+  background-color: rgba(0, 0, 0, .05);
 }
 
 .resp-img {
@@ -561,7 +625,7 @@ div.dib {
   border-bottom: 1px solid #ccc;
 }
 
-.bbi{
+.bbi {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#d9d9d9), color-stop(50%, #d9d9d9), color-stop(50%, transparent));
   background-image: linear-gradient(0deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
   background-size: 120% 1px;
@@ -570,7 +634,7 @@ div.dib {
   background-origin: border-box;
 }
 
-.bti{
+.bti {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#d9d9d9), color-stop(50%, #d9d9d9), color-stop(50%, transparent));
   background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
   background-size: 120% 1px;

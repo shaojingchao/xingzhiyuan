@@ -3,7 +3,7 @@
     <mt-header title="职业库">
       <c-router-back slot="left"></c-router-back>
     </mt-header>
-    <mt-cell class="my-job-link on-active" style="background-image:none" title="适合我的职业" label="综合性格和兴趣，找到最合适的职业" is-link :to="{name: 'evaluation'}">
+    <mt-cell class="my-job-link on-active" style="background-image:none" title="适合我的职业" label="综合性格和兴趣，找到最合适的职业" is-link :to="{name:'mbtireportcareer'}">
     </mt-cell>
     <div class="mt10 bg-white">
       <c-section-title title="职业库"></c-section-title>

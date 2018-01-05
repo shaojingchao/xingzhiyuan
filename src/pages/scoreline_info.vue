@@ -5,10 +5,9 @@
       <img src="../assets/imgs/icon/icon-like-no.png" v-if="!isLike" slot="right" width="16" alt="">
       <img src="../assets/imgs/icon/icon-like-yes.png" v-else slot="right" width="16" alt="">
     </mt-header>
-    <div class="ci-head">
-      <div class="f20 tc">北京航空航天大学</div>
-      <div class="tc mt10"><span class="dib plan-num">考生录取分数线</span></div>
-    </div>
+
+    <c-page-head :title="'北京航空航天大学'" subtitle="考生录取分数线"></c-page-head>
+
     <chart-scoreline title="院校录取分数线" from="college"></chart-scoreline>
   </div>
 </template>

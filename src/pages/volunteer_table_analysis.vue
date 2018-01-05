@@ -1,16 +1,20 @@
 <template>
-  <div class="page_volunteer_analysis">
+  <div class="page_volunteer_analysis"
+       @touchstart="touchStart($event)"
+       @touchmove="touchMove($event)"
+       @touchend="touchEnd($event)">
     <mt-header title="模拟志愿表01合理性">
       <c-router-back slot="left"></c-router-back>
     </mt-header>
 
     <div class="ci-head-wrap">
-      <div class="ci-head headTrans" :style="{'transform':'translateY('+headStyle.translateY+') scale('+headStyle.scale+')'}">
-        <div class="tc" style="font-size:36px;">{{tableStateText}}</div>
-        <div class="tc mt10"><span class="dib plan-num">4个可优化项，请尽快调整</span></div>
+      <div class="ci-head headTrans"
+           :style="{'transform':'translateY('+headStyle.translateY+') scale('+headStyle.scale+')'}">
+        <div class="main-title" style="font-size:36px;">{{tableStateText}}</div>
+        <div class="tc mt10"><span class="sub-title">4个可优化项，请尽快调整</span></div>
       </div>
     </div>
-    <div class="scrollContent" style="box-shadow:0 -5px 15px 10px rgba(255,194,51,0.85);">
+    <div class="scrollContent" ref="scrollContent">
       <div class="text-muted p10 pb15 bg-white">
         <p>*你的成绩超出批次线较多，只分析成绩所在批次的合理性。</p>
         <div class="helpers-tips">
@@ -38,7 +42,8 @@
                   </tr>
                   <tr>
                     <td class="gray9">本科一批没有可冲击的学校，建议填报1-2所录取概率50%-80%的学校冲一冲</td>
-                    <td width="20" align="right" valign="top"><i class="iconfont xzy-icon-success_fill text-success"></i></td>
+                    <td width="20" align="right" valign="top"><i
+                      class="iconfont xzy-icon-success_fill text-success"></i></td>
                   </tr>
                   </tbody>
                 </table>
@@ -56,10 +61,13 @@
   export default {
     data () {
       return {
-        scrollTop: 0,
+        headEffect: {  // head 动画配置
+          scrollTop: 0,
+          startPointY: 0,
+          relativeY: 0
+        },
         tableStateText: '良好',
         analysisList: ['志愿表梯度合理性', '志愿表完整度', '专业设置合理性', '符合个人意愿'],
-        tableAnalysisDone: false, // 志愿分析
         orderNum: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
         list: [
           {
@@ -80,39 +88,49 @@
       isVip () {
         return this.$store.getters.isVip
       },
+      /* 计算过渡动画 */
       headStyle () {
         let minTranslateY = -60
         let maxTranslateY = 0
         let maxSize = 1
         let minSize = 0.5
         return {
-          translateY: Math.max(maxTranslateY - this.scrollTop * 0.4, minTranslateY) + 'px',
-          scale: Math.max(maxSize - this.scrollTop * 0.0035, minSize)
+          translateY: Math.max(maxTranslateY - this.headEffect.scrollTop * 0.4, minTranslateY) + 'px',
+          scale: Math.max(maxSize - this.headEffect.scrollTop * 0.0035, minSize)
         }
       }
     },
     mounted () {
       $(document).on('scroll', () => {
-        this.scrollTop = $(document).scrollTop()
-      })
-      this.$nextTick(() => {
+        this.headEffect.scrollTop = $(document).scrollTop()
       })
     },
     methods: {
-      tableAnalysis () {
-        let _vm = this
-        _vm.$Indicator.open('正在分析，请稍候...')
-        setTimeout(() => {
-          _vm.$Indicator.close()
-          $(_vm.$refs.tableAnalysisTips).slideDown(300)
-          _vm.tableAnalysisDone = true
-        }, 1000)
+      /* 顶部滑动效果 */
+      // 滑动开始记录位置
+      touchStart (e) {
+        console.log(e)
+        this.headEffect.startPointY = e.touches[0].screenY
       },
-      showAnalysisResult () {
-        if (this.isVip) {
-          this.$router.push({name: ''})
-        } else {
-          this.$router.push({name: 'vip'})
+      // 滑动过程记录位移
+      touchMove (e) {
+        this.headEffect.relativeY = e.touches[0].screenY - this.headEffect.startPointY
+      },
+      // 滑动结束执行动画
+      touchEnd (e) {
+        let _scrollTop = this.headEffect.scrollTop
+        let _relativeY = this.headEffect.relativeY
+        let _flagValue = parseInt($(this.$refs.scrollContent).css('margin-top'))
+        if (_scrollTop < _flagValue) {
+          if (_relativeY < -5) {
+            $('body,html').animate({
+              scrollTop: _flagValue
+            }, 150)
+          } else if (_relativeY > 5) {
+            $('body,html').animate({
+              scrollTop: 0
+            }, 150)
+          }
         }
       }
     }
@@ -124,48 +142,53 @@
 
   .page_volunteer_analysis {
     background-color: #f3f5f7;
-    .mint-header{
+    .mint-header {
       background-color: @second;
     }
-    .headTrans{
-      transition: all 0.02s;
+    .headTrans {
+      transition: all 0.0167s;
     }
-    .ci-head-wrap{
+    .ci-head-wrap {
       position: fixed;
-      top:44px;
-      left:0;
-      right:0;
+      top: 44px;
+      left: 0;
+      right: 0;
       /*z-index: 0;*/
       background-color: @second;
     }
     .ci-head {
       color: #fff;
       padding: 35px 10px 45px;
-      .plan-num {
+      text-align: center;
+      .main-title {
+        font-size: 36px;
+      }
+      .sub-title {
+        display: inline-block;
         border: 1px solid rgba(255, 255, 255, .4);
         border-radius: 30px;
         padding: 3px 12px;
       }
     }
-    .scrollContent{
+    .scrollContent {
       position: relative;
       z-index: 90;
-      margin-top:150px;
+      margin-top: 150px;
       background-color: @bg-body;
     }
-    .helpers-tips{
+    .helpers-tips {
       display: flex;
-      padding:10px 0;
+      padding: 10px 0;
       border-radius: 5px;
-      border:1px dashed #ddd;
+      border: 1px dashed #ddd;
       background-color: @bg-body;
-      span{
-        color:#666;
+      span {
+        color: #666;
         display: block;
-        width:33%;
+        width: 33%;
         text-align: center;
-        i{
-          margin-right:3px;
+        i {
+          margin-right: 3px;
           vertical-align: -1px;
         }
       }
@@ -186,19 +209,19 @@
           top: 15px;
           height: @size;
           width: @size;
-          &.icon-0{
+          &.icon-0 {
             background: url(../assets/imgs/icon/table-analy-icon1.png) 50% 50% no-repeat;
             background-size: contain;
           }
-          &.icon-1{
+          &.icon-1 {
             background: url(../assets/imgs/icon/table-analy-icon2.png) 50% 50% no-repeat;
             background-size: contain;
           }
-          &.icon-2{
+          &.icon-2 {
             background: url(../assets/imgs/icon/table-analy-icon3.png) 50% 50% no-repeat;
             background-size: contain;
           }
-          &.icon-3{
+          &.icon-3 {
             background: url(../assets/imgs/icon/table-analy-icon4.png) 50% 50% no-repeat;
             background-size: contain;
           }
@@ -209,10 +232,10 @@
         .ib-desc {
           margin-top: 13px;
           padding-bottom: 12px;
-          td{
-            padding:5px 0;
-            .iconfont{
-              line-height:1;
+          td {
+            padding: 5px 0;
+            .iconfont {
+              line-height: 1;
               /*font-size:16px;*/
 
             }
