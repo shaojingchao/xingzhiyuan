@@ -43,24 +43,6 @@
       </router-link>
     </div>
 
-    <div>
-      <div id="alpha">alpha</div>
-      <div id="beta">beta</div>
-      <div id="gamma">gamma</div>
-      <div id="heading">heading</div>
-      <div id="accuracy">accuracy</div>
-      <p></p>
-      <div id="interval">interval</div>
-      <div id="x">x</div>
-      <div id="y">y</div>
-      <div id="z">z</div>
-      <div id="xg">xg</div>
-      <div id="yg">yg</div>
-      <div id="zg">zg</div>
-      <div id="Ralpha">Ralpha</div>
-      <div id="Rbeta">Rbeta</div>
-      <div id="Rgamma">Rgamma</div>
-    </div>
     <div class="update-tips"><span>神秘功能敬请期待</span></div>
 
     <dialog-set-score :isShow.sync="showScoreDialog"></dialog-set-score>
@@ -70,7 +52,6 @@
 
 <script>
   import indexChart from '../components/index_chart.vue'
-  import Orientation from '../util/orientation'
 
   export default {
     name: 'index',
@@ -78,8 +59,7 @@
       indexChart
     },
     data () {
-      let _MbtiDone = this.$store.state.user.mbtiDone
-      console.log(_MbtiDone)
+      let _MbtiDone = this.$store.state.user.mbtiDone // 用户已完成mbti测试
       return {
         userInfo: true,
         showScoreDialog: false,
@@ -160,7 +140,6 @@
       }
     },
     mounted () {
-      Orientation.create('.J_echart')
     },
     methods: {
       changeScore () {
