@@ -31,6 +31,20 @@
       </router-link>
     </div>
 
+    <router-link tag="div" :to="{name:'article', params: {id:1021}}" class="dynamic-link mt10 bg-white on-active">
+      <div class="cl-cell">
+        <div class="cl-cell-inner">
+          <div class="cl-img"><img src="../assets/imgs/dynamic-link-pic.png"></div>
+          <div class="title">单招院校录取分析
+          </div>
+          <div class="cl-label">
+            <span class="text-muted">智能分析录取率，发现你与梦想的距离</span>
+          </div>
+          <i class="iconfont xzy-icon-enter fr"></i>
+        </div>
+      </div>
+    </router-link>
+
     <div class="md-list mt10 pt10 pb10">
       <router-link :to="item.href" v-for="(item,index) in moduleList.slice(4)" :key="index">
         <div class="md-icon">
@@ -163,6 +177,45 @@
       background-color: #fff;
       margin-bottom: 10px;
     }
+
+    .dynamic-link {
+      .cl-cell {
+        padding: 15px 10px;
+        .cl-cell-inner {
+          position: relative;
+          @logo_size: 55px;
+          padding-left: @logo_size + 10px;
+          padding-right: 30px;
+          overflow: hidden;
+          .cl-img {
+            float: left;
+            width: @logo_size + 10px;
+            margin-left: -(@logo_size + 10px);
+            img {
+              max-width: @logo_size;
+              display: block;
+            }
+          }
+          .title{
+            margin-top: 5px;
+            font-size:15px;
+          }
+          .cl-label {
+            font-size:13px;
+            margin-top: 8px;
+          }
+
+          .iconfont {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            color:#bbb;
+            margin-top: -8px;
+          }
+        }
+      }
+    }
+
     .md-list {
       display: flex;
       flex-wrap: wrap;
