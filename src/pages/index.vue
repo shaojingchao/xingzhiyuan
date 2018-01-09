@@ -52,7 +52,6 @@
 
 <script>
   import indexChart from '../components/index_chart.vue'
-  import Orientation from '../util/orientation'
 
   export default {
     name: 'index',
@@ -141,7 +140,6 @@
       }
     },
     mounted () {
-      Orientation.create('.J_echart')
     },
     methods: {
       changeScore () {
