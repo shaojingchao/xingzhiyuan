@@ -10,7 +10,7 @@
       <div ref="navPos">
         <div ref="nav" class="nav-wrap">
           <div class="nav-content" ref="navContent">
-          <span class="nav-item" :class="{active: currentMonth === index}" @click="showCurrentInfo(index, $event)"
+          <span class="nav-item" :class="{active: currentMonth === index}" @click="showCurrentInfo(index)"
                 v-for="(item,index) in monthList">{{item.month}}</span>
           </div>
         </div>
@@ -91,37 +91,43 @@
       }
     },
     mounted () {
+      this.scrollAutoSetNav()
       this.$nextTick(() => {
+        // 初始化月份滚动事件
         let _offsetT = $(this.$refs.navPos).offset().top
+        let _headerHeight = $('.mint-header').outerHeight()
         $(document).on('scroll', () => {
           $(this.$refs.navPos).height(this.$refs.nav.offsetHeight)
-          if (_offsetT < $(document).scrollTop()) {
-            $(this.$refs.nav).addClass('fixed')
+          if (_offsetT - _headerHeight < $(document).scrollTop()) {
+            $(this.$refs.nav).addClass('fixed').css({'top': _headerHeight})
           } else {
             $(this.$refs.nav).removeClass('fixed')
           }
         })
         /* globals Bscroll */
+        // 计算导航容器宽度
         let _width = 0
         let $navContent = $(this.$refs.navContent)
         $navContent.find('span').each(function (item) {
           _width += $(this).outerWidth()
         })
         $navContent.width(_width)
+
+        // 实例化 batter-scroll
         this.Bscroll = new Bscroll(this.$refs.nav, {
           scrollX: true,
           probeType: 1,
           scrollY: false,
-          scrollbar: true,
           freeScroll: true,
           click: true
         })
       })
     },
     methods: {
-      showCurrentInfo (index, e) {
+      // 导航到当前月份
+      showCurrentInfo (index, scroll) {
         this.currentMonth = index
-        let _Rect = $(e.currentTarget).get(0).getBoundingClientRect()
+        let _Rect = $(this.$refs.navContent).find('span').eq(index).get(0).getBoundingClientRect()
         setTimeout(() => {
           // 自动向右滚动
           if (_Rect.left < _Rect.width && this.Bscroll.x < 0) {
@@ -133,11 +139,45 @@
             this.Bscroll.scrollTo(this.Bscroll.x - _Rect.width, 0, 300)
           }
         }, 100)
+
+        if (scroll) return
         let _targetPos = $('[data-target-index=' + index + ']').offset().top
-        console.log(_targetPos)
         $('body,html').animate({
-          scrollTop: _targetPos - _Rect.height
+          scrollTop: _targetPos - 44 - _Rect.height
         }, 300)
+      },
+      // 月份滚动跟随
+      scrollAutoSetNav () {
+        const _monthContent = [] // 记录每个div月份距离顶部位置
+        $('[data-target-index]').each(function () {
+          _monthContent.push($(this).offset().top)
+        })
+
+        let _dateTime = new Date() // 记录创建时间
+        $(document).on('scroll', () => {
+          // 用户点击导航触发滚动 不执行跟随当前月操作
+          if ($('body,html').is(':animated')) {
+            _dateTime = new Date()
+            return false
+          } else {
+            // 滚动动画执行结束一刻，不执行次操作
+            if (new Date() - _dateTime > 300) {
+              let filterArray = []
+              filterArray = _monthContent.filter((item) => {
+                // 滚动获取当前显示的月份div
+                return item > $(document).scrollTop()
+              })
+              let _filterItem = filterArray[0]  // 获取最近月份位置记录
+              if (_filterItem) {
+                let _index = _monthContent.indexOf(_filterItem) // 找到索引值 模拟用户点击对应导航
+                let _thatNavItem = $(this.$refs.navContent).find('span').eq(_index)
+                if (!_thatNavItem.hasClass('active')) {
+                  this.showCurrentInfo(_index, true)
+                }
+              }
+            }
+          }
+        })
       }
     }
   }
@@ -160,7 +200,7 @@
       .nav-content {
         white-space: nowrap;
         .nav-item {
-          padding: 15px 10px;
+          padding: 13px 10px 11px;
           border-bottom: 2px solid transparent;
           display: inline-block;
           &.active {

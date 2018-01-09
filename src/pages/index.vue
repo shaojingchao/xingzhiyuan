@@ -43,24 +43,6 @@
       </router-link>
     </div>
 
-    <div>
-      <div id="alpha">alpha</div>
-      <div id="beta">beta</div>
-      <div id="gamma">gamma</div>
-      <div id="heading">heading</div>
-      <div id="accuracy">accuracy</div>
-      <p></p>
-      <div id="interval">interval</div>
-      <div id="x">x</div>
-      <div id="y">y</div>
-      <div id="z">z</div>
-      <div id="xg">xg</div>
-      <div id="yg">yg</div>
-      <div id="zg">zg</div>
-      <div id="Ralpha">Ralpha</div>
-      <div id="Rbeta">Rbeta</div>
-      <div id="Rgamma">Rgamma</div>
-    </div>
     <div class="update-tips"><span>神秘功能敬请期待</span></div>
 
     <dialog-set-score :isShow.sync="showScoreDialog"></dialog-set-score>
@@ -78,8 +60,7 @@
       indexChart
     },
     data () {
-      let _MbtiDone = this.$store.state.user.mbtiDone
-      console.log(_MbtiDone)
+      let _MbtiIsDone = this.$store.state.user.mbtiDone // 用户已经完成mbit测试
       return {
         userInfo: true,
         showScoreDialog: false,
@@ -146,7 +127,7 @@
           },
           {
             icon: require('../assets/imgs/icon/md-icon-test.png'),
-            href: {name: _MbtiDone ? 'mbtireport' : 'mbti'},
+            href: {name: _MbtiIsDone ? 'mbtireport' : 'mbti'}, // 如果已完成mbit测试 直接进入测试报告页面
             label: '综合测试',
             hot: true
           },

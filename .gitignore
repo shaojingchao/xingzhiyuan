@@ -17,3 +17,4 @@ yarn-error.log*
 /demo
 /bower_components/css-layout/css/units
 /bower_components
+/config/index.js
