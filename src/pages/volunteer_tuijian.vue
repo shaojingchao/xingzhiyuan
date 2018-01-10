@@ -52,7 +52,7 @@
       </router-link>
     </div>
     <c-vip v-if="!isVip"></c-vip>
-    <c-footer-btn :text="'模拟填报分析'" :toLink="{name:'volunteertable'}"></c-footer-btn>
+    <c-footer-btn :text="'模拟填报分析'" @click="$router.push({name:'volunteertable',params: {id: 1}})"></c-footer-btn>
   </div>
 </template>
 
@@ -211,12 +211,20 @@
         return this.$store.getters.isVip
       },
       pageName () {
+        let _name = '冲刺推荐（本科一批）'
         let cate = this.$route.query.cate
         switch (cate) {
-          case 'cc': return '冲刺推荐（本科一批）'
-          case 'wt': return '稳妥推荐（本科一批）'
-          case 'bd': return '保底推荐（本科一批）'
+          case 'cc':
+            _name = '冲刺推荐（本科一批）'
+            break
+          case 'wt':
+            _name = '稳妥推荐（本科一批）'
+            break
+          case 'bd':
+            _name = '保底推荐（本科一批）'
+            break
         }
+        return _name
       }
     },
     mounted () {

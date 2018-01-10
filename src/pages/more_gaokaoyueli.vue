@@ -26,7 +26,7 @@
 
     <div class="p30 mt10"></div>
 
-    <c-footer-btn :text="'填报入口'" :toLink="{}"></c-footer-btn>
+    <c-footer-btn :text="'填报入口'"></c-footer-btn>
   </div>
 </template>
 

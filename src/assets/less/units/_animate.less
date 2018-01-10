@@ -1,31 +1,19 @@
 @import (reference) "../_mixins-wln.less";
 
-.none-enter, .none-leave-active {
+/*none animate*/
+.none-leave-active, .none-enter-active {
   transition: none;
-  /*opacity: 0;*/
-  /*-webkit-transform: translate(30px, 0);*/
-  /*transform: translate(30px, 0);*/
 }
 
-.none-leave-active, .none-enter {
-  transition: none;
-  /*opacity: 0;*/
-  /*-webkit-transform: translate(-30px, 0);*/
-  /*transform: translate(-30px, 0);*/
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.25s;
 }
 
-.fade-enter, .fade-leave-active {
+.fade-enter, .fade-leave-to {
   opacity: 0;
-  /*-webkit-transform: translate(30px, 0);*/
-  /*transform: translate(30px, 0);*/
 }
 
-.fade-leave-active, .fade-enter {
-  opacity: 0;
-  /*-webkit-transform: translate(-30px, 0);*/
-  /*transform: translate(-30px, 0);*/
-}
-
+/*slide-left slide-right*/
 .slide-left-enter, .slide-right-leave-active {
   opacity: 0;
   transform: translate(10px, 0);
@@ -36,44 +24,57 @@
   transform: translate(-10px, 0);
 }
 
+/*slide-down slide-up*/
 .slide-down-enter, .slide-up-leave-active {
   opacity: 0;
   transform: translateY(-30%);
 }
 
-.fade-in-down-leave-active, .fade-in-up-enter {
+/*fade-in-up fade-in-down*/
+.fade-in-down-enter-active,
+.fade-in-down-leave-active,
+.fade-in-up-enter-active,
+.fade-in-up-leave-active{
+  transition:transform 0.25s, opacity 0.25s;
+}
+.fade-in-up-enter,.fade-in-up-leave-to {
   opacity: 0;
-  transform: translateY(-30%);
+  -webkit-transform: translateZ(0);
+  transform: translateY(30px);
 }
 
-.fade-in-down-enter, .fade-in-up-leave-active {
+.fade-in-down-enter,.fade-in-down-leave-to {
   opacity: 0;
-  transform: translateY(-30%);
+  -webkit-transform: translateZ(0);
+  transform: translateY(-30px);
 }
 
-.fade-in-down-leave-active, .fade-in-up-enter {
+/*slide-in-down*/
+.slide-in-down-enter, .slide-in-down-leave-to {
   opacity: 0;
-  transform: translateY(-20px);
+  -webkit-transform: translateZ(0);
+  transform: translateY(-800px); // 目前最大屏幕高度
+}
+.slide-in-down-enter-active, .slide-in-down-leave-active {
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.slide-in-down-enter, .slide-in-up-leave-active {
+/*slide-in-up*/
+.slide-in-up-enter, .slide-in-up-leave-to {
   opacity: 0;
-  transform: translateY(-100%);
+  -webkit-transform: translateZ(0);
+  transform: translateY(800px); // 目前最大屏幕高度
+}
+.slide-in-up-enter-active, .slide-in-up-leave-active {
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.slide-in-down-leave-active, .slide-in-up-enter {
-  opacity: 0;
-  transform: translateY(-100%);
-}
-
+/*rotateY*/
 .rotateY-enter, .rotateY-leave-active {
-  /*opacity: 0;*/
-  /*transform: rotate3d();*/
   transform: perspective(500px) rotate3d(0, 1, 0, -90deg);
 }
 
 .rotateY-leave-active, .rotateY-enter {
-  /*opacity: 0;*/
   transform: perspective(-500px) rotate3d(0, 1, 0, 90deg);
 }
 
@@ -114,9 +115,3 @@
     transform: perspective(@perspective);
   }
 }
-
-/*.flipInY {*/
-/*-webkit-backface-visibility: visible !important;*/
-/*backface-visibility: visible !important;*/
-/*animation-name: flipInY;*/
-/*}*/

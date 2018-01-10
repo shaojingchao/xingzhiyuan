@@ -28,7 +28,7 @@
       </div>
     </section>
 
-    <c-footer-btn :text="'查询入口'" :toLink="{}"></c-footer-btn>
+    <c-footer-btn :text="'查询入口'"></c-footer-btn>
   </div>
 </template>
 

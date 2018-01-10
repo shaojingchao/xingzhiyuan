@@ -67,16 +67,17 @@
     <div class="p30"></div>
 
     <c-footer-btn :text="'保存并分析合理性'" :class="{disabled: editMode}" @click.native="tableAnalysis" is-vip></c-footer-btn>
+
+    <!--修改志愿表标题-->
     <c-dialog
       :visible.sync="showEditTableName"
-      :width="300"
-      :height="300"
+      :width="'280px'"
       :title="'修改标题'"
-      name="changeTableName"
+      :close="true"
+      @afterEnter="tableNameDialogAfterEnter"
       @confirm="editTableNameConfirm">
-      <div slot="content" class="form p10">
-        <input class="pct100" type="text" placeholder="请输入名称" :value="tableName" ref="inputTableName"
-               :autofocus="autofocus">
+      <div slot="content" class="form p30">
+        <input class="pct100" type="text" placeholder="请输入名称" :value="tableName" ref="inputTableName">
       </div>
     </c-dialog>
   </div>
@@ -118,10 +119,11 @@
       }
     },
     mounted () {
-      this.$nextTick(() => {
-      })
     },
     methods: {
+      tableNameDialogAfterEnter () {
+        this.$refs.inputTableName.focus()
+      },
       editTableNameConfirm () {
         this.tableName = this.$refs.inputTableName.value
         this.$toast({

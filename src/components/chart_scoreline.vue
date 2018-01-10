@@ -69,7 +69,7 @@
       <c-section-title class="mt10" title="专业录取分数线" vip></c-section-title>
       <div class="majorline-list" v-if="isVip">
         <mt-cell v-for="(item,i) in majorScoreLineList" :key="i" :title="item"
-                 :to="{name:'collegemajorscoreline',params: {id:$route.params.id,mid:i}}" is-link></mt-cell>
+                 :to="{name:'collegemajorscoreline',params: {cid:$route.params.cid,mid:i}}" is-link></mt-cell>
       </div>
       <c-vip class="bti" v-if="!isVip"></c-vip>
     </section>
@@ -433,9 +433,9 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
   @import '../assets/less/_mixins-wln.less';
 
-  .page_collegeinfo {
+  .collegeinfo-scoreline {
   }
 </style>

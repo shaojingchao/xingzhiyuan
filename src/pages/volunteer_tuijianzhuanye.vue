@@ -25,7 +25,7 @@
     </div>
     <c-vip v-if="!isVip"></c-vip>
     <div class="p30"></div>
-    <c-footer-btn :text="'模拟填报分析'" :toLink="{name:'volunteertable'}"></c-footer-btn>
+    <c-footer-btn :text="'模拟填报分析'" @click="$router.push({name:'volunteertable',params: {id: 1}})"></c-footer-btn>
   </div>
 </template>
 

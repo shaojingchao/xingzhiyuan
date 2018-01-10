@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <c-footer-btn :text="'模拟填报分析'" :toLink="{name:'volunteertable',params: {id: 1}}"></c-footer-btn>
+    <c-footer-btn :text="'模拟填报分析'" @click.native="$router.push({name:'volunteertable',params: {id: 112}})"></c-footer-btn>
 
     <dialog-set-score :isShow.sync="showScoreDialog"></dialog-set-score>
   </div>

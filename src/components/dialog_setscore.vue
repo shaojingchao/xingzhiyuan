@@ -1,31 +1,28 @@
 <template>
-  <div>
-    <transition name="fade" mode="out-in" appear>
-      <div class="layer-shade" v-show="isShow">
-      </div>
-    </transition>
-    <transition name="slideUp" mode="out-in" appear>
-      <div class="layer-score-content" v-show="isShow && contentIsShow">
-        <div class="score-form">
-          <div class="select-cate">
-            <mt-radio
-              v-model="selectCate"
-              :align="'right'"
-              :options="options">
-            </mt-radio>
-          </div>
-          <div class="input-score">
-            <mt-field placeholder="请输入分数" value="589" type="number"></mt-field>
-          </div>
+  <c-dialog
+    :visible="isShow"
+    :types="1"
+    @cancel="hideThis">
+    <div class="layer-score-content">
+      <div class="score-form">
+        <div class="select-cate">
+          <mt-radio
+            v-model="selectCate"
+            :align="'right'"
+            :options="options">
+          </mt-radio>
         </div>
-        <div class="handle-area">
-          <mt-button type="primary" size="large" @click="submitThis">确定</mt-button>
-          <p class="muted">今日还有 1 次修改机会哦~~</p>
-          <a href="javascript:" class="close-btn" @click="hideThis"></a>
+        <div class="input-score">
+          <mt-field placeholder="请输入分数" value="589" type="number"></mt-field>
         </div>
       </div>
-    </transition>
-  </div>
+      <div class="handle-area">
+        <mt-button type="primary" size="large" @click="submitThis">确定</mt-button>
+        <div class="muted p10">今日还有 1 次修改机会哦~~</div>
+        <a href="javascript:" class="close-btn" @click="hideThis"></a>
+      </div>
+    </div>
+  </c-dialog>
 </template>
 
 <script>
@@ -34,8 +31,8 @@
     props: ['isShow'],
     data () {
       return {
-        contentIsShow: true,
         selectCate: '值A',
+        childIsShow: false,
         options: [
           {
             label: '本科一批',
@@ -52,24 +49,14 @@
         ]
       }
     },
-    watch: {
-      'isShow' (a) {
-        if (a === true) {
-          setTimeout(() => {
-            this.contentIsShow = true
-          }, 200)
-        }
-      }
-    },
     methods: {
       submitThis () {
         this.hideThis()
+        this.$Toast('提交')
       },
       hideThis () {
-        this.contentIsShow = false
-        setTimeout(() => {
-          this.$emit('update:isShow', false)
-        }, 200)
+        this.$emit('update:isShow', false)
+        this.$Toast('取消')
       }
     }
   }
@@ -88,13 +75,13 @@
   }
 
   .layer-score-content {
-    margin: 0 auto;
-    position: fixed;
-    z-index: 101;
-    top: 50%;
-    left: 50%;
-    margin-left: -140px;
-    transform: translateY(-50%);
+    /*margin: 0 auto;*/
+    /*position: fixed;*/
+    /*z-index: 101;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*margin-left: -140px;*/
+    /*transform: translateY(-50%);*/
     width: 280px;
     height: auto;
     padding-top: 93px;
