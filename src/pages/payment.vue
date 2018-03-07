@@ -23,7 +23,7 @@
     <mt-cell class="mt10 no-bd" title="VIP账号：">13837919367</mt-cell>
 
     <div class="p15 mt5">
-      <a class="btn btn-yellow btn-block round btn-xl">立即支付</a>
+      <a class="btn btn-yellow btn-block round btn-xl" @click="payBtnEvent">立即支付</a>
     </div>
     <div class="p10">
       <p class="text-muted mt5">注意事项：</p>
@@ -54,6 +54,18 @@
       selectPayMode (mode) {
         console.log(mode)
         this.payMode = mode
+      },
+      payBtnEvent () {
+        let _self = this
+        _self.$toast({
+          message: '支付成功',
+          position: 'bottom',
+          duration: 1500
+        })
+        setTimeout(() => {
+          _self.$store.commit('buyVip', true)
+          _self.$router.go(-2)
+        }, 2000)
       }
     }
   }

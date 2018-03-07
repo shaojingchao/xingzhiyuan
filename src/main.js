@@ -17,6 +17,9 @@ import store from './store'
 import App from './App'
 import router from './router'
 import VueTouch from 'vue-touch'
+// import createApi from '../static/cube-ui-dev/lib/create-api/'
+// import '../static/cube-ui-dev/lib/style.css'
+// import '../static/cube-ui-dev/lib/select/style.css'
 
 // 全局组件
 import PageHead from '@/components/common/page_head'
@@ -30,6 +33,11 @@ import AddFavor from '@/components/add_favor'
 import FooterBtn from '@/components/footer_btn'
 import Dialog from '@/components/dialog/dialog'
 import Scroll from '@/components/bscroll'
+import Select from '@/components/select'
+import CheckList from '@/components/init/checklist'
+
+// API 组件
+// import Hello from '../src/test/api.js'
 
 // 弹框
 import DialogSetScore from '@/components/dialog_setscore'
@@ -45,12 +53,16 @@ Vue.component('c-footer-btn', FooterBtn)
 Vue.component('c-dialog', Dialog)
 Vue.component('c-scroll', Scroll)
 Vue.component('c-empty', Empty)
-
+Vue.component('c-select', Select)
+Vue.component('c-checklist', CheckList)
 Vue.component('dialog-set-score', DialogSetScore)
 
 // Vue.use(Navigation, {router, store, keyName: 'n'})
 Vue.use(MintUI.Lazyload)
 Vue.use(VueTouch, {name: 'v-touch'})
+
+// 创建 this.$createHello API
+// createApi(Vue, Hello, ['click'], true)
 
 // 注册 echarts 主题
 ECharts.registerTheme('macarons', Theme)

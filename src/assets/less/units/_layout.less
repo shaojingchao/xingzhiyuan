@@ -11,6 +11,8 @@ html, body {
 
 body{
   padding-top: 44px;
+  max-width:768px;
+  margin:0 auto;
 }
 
 a {
@@ -34,6 +36,7 @@ a {
 }
 
 a {
+  color:inherit;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.04);
 }
 
@@ -102,6 +105,10 @@ div.dib {
 
 .on-active {
   transition: background-color 0.05s;
+}
+
+.on-active-o:active {
+  opacity: 0.7;
 }
 
 .on-active:active {
@@ -945,8 +952,8 @@ div.dib {
 
 /* css3过渡动画效果 */
 .trans {
-  -webkit-transition: all .25s;
-  transition: all .25s;
+  -webkit-transition: all .3s;
+  transition: all .3s;
 }
 
 /* 大小不定元素垂直居中 */

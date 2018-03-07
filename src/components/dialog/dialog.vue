@@ -11,14 +11,15 @@
            ref="layBox">
         <slot v-if="types === 1"></slot>
         <div class="lay-box-content" v-if="types === 0">
-          <div class="l-close on-active" v-if="close" @click="shadeCloseEvent"><i class="iconfont xzy-icon-add"></i></div>
+          <div class="l-close on-active" v-if="close" @click="shadeCloseEvent"><i class="iconfont xzy-icon-add"></i>
+          </div>
           <div class="l-head" v-if="title">{{title}}</div>
           <div class="l-body">
             <slot name="content"></slot>
           </div>
           <div class="l-footer">
             <span class="cancel-btn" @click="btnCancel" v-if="cancelBtn.show">{{cancelBtn.text}}</span>
-            <span class="confirm-btn" @click="btnConfirm"  v-if="yesBtn.show">{{yesBtn.text}}</span>
+            <span class="confirm-btn" @click="btnConfirm" v-if="yesBtn.show">{{yesBtn.text}}</span>
           </div>
         </div>
       </div>
@@ -26,7 +27,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
   export default {
     name: 'c-dialog',
     data () {
@@ -124,95 +125,99 @@
 <style lang='less' scoped>
   @import '../../assets/less/_mixins-wln/_wln-variables.less';
 
-  .lay-mask {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, .35);
-    &.fade-enter-active {
-      transition: opacity 0.25s;
-    }
-    &.fade-leave-active {
-      transition: opacity 0.25s 0.15s;
-    }
-  }
-
-  .lay-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 1000;
-    &.slide-in-up-enter-active {
-      transition: transform 0.3s 0.15s, opacity 0.3s 0.15s;
-    }
-  }
-
-  .lay-box-content {
-    position: relative;
-    border-radius: 2px 2px 0 0;
-    background-color: #fff;
-    box-shadow:0 2px 6px -2px rgba(0,0,0,.1);
-    .l-close{
-      @btnSize: 36px;
-      position: absolute;
-      top:0;
-      right:0;
-      display: block;
-      width:@btnSize;
-      height:@btnSize;
-      text-align: center;
-      line-height:@btnSize;
-      i{
-        display: block;
-        font-size:16px;
-        color:#ddd;
-        font-weight:100;
-        transform: rotateZ(45deg);
+  .lay-dialog {
+    .lay-mask {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, .35);
+      &.fade-enter-active {
+        transition: opacity 0.25s;
+      }
+      &.fade-leave-active {
+        transition: opacity 0.25s 0.15s;
       }
     }
-  }
 
-  .l-head {
-    font-size: 15px;
-    padding-top: 15px;
-    text-align: center;
+    .lay-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      z-index: 1000;
+      &.slide-in-up-enter-active {
+        transition: transform 0.3s 0.15s, opacity 0.3s 0.15s;
+      }
+    }
 
-  }
-
-  .l-body {
-    padding: 10px;
-  }
-
-  .l-footer {
-    /*border-radius: 0 0 2px 2px;*/
-    overflow: hidden;
-    display: flex;
-    text-align: center;
-    flex-flow: nowrap;
-    @border-color: #f4f4f4;
-    span {
-      flex:1;
-      padding: 15px 0;
-      text-align: center;
-      color: #666;
-      border-top: 1px solid @border-color;
+    .lay-box-content {
+      position: relative;
+      border-radius: 2px 2px 0 0;
       background-color: #fff;
-      width: 50%;
-      display: block;
-      border-left: 1px solid @border-color;
-      &:first-child {
-        border-left:none;
+      box-shadow: 0 2px 6px -2px rgba(0, 0, 0, .1);
+
+      .l-close {
+        @btnSize: 36px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: @btnSize;
+        height: @btnSize;
+        text-align: center;
+        line-height: @btnSize;
+        i {
+          display: block;
+          font-size: 16px;
+          color: #ddd;
+          font-weight: 100;
+          transform: rotateZ(45deg);
+        }
       }
-      &.confirm-btn {
-        color: @primary;
+
+      .l-head {
+        font-size: 15px;
+        padding-top: 15px;
+        text-align: center;
+
       }
-      &:active{
-        background-color: @bg-body;
+
+      .l-body {
+        padding: 10px;
+      }
+
+      .l-footer {
+        /*border-radius: 0 0 2px 2px;*/
+        overflow: hidden;
+        display: flex;
+        text-align: center;
+        flex-flow: nowrap;
+        @border-color: #f4f4f4;
+        span {
+          flex: 1;
+          padding: 15px 0;
+          text-align: center;
+          color: #666;
+          border-top: 1px solid @border-color;
+          background-color: #fff;
+          width: 50%;
+          display: block;
+          border-left: 1px solid @border-color;
+          &:first-child {
+            border-left: none;
+          }
+          &.confirm-btn {
+            color: @primary;
+          }
+          &:active {
+            background-color: @bg-body;
+          }
+        }
       }
     }
+
   }
 
 </style>

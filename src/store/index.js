@@ -12,7 +12,9 @@ let store = new Vuex.Store({
   },
   state: {
     user: {
-      isVip: true,
+      isVip: false,
+      isArt: false,
+      isInit: false,
       mbtiDone: true,
       userID: '1247537710',
       userName: 'shaojingchao',
@@ -40,6 +42,14 @@ let store = new Vuex.Store({
           break
       }
       state.pageTransName = effect
+    },
+    submitInitData (state, val) {
+      console.log(val, 'submitInitData')
+      state.user.isInit = val
+    },
+    buyVip (state, val) {
+      console.log(val, '购买成功')
+      state.user.isVip = val
     }
   }}
 )

@@ -68,7 +68,7 @@
   import indexChart from '../components/index_chart.vue'
 
   export default {
-    name: 'index',
+    name: 'Index',
     components: {
       indexChart
     },
@@ -196,12 +196,12 @@
               display: block;
             }
           }
-          .title{
+          .title {
             margin-top: 5px;
-            font-size:15px;
+            font-size: 15px;
           }
           .cl-label {
-            font-size:13px;
+            font-size: 13px;
             margin-top: 8px;
           }
 
@@ -209,7 +209,7 @@
             position: absolute;
             right: 0;
             top: 50%;
-            color:#bbb;
+            color: #bbb;
             margin-top: -8px;
           }
         }
