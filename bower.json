@@ -1,0 +1,22 @@
+{
+  "name": "xingzhiyuan",
+  "description": "A Vue.js project",
+  "main": "",
+  "authors": [
+    "shaojingchao <1247537710@qq.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/shaojingchao/xingzhiyuan",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "css-layout": "shaojingchao/css-layout",
+    "PACE": "HubSpot/pace#^1.0.2",
+    "raphael": "DmitryBaranovskiy/raphael#^2.2.7"
+  }
+}

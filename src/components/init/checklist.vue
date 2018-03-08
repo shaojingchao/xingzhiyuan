@@ -122,6 +122,7 @@
     }
     .c-checklist-icon {
       margin-left:0.1rem;
+      font-size:0.30rem;
       vertical-align: -0.01rem;
     }
   }

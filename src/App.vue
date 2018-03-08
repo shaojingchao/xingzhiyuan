@@ -38,6 +38,9 @@
 
 <style lang="less">
   @import './assets/less/_mixins-wln.less';
+  #app{
+    position: relative;
+  }
 
   .idx-chart {
     display: inline-block;

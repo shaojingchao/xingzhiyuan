@@ -16,8 +16,8 @@
         </div>
       </div>
 
-      <div class="f18 tc"><b>{{stepInfo.data[currentStep - 1].mainTitle}}</b></div>
-      <div class="mt10 tc text-muted">{{stepInfo.data[currentStep - 1].subTitle}}</div>
+      <div class="main-title"><b>{{stepInfo.data[currentStep - 1].mainTitle}}</b></div>
+      <div class="sub-title">{{stepInfo.data[currentStep - 1].subTitle}}</div>
 
       <!--考生类别-->
       <div class="select-user-cate" v-if="currentStep === 1">
@@ -316,6 +316,7 @@
         border: 0.04rem solid #fff;
         border-radius: 50%;
         background-color: @bg-body;
+        font-size:0.26rem;
         color: #93999f;
         text-align: center;
         &.active {
@@ -332,6 +333,18 @@
         height: 0;
         border-bottom: 0.02rem solid @primary;
       }
+    }
+
+    .main-title {
+      font-size: 0.36rem;
+      color: #4d555d;
+      text-align: center;
+    }
+    .sub-title {
+      margin-top: 0.24rem;
+      font-size: 0.28rem;
+      text-align: center;
+      color: #93999f;
     }
 
     /*选择分科类别*/
@@ -408,12 +421,12 @@
         transform: translate(0, -50%);
       }
     }
-    .next-handle{
+    .next-handle {
       .next-btn {
         display: block;
-        font-size:.32rem;
+        font-size: .32rem;
         border-radius: 1rem;
-        padding:0.26rem;
+        padding: 0.26rem;
       }
     }
 
